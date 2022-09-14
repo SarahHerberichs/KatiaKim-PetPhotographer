@@ -1,0 +1,374 @@
+* {
+  list-style-type: none;
+  text-decoration: none;
+}
+@font-face {
+  font-family: "Oswald-Bold";
+  src: url("fonts/Oswald-Regular.ttf") format("truetype"),
+    url("fonts/Oswald-SemiBold.ttf") format("truetype"),
+    url("fonts/Oswald-Light.ttf") format("truetype"),
+    url("fonts/Oswald-ExtraLight.ttf") format("truetype");
+}
+/*------------------------Grands blocs---------------------------*/
+body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  margin: auto;
+}
+/* title+ navBar*/
+header {
+  min-height: 10em;
+  background-color: #010101;
+  color: rgb(222, 218, 209);
+}
+main {
+  margin-top: 2em;
+  text-align: center;
+}
+/* titre du header */
+h1 {
+  font-family: "Oswald-Bold";
+}
+/*titres de chq page*/
+h2 {
+  font-family: "Oswald-ExtraLight.ttf";
+}
+h3 {
+  font-size: 1.5em;
+  animation: "textAnim" 0.7s linear;
+  opacity: 0.8;
+}
+@keyframes textAnim {
+  from {
+    opacity: 0.4;
+    transform: rotateY(3.142rad);
+    text-shadow: 5px 5px rgba(103, 101, 101, 0.4);
+    font-size: 1em;
+  }
+  to {
+    opacity: 0.8;
+    transform: rotateY(0);
+    text-shadow: none;
+    font-size: 1.5em;
+  }
+}
+/*---------------------------Style de la navBar------------------------------*/
+/* h1 et h2 du titre*/
+header .title {
+  width: 30%;
+  text-align: center;
+}
+/*comportement quand visible*/
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* le bouton et ses sous onglets*/
+.nav > a,
+.nav .tabButton {
+  display: none;
+  margin: auto;
+  color: rgb(222, 218, 209);
+  background-color: transparent;
+  font-size: 1.5em;
+  cursor: pointer;
+  border: none;
+}
+/* Div qui englobe les sousOnglets */
+.nav .linkDiv {
+  display: none;
+}
+
+/*-----------Au click sur iconBurgerBurger: la div navBar prend la class BurgerClicked)-------------- */
+
+/*navBar */
+.burgerClicked {
+  height: 100vh;
+}
+/* Div englobant Onglet et sous onglets*/
+.burgerClicked .dropdown {
+  text-align: center;
+  /*espacement entre chq onglet*/
+  margin: 2em 0 2em 0;
+  height: auto;
+}
+/* Onglet */
+.burgerClicked .tabButton {
+  display: block;
+}
+/*class heightProgress a dropdown au click sur 1 dropdown*/
+/*--> style des blocks de sousOnglets*/
+
+.heightProgress .linkDiv {
+  /* passage de none a flex*/
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /*occupe toute hauteur dispo en fonction de son parent (dropDown a auto) */
+  height: 100%;
+  background-color: rgb(222, 218, 209);
+  color: #010101;
+  animation-name: "heightProgressAnimation";
+  animation-duration: 1.5s;
+}
+
+@keyframes heightProgressAnimation {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+.linkDiv a {
+  color: #010101;
+  padding: 2em;
+}
+.nav .iconBurger {
+  display: block;
+  position: absolute;
+  right: 0.5em;
+  top: 1em;
+  width: 5%;
+  color: rgb(222, 218, 209);
+  font-size: 2em;
+}
+
+/*----------------------------------Pages générales+navBar-Responsive ----------------------------------*/
+@media (min-width: 880px) {
+  header .title {
+    padding-top: 1em;
+    margin-bottom: 4em;
+    width: 100%;
+  }
+  main {
+    padding-top: 2em;
+    margin: 1em;
+  }
+  .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-bottom: 1em;
+  }
+  .nav .dropdown {
+    position: relative;
+    width: 100%;
+    margin: 0;
+  }
+  .nav .tabButton {
+    display: block;
+    /*pour animation absolute */
+    position: relative;
+    width: 50%;
+  }
+  .nav .linkDiv {
+    display: none;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 10em;
+    opacity: 0.5em;
+    bottom: -11em;
+    padding-top: 1em;
+    z-index: 100;
+  }
+  .nav .dropdown:hover .linkDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav .iconBurger {
+    display: none;
+  }
+  .linkDiv a:hover {
+    color: rgb(222, 218, 209);
+    background: linear-gradient(
+      0deg,
+      rgb(13, 12, 13) 0%,
+      rgb(13, 12, 17) 25%,
+      rgb(13, 12, 20) 50%,
+      rgb(20, 15, 30) 100%
+    );
+    opacity: 0.7;
+    border-radius: 0.7em;
+  }
+  .linkDiv a {
+    padding: 1em;
+  }
+  /*animation tabButton*/
+  .tabButton:after,
+  .tabButton:before {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 0%;
+    background-color: rgb(222, 218, 209);
+    transition: 0.5s;
+  }
+  .tabButton:after {
+    left: 0;
+    bottom: -10px;
+  }
+  .tabButton:before {
+    right: 0;
+    top: -10px;
+  }
+  .tabButton:hover:after,
+  .tabButton:hover:before {
+    width: 100%;
+  }
+}
+/*-------------------------Caroussel----------------------------*/
+.caroussel {
+  width: 100%;
+  height: 20em;
+  border: 1px solid black;
+}
+
+/*-------------------------------MainGallerys----------------------------------*/
+/*Div englobant galleries (titre + div photos-->non visible avant click) */
+.mainDiv-gallery {
+  text-align: center;
+}
+/* div englobant titre d'une gallery + sa photo */
+.nthGalleryDivTitle {
+  margin: 2em;
+}
+/* img principale pr chq gallery*/
+.nthGalleryDivTitle img {
+  width: 70%;
+  height: auto;
+}
+/*------------------------------------Visibilité----------------------------------*/
+
+/* appliqué à nthGalleryDivTitle après click */
+.invisible {
+  display: none;
+}
+/* appliqué à gridDiv après click */
+.gridVisible {
+  display: block;
+}
+.visible {
+  display: block;
+}
+/*----------------------------------------EachGallerys---------------------------------*/
+
+.gridDiv {
+  margin: auto;
+  width: 100%;
+  height: auto;
+  animation-name: "widthProgress";
+  animation-duration: 3s;
+  background-color: #11131a;
+}
+@keyframes widthProgress {
+  from {
+    width: 60%;
+    opacity: 0.2;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+.gridDiv img {
+  width: 70%;
+}
+/*--------------------------RESPONSIVE---GALLERY--------------------------*/
+@media (min-width: 880px) {
+  .nthGalleryDivTitle img {
+    width: 30%;
+    height: auto;
+  }
+  .mainDiv-gallery {
+    margin: auto;
+  }
+  .gridVisible {
+    display: grid;
+    grid-gap: 1.5em;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: row dense;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+  }
+  .gridDiv img {
+    border-radius: 0.1em;
+    box-shadow: 0px 20px 40px -10px rgba(114, 112, 112, 0.85);
+    margin: auto;
+  }
+  .gridDiv img:hover {
+    z-index: 2;
+    transition: all 600ms ease-in;
+    transform: scale(1.5);
+    animation-name: "opacityProgress";
+    animation-duration: 2.5s;
+  }
+}
+@keyframes opacityProgress {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*-----------------------------Formulaire------------------------------*/
+
+.mainDivForm {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(14, 13, 13, 0.5);
+  border-radius: 100%;
+  width: 100%;
+  margin: auto;
+  margin-top: 1em;
+  padding: 5em;
+}
+.formDiv {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 0.5em;
+  padding: 1em;
+  border-radius: 4px;
+}
+.formDiv input {
+  padding: 0.5em;
+  width: 30%;
+  border-radius: 4px;
+  height: 1em;
+}
+.formDiv label {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  line-height: 2em;
+}
+.formDiv textarea {
+  width: 35%;
+  min-height: 7em;
+  border-radius: 4px;
+}
+.errorMessage {
+  color: red;
+}
+.success {
+  color: rgb(13, 151, 13);
+  font-size: 1.1em;
+}
+/* ---------------------------RESPONSIVE --FORMULAIRE------------------*/
+
+@media (min-width: 880px) {
+  .mainDivForm {
+    width: 50%;
+  }
+}

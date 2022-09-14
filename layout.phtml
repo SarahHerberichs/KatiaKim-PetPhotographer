@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <title>Katia Kim Photography</title>
+</head>
+
+<body>
+   <header>
+      <div class="title">
+         <h1>Katia Kim</h1>
+         <h2>Photographe</h2>
+      </div>
+
+      <nav>   
+         <div id="navBar" class="nav">
+            <div class="dropdown">
+                  <a href ="?page=home"><button class="tabButton">Accueil</button></a>
+                  <!--<div class="linkDiv">
+                     <a href="#">SousOnglet1-1</a>
+                     <a href="#">SousOnglet1-2</a>
+                     <a href="#">SousOnglet1-3</a>
+                  </div>-->
+            </div>
+            <div class="dropdown">
+               <button class="tabButton">Gallery</button>
+               <div class="linkDiv">
+                  <a href="?page=gallery-nb">Noir&Blanc</a>
+                  <a href="?page=gallery-famille-animaux">Famille&Animaux</a>
+                  <a href="?page=gallery-evenements">Evenements</a>
+               </div>
+            </div>
+            <div class="dropdown">
+               <a href="?page=tarifs-infos"><button class="tabButton">Tarifs&Infos</button></a>
+               <!--<div class="linkDiv">
+                  <a href="#">SousOnglet3-1</a>
+                  <a href="#">SousOnglet3-2</a>
+                  <a href="#">SousOnglet3-3</a>
+               </div>-->
+            </div>
+
+            <div class="dropdown">
+               <a href="?page=contact"><button class="tabButton">Contact</button></a>
+               <!--<div class="linkDiv">
+                  <a href="#">SousOnglet4-1</a>
+                  <a href="#">SousOnglet4-2</a>
+                  <a href="#">SousOnglet4-3</a>
+               </div>-->
+            </div>
+            <a href="#" class='iconBurger'>&#9776</a>
+         </div>
+      </nav>
+   </header>
+
+   <main>
+      <?php require 'router.php' ?>
+     
+   </main>
+</body>
+<footer>
+   <h2>FOOTER</h2>
+</footer>
+<script src="index.js"></script>
+</html>

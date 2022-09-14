@@ -1,0 +1,40 @@
+<h2>Vos messages reçus</h2>
+<table>
+
+  <thead>
+    <th>Identifiant</th>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>tel</th>
+    <th>email</th>
+    <th>Message</th>
+    <th>Date</th>
+    <th>Commentaire</th>
+  </thead>
+
+  <tbody>
+    <?php foreach($messages as $message): ?>
+      <tr>
+        <td><?=$message->getId() ?></td>
+        <td><?=$message->getFirstName() ?></td>
+        <td><?=$message->getLastName() ?></td>
+        <td><?=$message->getPhone() ?></td>
+        <td><?=$message->getEmail()?></td>
+        <td><?=$message->getMessage()?></td>
+        <td><?=$message->getDate()?></td>
+        <td>
+          <form method="POST" class="commentForm">
+            <label for="comment"></label>
+            <textarea name="comment" id="comment" type="text"></textarea>
+            <input type="hidden" name="id" value=<?= $message->getId() ?>/>           
+            <input type="submit" name="commentSubmit" value="Valider" />
+          </form>
+          <div class="commentIsSubmit" name="newComment"></div>
+        </td>  
+      </tr>
+    <?php endforeach; ?>
+
+  </tbody>
+  
+</table>
+<script src="admin/js/adminHome.js"></script>
