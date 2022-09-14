@@ -1,10 +1,11 @@
 <?php
 /* set et get des donnees de tentative de connection*/
+// + gestion des msg d'erreurs
 class TryConnectCredentials {   
 private string $_login;
 private string $_password;
 
-/* creer repository pour afficher table et faire lien dans autoload*/ 
+//set et hash le pwd
   public function setPassword(string $password): string {
     if (!empty($password)) {
         $this ->_password = hash('sha256', $password);
@@ -19,15 +20,15 @@ private string $_password;
         return '';
     }
     return 'Veuillez renseigner votre login';
-  }
-
+    }
+    //function de validation de l'identité
   public function isValidPassword(string $accountPassword): bool {
-  return $this ->_password === $accountPassword;
+    return $this ->_password === $accountPassword;
   }
   public function isValidLogin(string $accountLogin): bool {
     return $this ->_login === $accountLogin;
   }
-
+  //
   public function getLogin(): string {
     return $this ->_login;
   } 

@@ -6,10 +6,11 @@ class AdminRepository {
   public function __construct() {
     $this ->_connexion = DataBase::getConnexion();
   }
-    public function retrieveAdminLoginDatas() {
+    //stockage de tous les elts de la table admin
+    public function retrieveAdminLoginDatas(): AdminCredentials {
         $stmt = $this->_connexion->prepare('
           SELECT *
-            FROM admin
+          FROM admin
         ');
         $stmt ->execute();
         $result = $stmt ->fetch(PDO::FETCH_ASSOC);
@@ -17,8 +18,7 @@ class AdminRepository {
         if (!$result) {
           return null;
         }
-
-    /*Application des champs trouvés a AdminCredentials pour set les elts */
+    /*Instanciation d'AdminCredentials pour set les elts */
         $admin = new AdminCredentials();
         $admin ->setId($result['id']);
         $admin ->setLogin($result['login']);

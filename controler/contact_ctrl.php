@@ -9,9 +9,9 @@ $userMessages = [
     'requiredMessage' => '',
     'loginFail' => '',
 ];
-
+//si formulaire de contact soumis, instanciation d'un Message pour set les elements
 if ( isset ($_POST['sendMessageSubmit']) ) {
-    $message= new Message();
+    $message = new Message();
 
     $userMessages['requiredFirstName'] = 
     $message ->setFirstName (
@@ -33,7 +33,7 @@ if ( isset ($_POST['sendMessageSubmit']) ) {
     $message ->setMessage(
         htmlentities($_POST['message'])
     );
-
+    // si les msg d'erreurs sont vides
     if (
         empty($userMessages['requiredFirstName']) &&
         empty($userMessages['requiredLastName']) &&
@@ -42,8 +42,9 @@ if ( isset ($_POST['sendMessageSubmit']) ) {
         empty($userMessages['requiredMessage'])
     )
     {
-        $messageRepository ->createMessage($message);
-        $userMessages['sendSuccess']= 'Message bien envoyé';
+        //insertion du message sété dans la BDD et envoi msg de validation
+        $messageRepository->createMessage($message);
+        $userMessages['sendSuccess'] = 'Message bien envoyé';
     }
 }
 require 'view/contact/contact.phtml';

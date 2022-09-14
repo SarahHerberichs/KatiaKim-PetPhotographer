@@ -1,5 +1,5 @@
 <?php
-
+//set et get des elts d'un Message + gestion des msg d'erreurs
 class Message {
     private string $_id;
     private string $_firstName;
