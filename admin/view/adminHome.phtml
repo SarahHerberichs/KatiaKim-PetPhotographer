@@ -1,6 +1,5 @@
 <h2>Vos messages reçus</h2>
 <table>
-
   <thead>
     <th>Identifiant</th>
     <th>Nom</th>
@@ -10,8 +9,8 @@
     <th>Message</th>
     <th>Date</th>
     <th>Commentaire</th>
-  </thead>
 
+  </thead>
   <tbody>
     <?php foreach($messages as $message): ?>
       <tr>
@@ -26,15 +25,13 @@
           <form method="POST" class="commentForm">
             <label for="comment"></label>
             <textarea name="comment" id="comment" type="text"></textarea>
-            <input type="hidden" name="id" value=<?= $message->getId() ?>/>           
+            <input type="hidden" name="id" value= '<?= $message->getId() ?>' />           
             <input type="submit" name="commentSubmit" value="Valider" />
           </form>
           <div class="commentIsSubmit" name="newComment"></div>
         </td>  
       </tr>
     <?php endforeach; ?>
-
   </tbody>
-  
 </table>
 <script src="admin/js/adminHome.js"></script>

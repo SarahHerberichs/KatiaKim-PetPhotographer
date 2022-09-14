@@ -1,5 +1,6 @@
 <?php
     // Connexion à la BDD
+
     $dsn = "mysql:dbname=$dbName;host=$dbHost";
 
     try {

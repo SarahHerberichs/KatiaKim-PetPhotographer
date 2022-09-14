@@ -34,13 +34,13 @@ if (isset ($_POST['sendMessageSubmit'])){
         htmlentities($_POST['message'])
     );
 
-if (
-    empty($userMessages['requiredFirstName'])&&
-    empty($userMessages['requiredLastName'])&&
-    empty($userMessages['requiredPhone'])&&
-    empty($userMessages['requiredEmail'])&&
-    empty($userMessages['requiredMessage'])
-)
+    if (
+        empty($userMessages['requiredFirstName'])&&
+        empty($userMessages['requiredLastName'])&&
+        empty($userMessages['requiredPhone'])&&
+        empty($userMessages['requiredEmail'])&&
+        empty($userMessages['requiredMessage'])
+    )
     {
         $messageRepository->createMessage($message);
         $userMessages['sendSuccess']= 'Message bien envoyé';

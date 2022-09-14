@@ -1,5 +1,8 @@
 <?php 
 
+/* insertion du message ds BDD
+  créa d'un tableau message avec les données
+*/
 
 class MessageRepository {
   private PDO $_connexion;
@@ -7,7 +10,7 @@ class MessageRepository {
   public function __construct() {
     $this->_connexion = DataBase::getConnexion();
   }
-  /*Insertion du message dans BDD */
+
   public function createMessage(Message $message) {
     $stmt = $this->_connexion->prepare('
         INSERT INTO contact (
@@ -27,7 +30,7 @@ class MessageRepository {
 
     $stmt->execute();
   }
-  /*Push elements du message dans array*/
+  /*retourne un array*/
   public function listMessages(): array {
     $stmt = $this->_connexion->prepare('
       SELECT * FROM contact
@@ -44,26 +47,22 @@ class MessageRepository {
       $message->setEmail($row['mail']);
       $message->setMessage($row['message']);
       $message->setDate($row['date']);
-      $message->setComment($row['comment']);
       array_push($messages, $message);
     }
     return $messages;
   }
-
-  /*selectionne tout dans contact la ou l'id = a celui en parametre*/
+  //selectionne tout dans contact la ou l'id = a celui en parametre
   public function setWhereId(String $id):Message {
     $stmt= $this->_connexion->prepare('
-      SELECT * FROM contact 
-      WHERE id = :id
-    ');
-    //id = celui du parametre
+    SELECT * FROM contact 
+    WHERE id = :id');
     $stmt->bindValue('id', $id);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    $message = new Message();
-    $message->setId($result['id']);
-    $message->setComment($result['comment']);
-    
+    var_dump($result);
+        $message = new Message();
+        $message->setId($result['id']);
+        $message->setComment($result['comment']);
+        return $message;
   }
 }
