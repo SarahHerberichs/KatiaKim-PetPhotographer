@@ -52,14 +52,13 @@ class MessageRepository {
     return $messages;
   }
   //selectionne tout dans contact la ou l'id = a celui en parametre
-  public function setWhereId(String $id):Message {
+  public function setNewMsgWhereId(String $id):Message {
     $stmt= $this->_connexion->prepare('
     SELECT * FROM contact 
     WHERE id = :id');
     $stmt->bindValue('id', $id);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    var_dump($result);
         $message = new Message();
         $message->setId($result['id']);
         $message->setComment($result['comment']);

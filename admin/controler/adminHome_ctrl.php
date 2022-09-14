@@ -5,10 +5,12 @@ $messages = $messageRepo->listMessages();
 
 //si le form est validé
 if (isset($_POST['commentSubmit'])) {
-    var_dump($_POST['id']);
     $adminRep=new AdminRepository();
-    $setById=$messageRepo->setWhereId($_POST['id']);
-    $setById->setComment($_POST['comment']);
+    //instanciation pour créa d'un message (id et comment associé)
+    $setNewMsgById=$messageRepo->setNewMsgWhereId($_POST['id']);
+    //set du comment de ce message--associé au formulaire de la vue adminHome
+    $setNewMsgById->setComment($_POST['comment']);
+    //update du commentaire 
     $updateComment=$adminRep->updateComment($setById);
 }
 require 'admin/view/adminHome.phtml'; 

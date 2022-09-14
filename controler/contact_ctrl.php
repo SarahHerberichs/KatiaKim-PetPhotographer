@@ -10,39 +10,39 @@ $userMessages = [
     'loginFail' => '',
 ];
 
-if (isset ($_POST['sendMessageSubmit'])){
+if ( isset ($_POST['sendMessageSubmit']) ) {
     $message= new Message();
 
-    $userMessages['requiredFirstName']= 
-    $message->setFirstName(
+    $userMessages['requiredFirstName'] = 
+    $message ->setFirstName (
         htmlentities($_POST['firstName'])
     );
-    $userMessages['requiredLastName']=
-    $message->setLastName(
+    $userMessages['requiredLastName'] =
+    $message ->setLastName (
         htmlentities($_POST['lastName'])
     );
-    $userMessages['requiredPhone']=
-    $message->setPhone(
+    $userMessages['requiredPhone'] =
+    $message ->setPhone(
         htmlentities($_POST['phone'])
     );
-    $userMessages['requiredEmail']=
-    $message->setEmail(
+    $userMessages['requiredEmail'] =
+    $message ->setEmail(
         htmlentities($_POST['eMail'])
     );
-    $userMessages['requiredMessage']=
-    $message->setMessage(
+    $userMessages['requiredMessage'] =
+    $message ->setMessage(
         htmlentities($_POST['message'])
     );
 
     if (
-        empty($userMessages['requiredFirstName'])&&
-        empty($userMessages['requiredLastName'])&&
-        empty($userMessages['requiredPhone'])&&
-        empty($userMessages['requiredEmail'])&&
+        empty($userMessages['requiredFirstName']) &&
+        empty($userMessages['requiredLastName']) &&
+        empty($userMessages['requiredPhone']) &&
+        empty($userMessages['requiredEmail']) &&
         empty($userMessages['requiredMessage'])
     )
     {
-        $messageRepository->createMessage($message);
+        $messageRepository ->createMessage($message);
         $userMessages['sendSuccess']= 'Message bien envoyé';
     }
 }
