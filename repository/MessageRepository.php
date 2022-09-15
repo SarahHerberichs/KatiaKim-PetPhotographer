@@ -58,6 +58,12 @@ class MessageRepository {
       $message = new Message();
       $message->setId ($result['id']);
       $message->setComment ($result['comment']);
+      $message->setFirstName($result['firstname']);
+      $message->setLastName($result['lastname']);
+      $message->setPhone($result['phone']);
+      $message->setEmail($result['mail']);
+      $message->setMessage($result['message']);
+      $message->setDate($result['date']);
 
       return $message;
   }

@@ -26,11 +26,19 @@
           <form method="POST" class="commentForm">
             <label for="comment"></label>
             <textarea name="comment" id="comment" type="text"></textarea>
+            <textarea name="reEditcomment" id="reEditComment" type="text" class='invisible'></textarea>
             <input type="hidden" name="id" value= '<?= $message->getId() ?>' />           
             <input type="submit" name="commentSubmit" value="Valider" />
           </form>
-          <div class="commentIsSubmit" name="newComment"></div>
-        </td>  
+          <div class="newComment" name="newCommentDiv"><?= $message->getComment() ?></div>
+          <input type="submit" class="invisible" name="reEditButton" value="modifier">
+        </td> 
+        <td>
+          <form method="POST" class="removeMessage">
+            <input type="hidden" name="id" value= '<?= $message->getId() ?>' />    
+            <input type="submit" class="deleteLine" name="delete" value="supprimer"></input>
+          </form>
+        </td> 
       </tr>
     <?php endforeach; ?>
   </tbody>

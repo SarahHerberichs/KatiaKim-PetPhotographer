@@ -1,8 +1,7 @@
 <?php
 
 $messageRepo = new MessageRepository();
-//array contenant toutes les infos d'un msg submit
-$messages = $messageRepo->listMessages();
+
 
 //si le form est validé
 if (isset($_POST['commentSubmit'])) {
@@ -12,6 +11,17 @@ if (isset($_POST['commentSubmit'])) {
     //set du comment de ce message associé au formulaire de la vue adminHome
     $setNewMsgById->setComment($_POST['comment']);
     //update du comment
-    $updateComment=$adminRep->updateComment($setNewMsgById);
+    $updateComment = $adminRep->updateComment($setNewMsgById);
 }
+    //array contenant toutes les infos d'un msg submit
+
+
+if (isset ($_POST['delete'])) {
+    $adminRep = new AdminRepository();
+    $setNewMsgById = $messageRepo->setNewMsgWhereId($_POST['id']);
+    $deleteMessage = $adminRep->deleteLine($setNewMsgById);
+}
+
+
+    $messages = $messageRepo->listMessages();
 require 'admin/view/adminHome.phtml'; 

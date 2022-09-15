@@ -38,5 +38,16 @@ class AdminRepository {
       $stmt ->execute();
       return $message;
       }
+
+      public function deleteLine (Message $message) {
+        $stmt = $this ->_connexion->prepare ('
+          DELETE 
+          FROM contact
+          WHERE id= :id
+        ');
+        $stmt ->bindValue('id', $message->getId());
+        $stmt ->execute();
+      }
     }    
+    
     

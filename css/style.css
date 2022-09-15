@@ -321,12 +321,11 @@ header .title {
   }
 }
 
-/*-----------------------------Formulaire------------------------------*/
+/*-----------------------------Formulaire Contact------------------------------*/
 
 .mainDivForm {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(14, 13, 13, 0.5);
   border-radius: 100%;
   width: 100%;
   margin: auto;
@@ -371,4 +370,16 @@ header .title {
   .mainDivForm {
     width: 50%;
   }
+}
+/*------------------------------Formulaire Admin*---------------------/
+/* Commun à tous les forms */
+table {
+  border: 1px solid rgba(14, 13, 13, 0.5);
+  border-collapse: collapse;
+}
+table td,
+table th {
+  border: 1px solid rgba(14, 13, 13, 0.5);
+  overflow: scroll;
+  padding: 0.2em;
 }
