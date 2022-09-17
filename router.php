@@ -12,7 +12,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
         case 'gallery-evenements':
             require 'controler/gallery-evenements_ctrl.php';
             break;
-        case 'gallery-famille-animaux' :
+        case 'gallery-famille-animaux':
             require 'controler/gallery-famille-animaux_ctrl.php';
             break;
         case 'gallery-nb' : 
@@ -29,6 +29,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
                 break;
             case 'adminHome':
                 require 'admin/controler/adminHome_ctrl.php';
+                break;
+            case 'adminGallery';
+                require 'admin/controler/adminGallery_ctrl.php';
                 break;
         default:
             require 'controler/home_ctrl.php';

@@ -19,7 +19,6 @@ function autoload_class_multiple_directory($class_name)
         {
             require $file;
         } 
-
     }
 }
 
