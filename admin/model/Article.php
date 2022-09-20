@@ -20,7 +20,7 @@ class Article {
     }
     public function setPhoto(string $photo): string {
         if (empty ($photo)) {
-            return "Photo non prise en charge";
+            return "renseigner une photo";
         }
         else {
             $this ->_photo = $photo;

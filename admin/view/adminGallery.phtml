@@ -7,29 +7,18 @@
     <title>Modifier vos Galleries</title>
 </head>
 <body>
-    <!--// ici formulaire de controle en :POST
-        Modifier ->Quelle Gallerie (NB - Animx&Familles - Events)
-        dans ctrl : ifIsset choix Gallery & ce choix = NB->traitement + liaison avec le bonne vue
-                                    Else if ce choix = Animx&Familles ->traitement + liaison avec la bonne vue
-                                    Else if ce choix = Events ->traitement + liaison avec la bonne vue
-                 ->Ajouter un article  (repository : fonction qui add article avec un join sur bonne category)
-                 ->Ajouter un titre et une Main photo pour cet article (repository: fonction
-                 qui add un nom et une photo avec un join sur l'article )ezfzefazz
-
-                 
-        Si isset ce formulaire, recup la valeur pour redirection -->
-    <form method="POST">
-    <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
-        <div class="mainDivForm">
-
+   <div class="mainDivForm">
+    
+        <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
+        <form method="POST" enctype="multipart/form-data">
             <div class="formDiv">
                 <label for="gallery">Choisis ta gallery: 
                     <span class="errorMessage"> <?=$AdminMessages['requiredGallery'] ?></span>
                 </label>
                 <select name="gallerySelect" id="gallery">
-                <?php foreach($gallerys as $gallery) : ?>
-                    <option value='<?= $gallery->getId() ?>' > <?= $gallery->getName() ?> </option>
-                <?php endforeach; ?>
+                    <?php foreach($gallerys as $gallery) : ?>
+                        <option value='<?= $gallery->getId() ?>' > <?= $gallery->getName() ?> </option>
+                    <?php endforeach; ?>
                 </select>
             </div>  
 
@@ -41,14 +30,16 @@
             </div>
             <div class="formDiv">
                 <label for="inputPhoto">Photo d'entête
-                <span class="errorMessage"> <?=$AdminMessages['requiredPhoto'] ?></span>
+                    <span class="errorMessage"> 
+                        <?=$AdminMessages['requiredPhoto'] ?>
+                        <?=$AdminMessages['wrongExt'] ?>
+                    </span>
                 </label>
                 <input type="file" name="inputPhoto" id="inputPhoto">
             </div>
-            <input type="submit" name="submitNewArticle" value="Valider">
+            <input type="submit" name="submitNewArticle" value="Valider l'Article">
+        </form>
         
-        </div> 
-    </form>
-
+    </div> 
 </body>
 </html>
