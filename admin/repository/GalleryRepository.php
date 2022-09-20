@@ -21,4 +21,5 @@ class GalleryRepository {
         }
         return $gallerys;
       }
+ 
 }

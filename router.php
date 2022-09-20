@@ -9,13 +9,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
         case 'home':
             require 'controler/home_ctrl.php';
             break;
-        case 'gallery-evenements':
+        case 'galleryEvenements':
             require 'controler/gallery-evenements_ctrl.php';
             break;
-        case 'gallery-famille-animaux':
+        case 'galleryFamilleAnimaux':
             require 'controler/gallery-famille-animaux_ctrl.php';
             break;
-        case 'gallery-nb' : 
+        case 'galleryNB' : 
             require 'controler/gallery-nb_ctrl.php';
             break;
         case 'tarifs-infos':
@@ -41,17 +41,18 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
    else {
 $page = isset($_GET['page']) ? $_GET['page'] : 'home'; 
+
     switch($page){
         case 'home':
             require 'controler/home_ctrl.php';
             break;
-        case 'gallery-evenements':
+        case 'galleryEvenements':
             require 'controler/gallery-evenements_ctrl.php';
             break;
-        case 'gallery-famille-animaux' :
+        case 'galleryFamilleAnimaux':
             require 'controler/gallery-famille-animaux_ctrl.php';
             break;
-        case 'gallery-nb' : 
+        case 'galleryNB' : 
             require 'controler/gallery-nb_ctrl.php';
             break;
         case 'tarifs-infos':
