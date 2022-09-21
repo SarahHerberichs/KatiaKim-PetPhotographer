@@ -1,8 +1,14 @@
 <?php
-//controle pour push dans formulaire foreach ajoutant les articles un a uns(photo et titre)
-//if isset le tableau dans adminGallery et que la valeur selectionnee est gallery evenements
-//faire la fonction qui  recupere titre et photos grace a un join 
-//(gallery_id dans article et l'id de la gallery)
+//Nvelle Repository de GalleryEvent
+$galleryEvent=new GalleryEventRepository();
+//nouvelle Gallery pour setter un Name de gallery
+$gallery=new Gallery();
+$gallerySetName=$gallery->setName("galleryEvenements");
+$galleryGetName=$gallery->getName();
+
+//Fonction pour recup tout dans article et le galleryName à partir d'une string nom de gallery
+$articles=$galleryEvent->listArticlesByGallery($galleryGetName);
+var_dump($articles);
 
 require 'view/gallery-evenements/gallery-evenements.phtml';
 

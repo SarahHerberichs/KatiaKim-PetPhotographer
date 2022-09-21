@@ -1,21 +1,21 @@
 
 
 <h3>Photographies Evenements</h3>
-  <section class="caroussel">SECTION CAROUSSEL</section>
-    <div class="gridDiv">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-  </div>
+  <?php foreach($articles as $article) : ?>               
+<div class="mainDiv-gallery">
+
+   <div class="nthGalleryDivTitle firstGallery">
+      <h4> <?= $article->getName() ?> </h4>
+      <img src="view/gallery-nb/img/IMG_3995.jpg" alt="mainNb" />
+   </div>
+
+   <div class="gridDiv firstGallery invisible">
+    <!--
+      <img src="//imagesàInjecter//" alt="//nomPhotoAInjecter" />
+-->
+   </div>
+   <input type='button' value='close' class='buttonCloseGallery invisible'>
+
+</div>
+  <?php endforeach; ?>
 <script src="view/js/gallery.js"></script>

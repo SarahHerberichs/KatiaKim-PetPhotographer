@@ -30,8 +30,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
             case 'adminHome':
                 require 'admin/controler/adminHome_ctrl.php';
                 break;
-            case 'adminGallery';
-                require 'admin/controler/adminGallery_ctrl.php';
+            case 'adminArticles';
+                require 'admin/controler/adminArticles_ctrl.php';
                 break;
         default:
             require 'controler/home_ctrl.php';

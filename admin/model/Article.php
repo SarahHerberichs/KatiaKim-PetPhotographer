@@ -4,6 +4,7 @@ class Article {
     private string $_name;
     private string $_photo = "";
     private string $_gallery_id ;
+    private string $_galleryName;
 
     public function setId($id): void {
         $this ->_id = $id;
@@ -48,5 +49,11 @@ class Article {
     }
     public function getGalleryId(): string {
         return $this ->_gallery_id;
+    }
+    public function setGalleryName(string $galleryName): void{
+        $this ->_galleryName = $galleryName;
+    }
+    public function getGalleryName(): string {
+        return $this ->_galleryName;
     }
 }
