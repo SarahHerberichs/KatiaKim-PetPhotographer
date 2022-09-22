@@ -1,12 +1,14 @@
 
 <h3>Photographies Noir&Blanc</h3>
-
+  <?php foreach($articles as $article) : ?>               
 <div class="mainDiv-gallery">
-   <div class="nthGalleryDivTitle firstGallery">
-      <h4>Noir&Blanc</h4>
-      <img src="view/gallery-nb/img/IMG_3995.jpg" alt="mainNb" />
-   </div>
 
+   <div class="nthGalleryDivTitle firstGallery">
+      <h4> <?= $article->getName() ?> </h4>
+      <img src="../../admin/files/<?= $article->getPhoto() ?>" alt="mainEvenements" />
+   </div>
+   <?php endforeach; ?>
+   
    <div class="gridDiv firstGallery invisible">
       <img src="view/gallery-nb/img/0C25DAA7-346B-452A-A1D6-43F80D79BAD0.jpg" alt="n&b" />
       <img src="view/gallery-nb/img/0EF814C5-EB2B-4FC9-87F7-6B88E7FE7334.jpg" alt="n&b"/>

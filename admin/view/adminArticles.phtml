@@ -8,7 +8,7 @@
 </head>
 <body>
    <div class="mainDivForm">
-    
+    <h3>Ajouter un Article</h3>
         <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
         <form method="POST" enctype="multipart/form-data">
             <div class="formDiv">
@@ -29,6 +29,34 @@
                 <input type="text" name="inputTitle" id="inputTitle">
             </div>
             <div class="formDiv">
+                <label for="inputMainPhoto">Photo d'entête
+                    <span class="errorMessage"> 
+                        <?=$AdminMessages['requiredPhoto'] ?>
+                        <?=$AdminMessages['wrongExt'] ?>
+                    </span>
+                </label>
+                <input type="file" name="inputMainPhoto" id="inputMainPhoto">
+            </div>
+            <input type="submit" name="submitNewArticle" value="Valider l'Article">
+        </form>
+    </div> 
+    <!--  ------------------------------------------------------------------ -->
+    <div class="mainDivForm">
+    <h3>Ajouter des photos à vos articles</h3>
+        <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="formDiv">
+                <label for="article">Choisis ton article: 
+                    <span class="errorMessage"> <?=$AdminMessages['requiredGallery'] ?></span>
+                </label>
+                <select name="articleSelect" id="article">
+                    <?php foreach($articles as $article) : ?>
+                        <option value='<?= $article->getId() ?>' > <?= $article->getName() ?> </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>  
+
+            <div class="formDiv">
                 <label for="inputPhoto">Photo d'entête
                     <span class="errorMessage"> 
                         <?=$AdminMessages['requiredPhoto'] ?>
@@ -37,9 +65,8 @@
                 </label>
                 <input type="file" name="inputPhoto" id="inputPhoto">
             </div>
-            <input type="submit" name="submitNewArticle" value="Valider l'Article">
+            <input type="submit" name="submitNewPhoto" value="Valider la Photo">
         </form>
-        
     </div> 
 </body>
 </html>

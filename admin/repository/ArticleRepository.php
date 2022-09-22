@@ -15,7 +15,7 @@ class ArticleRepository {
           UUID(), :photo, :name, :gallery_id
         );
       ');
- 
+      
       $stmt->bindValue ('photo', $article->getPhoto());
       $stmt->bindValue ('name', $article->getName());
       $stmt->bindValue ('gallery_id', $article->getGalleryId());
@@ -32,6 +32,7 @@ class ArticleRepository {
       $articles= [];
       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $article = new Article();
+        $article->setId($row['id']);
         $article->setPhoto($row['photo']);
         $article->setName($row['name']);
         $article->setGalleryId($row['gallery_id']);

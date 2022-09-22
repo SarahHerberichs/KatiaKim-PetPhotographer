@@ -1,11 +1,13 @@
 
-<h3>Photographies Famille&Animaux</h3>
-
+<h3>Photographies Famille et Animaux</h3>
+  <?php foreach($articles as $article) : ?>               
 <div class="mainDiv-gallery">
+
    <div class="nthGalleryDivTitle firstGallery">
-      <h4>Jojo Outtake</h4>
-      <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2726-3.jpg" alt="Jojo Outtake-1" />
+      <h4> <?= $article->getName() ?> </h4>
+      <img src="../../admin/files/<?= $article->getPhoto() ?>" alt="mainFamilleAnimaux" />
    </div>
+   <?php endforeach; ?>
 
    <div class="gridDiv firstGallery invisible">
       <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2726-3.jpg" alt="Jojo Outtake-1" />

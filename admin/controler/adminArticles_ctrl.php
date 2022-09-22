@@ -1,7 +1,10 @@
 <?php
 //Liste des galleries pour affichage dans le formulaire
-$galleryRepo=new GalleryRepository();
-$gallerys=$galleryRepo->listGallery();
+$galleryRepo = new GalleryRepository();
+$gallerys = $galleryRepo->listGallery();
+$articleRepo=new ArticleRepository();
+$articles=$articleRepo->listArticles();
+
 //Instanciation d'un article repository et création d'un Array de messages d'erreurs vides
 $ArticleRepository = new ArticleRepository();
 $AdminMessages = [
@@ -11,65 +14,66 @@ $AdminMessages = [
     'requiredTitle' => '',
     'requiredGallery' => ''
 ];
+$fileArray= [];
     //si formulaire soumis,création d'un article pour gestion des erreurs ou Set de ses parametres
-    if ( isset ($_POST['submitNewArticle']) && (isset($_FILES['inputPhoto']))) {
+    if ( isset ($_POST['submitNewArticle']) && (isset($_FILES['inputMainPhoto']))) {
         $article = new Article();
-
-        //GESTION PHOTO //
-        $fileName=$_FILES['inputPhoto']['name'];
-        $fileTmpName=$_FILES['inputPhoto']['tmp_name'];
-        $validExt=['.jpeg', '.jpg', '.gif', '.png'];
-        //créa d'un nom unique
-        $uniqueName= uniqid('',true);
+        
+    /*-----------------------Gestion Photos-------------------------*/
+        $fileName = $_FILES['inputMainPhoto']['name'];
+        $fileTmpName = $_FILES['inputMainPhoto']['tmp_name'];
+        //list des extensions valides
+        $validExt = ['.jpeg', '.jpg', '.gif', '.png'];
         //recup de l'extension du fichier
-        $fileExt= ".". strtolower(substr(strchr($fileName, "."),1));
-        //FileName= unique + ajout de son extension
-        $fileName= $uniqueName.".".$fileExt;
-        //Fichier de destination .../uniqname.jpg
-        $fileDest="admin/files/".$fileName;
-    //if (move_uploaded_file($fileTmpName, $fileDest)) {
-/*-------------------Set des elements saisis (avec ou sans msg d'erreurs)-----------*/
+        $fileExt = ".". strtolower( substr(strchr($fileName, "."),1) );
+        //Destination finale de la photo
+        $fileDest ="admin/files/".$fileName;
+    /*--------------------------------------------------------------*/ 
 
-        /*-----------------------Set la photo------------------------*/
+    /*--------Set des champs saisis et des msg d'erreurs-----------*/
+
+    /*-1----------------------Set la photo------------------------*/
+       //Set et éventuel msg d'erreur
         $AdminMessages['requiredPhoto'] = 
         $article ->setPhoto (
-            ($_FILES['inputPhoto']['name'])
-        );
-        //si pas d'oubli de photo, et que probleme d'extension, msg d'erreur
+            ($_FILES['inputMainPhoto']['name'])
+        );   
+        //si pas d'oubli de photo, mais que probleme d'extension, msg d'erreur
         if (
-            $AdminMessages['requiredPhoto']=== "" 
+            $AdminMessages['requiredPhoto'] === "" 
             && 
         (!in_array($fileExt, $validExt)) 
             ) {
             $AdminMessages['wrongExt'] = "Mauvaise Extension";
         } 
-        /*----------------Set du titre et de la gallery--------------*/
+    /*-2---------------Set du titre et de la gallery--------------*/
         $AdminMessages['requiredTitle'] =
         $article ->setName (
             $_POST['inputTitle']
         );
+       
+    /*-3-------------Set De l'id de la gallery associée------------*/
         $AdminMessages['requiredGallery'] =
-        $article->setGalleryId(
+        $article ->setGalleryId(
             ($_POST['gallerySelect'])
         );
-       
-
-        /*-------------- si les msg d'erreurs sont vides--------------*/
+    
+    /*-4------------- si les msg d'erreurs sont vides--------------*/
         if (
-            empty($AdminMessages['requiredPhoto']) &&
-            empty($AdminMessages['requiredTitle']) &&
-            empty($AdminMessages['requiredGallery']) &&
-            empty($AdminMessages['wrongExt'])
+            empty ($AdminMessages['requiredPhoto']) &&
+            empty ($AdminMessages['requiredTitle']) &&
+            empty ($AdminMessages['requiredGallery']) &&
+            empty ($AdminMessages['wrongExt'])
         )
         {
             //et que le telechargement de la photo a reussi
             if (move_uploaded_file($fileTmpName, $fileDest)) {
             //insertion de l'article sété dans la BDD et envoi msg de validation
-            $ArticleRepository->createArticle($article);
+            $ArticleRepository ->createArticle($article);
             $AdminMessages['sendSuccess'] = 'Article Bien Crée';
             } 
-        }
-    }
+        }   
+    }  
 
     require 'admin/view/adminArticles.phtml';
 
