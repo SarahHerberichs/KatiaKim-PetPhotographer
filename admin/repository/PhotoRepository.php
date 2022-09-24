@@ -32,12 +32,13 @@ class PhotoRepository {
       $photos= [];
       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $photo = new Photo();
-        $photo->setId($row['id']);
-        $photo->setPhoto($row['photo']);
-        $photo->setName($row['name']);
-        $photo->setArticleId($row['article_id']);
+        $photo ->setId($row['id']);
+        $photo ->setPhoto($row['photo']);
+        $photo ->setName($row['name']);
+        $photo ->setArticleId($row['article_id']);
         array_push($photos, $photo);
       }
       return $photos;
     }
+    
 }

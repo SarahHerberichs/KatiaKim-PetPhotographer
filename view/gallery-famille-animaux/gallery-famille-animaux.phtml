@@ -1,32 +1,43 @@
 
 <h3>Photographies Famille et Animaux</h3>
-  <?php foreach($articles as $article) : ?>               
-<div class="mainDiv-gallery">
+   <?php foreach($articles as $article) : ?>               
+      <div class="mainDiv-gallery">
 
-   <div class="nthGalleryDivTitle firstGallery">
-      <h4> <?= $article->getName() ?> </h4>
-      <input type="hidden" name="articleName" value=<?= $article->getName() ?>>
-      <img src="../../admin/files/<?= $article->getPhoto() ?>" alt="mainFamilleAnimaux" />
-   </div>
-   <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
-      <p>Ajouter Photo</p>
-      <input type="file" value="addPhoto">
-   <?php } ?> 
+         <div class="nthGalleryDivTitle firstGallery">
+            <h4> <?= $article->getName() ?> </h4>
+            <input type="hidden" name="articleId" value=<?= $article->getId() ?>>
+            <img src="../../admin/files/<?= $article->getPhoto() ?>" alt="mainFamilleAnimaux" />
+         </div>
    
-   <?php endforeach; ?>
+         <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
+            <span class="success"><?=$AdminPhotosMessages['sendSuccess'] ?></span>
+            
+            <p>Ajouter Photo</p>
+
+            <form method="POST" enctype="multipart/form-data">
+               <span class="errorMessage"> 
+                  <?=$AdminPhotosMessages['requiredPhoto'] ?>
+                  <?=$AdminPhotosMessages['wrongExt'] ?>
+               </span>
+               <input type="file" value="inputPhoto" name="inputPhoto">
+               <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
+               <input type="submit" value='valider' name='addNewPhoto'>
+            </form>
+         <?php } ?> 
    
-   <div class="gridDiv firstGallery invisible">
-      <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2726-3.jpg" alt="Jojo Outtake-1" />
-      <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2731-Edit.jpg" alt="Jojo Outtake-2" />
-      <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2799-Edit2-M.jpg" alt="Jojo Outtake-3" />
-      <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2850-Edit.jpg" alt="Jojo Outtake-4" />
-      <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2877-Edit-2.jpg" alt="Jojo Outtake-5" />
-      <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2949.jpg" alt="Jojo Outtake-6" />
-      <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_3079-Edit-2-2.jpg" alt="Jojo Outtake-7" />
-      <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_3162-2.jpg" alt="Jojo Outtake-8" />
-   </div>
-   <input type='button' value='close' class='buttonCloseGallery invisible'>
-</div>
+   
+   <!-- Pour chaqque photo associé a un Id, créer la bonne image-->
+       
+         <div class="gridDiv firstGallery invisible" name="invisible">
+            <?php foreach($photosByArt as $photoByArt) : ?> 
+               <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
+               <img src="../../admin/files/<?= $photoByArt->getPhoto() ?>" alt="<?= $photoByArt->getName() ?>">
+            <?php endforeach; ?>
+         </div>
+         
+      <input type='button' value='close' class='buttonCloseGallery invisible'>
+      </div>
+   <?php endforeach; ?>   
 
 <script src="view/js/gallery.js"></script>
 

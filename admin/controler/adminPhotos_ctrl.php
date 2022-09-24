@@ -1,4 +1,5 @@
 <?php
+
 $articleRepo = new ArticleRepository();
 //créa d'une list pour boucler
 $articles = $articleRepo->listArticles();
@@ -12,7 +13,7 @@ $AdminPhotosMessages = [
 ];
 
     //si formulaire soumis,création d'un article pour gestion des erreurs ou Set de ses parametres
-    //bouton submit , bouton champ d'entré
+    //bouton submit , bouton champ d'entrée
     if ( isset ($_POST['submitNewPhoto']) && (isset($_FILES['inputPhoto']))) {
         //créa d'une nv photo 
         $photo = new Photo ();
@@ -53,7 +54,6 @@ $AdminPhotosMessages = [
         $photo ->setArticleId(
             ($_POST['articleId'])
         );
-    var_dump($photo);
     /*-4------------- si les msg d'erreurs sont vides--------------*/
         if (
             empty ($AdminPhotosMessages['requiredPhoto']) &&
