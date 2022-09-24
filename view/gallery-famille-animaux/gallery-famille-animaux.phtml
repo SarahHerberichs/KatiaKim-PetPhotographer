@@ -5,10 +5,16 @@
 
    <div class="nthGalleryDivTitle firstGallery">
       <h4> <?= $article->getName() ?> </h4>
+      <input type="hidden" name="articleName" value=<?= $article->getName() ?>>
       <img src="../../admin/files/<?= $article->getPhoto() ?>" alt="mainFamilleAnimaux" />
    </div>
+   <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
+      <p>Ajouter Photo</p>
+      <input type="file" value="addPhoto">
+   <?php } ?> 
+   
    <?php endforeach; ?>
-
+   
    <div class="gridDiv firstGallery invisible">
       <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2726-3.jpg" alt="Jojo Outtake-1" />
       <img src="view/gallery-famille-animaux/jojo-outtake/img/KAT_2731-Edit.jpg" alt="Jojo Outtake-2" />

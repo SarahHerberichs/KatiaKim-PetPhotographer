@@ -24,15 +24,15 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
         case 'contact':
             require 'controler/contact_ctrl.php';
             break;
-            case 'adminLogin':
-                require 'admin/controler/adminLogin_ctrl.php';
-                break;
-            case 'adminHome':
-                require 'admin/controler/adminHome_ctrl.php';
-                break;
-            case 'adminArticles';
-                require 'admin/controler/adminArticles_ctrl.php';
-                break;
+        case 'adminLogin':
+            require 'admin/controler/adminLogin_ctrl.php';
+            break;
+        case 'adminHome':
+            require 'admin/controler/adminHome_ctrl.php';
+            break;
+        case 'adminArticles';
+            require 'admin/controler/adminArticles_ctrl.php';
+            break;
         default:
             require 'controler/home_ctrl.php';
             break;

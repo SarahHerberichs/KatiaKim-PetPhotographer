@@ -25,7 +25,10 @@ class ArticleRepository {
     }
     public function listArticles(): array {
       $stmt = $this->_connexion->prepare('
-        SELECT * FROM Article
+         SELECT Article.name ,Article.id, Article.photo, Article.gallery_id, Gallery.name as galleryName
+         FROM Article
+         JOIN Gallery ON Gallery.id = Article.gallery_id
+         ORDER BY galleryName;
       ');
       $stmt->execute();
   
@@ -36,6 +39,7 @@ class ArticleRepository {
         $article->setPhoto($row['photo']);
         $article->setName($row['name']);
         $article->setGalleryId($row['gallery_id']);
+        $article->setGalleryName($row['galleryName']);
         array_push($articles, $article);
       }
       return $articles;

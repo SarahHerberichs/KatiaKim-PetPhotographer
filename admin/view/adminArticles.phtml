@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier vos Galleries</title>
+    <title>Liste des Articles</title>
 </head>
-<body>
+    <body>
+        <table>
+            <h3>Liste des Articles</h3>
+            <span class="success"><?= $AdminPhotosMessages['sendSuccess'] ?></span>
+            <thead>
+                <th>Insérer Photo</th>
+                <th>Nom de l'article</th>
+                <th>Gallerie</th>
+            </thead>
+            <tbody>
+                <?php foreach($articles as $article): ?>
+                    <tr>
+                        <form method="POST" enctype="multipart/form-data">
+                            <td>
+                                <input type="file" name="inputPhoto">
+                                <input type="submit" value='valider' name='submitNewPhoto'>    
+                            </td>
+                            <input type="hidden" name= "articleName" value='<?= $article ->getName() ?>' >
+                            <td><?= $article ->getName() ?></td>
+                            <span class="errorMessage"> 
+                                <?=$AdminPhotosMessages['requiredPhoto'] ?>
+                                <?=$AdminPhotosMessages['wrongExt'] ?>
+                            </span>
+                            <td><?= $article ->getGalleryName() ?></td>
+                        </form>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+    <!--   FORMULAIRE AJOUT ARTICLES  -->
    <div class="mainDivForm">
     <h3>Ajouter un Article</h3>
         <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
@@ -38,34 +68,6 @@
                 <input type="file" name="inputMainPhoto" id="inputMainPhoto">
             </div>
             <input type="submit" name="submitNewArticle" value="Valider l'Article">
-        </form>
-    </div> 
-    <!--  ------------------------------------------------------------------ -->
-    <div class="mainDivForm">
-    <h3>Ajouter des photos à vos articles</h3>
-        <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
-        <form method="POST" enctype="multipart/form-data">
-            <div class="formDiv">
-                <label for="article">Choisis ton article: 
-                    <span class="errorMessage"> <?=$AdminMessages['requiredGallery'] ?></span>
-                </label>
-                <select name="articleSelect" id="article">
-                    <?php foreach($articles as $article) : ?>
-                        <option value='<?= $article->getId() ?>' > <?= $article->getName() ?> </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>  
-
-            <div class="formDiv">
-                <label for="inputPhoto">Photo d'entête
-                    <span class="errorMessage"> 
-                        <?=$AdminMessages['requiredPhoto'] ?>
-                        <?=$AdminMessages['wrongExt'] ?>
-                    </span>
-                </label>
-                <input type="file" name="inputPhoto" id="inputPhoto">
-            </div>
-            <input type="submit" name="submitNewPhoto" value="Valider la Photo">
         </form>
     </div> 
 </body>
