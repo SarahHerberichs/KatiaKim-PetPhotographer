@@ -9,8 +9,10 @@ class Photo {
     public function setId($id): void {
         $this ->_id = $id;
     }
-    
-    public function setName(string $name): string {
+    public function setName($name): void {
+        $this ->_name = $name;
+    }
+    /*public function setName(string $name): string {
         if (empty ($name)){
             return "Entrez un Titre de photo";
         }
@@ -18,7 +20,7 @@ class Photo {
             $this->_name = $name;
             return "";
         }
-    }
+    }*/
     public function setPhoto(string $photo): string {
         if (empty ($photo)) {
             return "renseignez une photo";
@@ -29,14 +31,14 @@ class Photo {
         }
         $this ->_photo = $photo;
     }
-    public function setArticleId(string $article_id): string {
-        if (empty ($article_id)) {
-            return "Selectionnez un article";
-        }
-        else {
+    public function setArticleId( $article_id): void {
+        //if (empty ($article_id)) {
+          //  return "Selectionnez un article";
+        //}
+        //else {
             $this ->_article_id = $article_id;
-            return "";
-        }
+         //   return "";
+        //}
     }
     public function getId(): string {
         return $this ->_id;
@@ -47,13 +49,12 @@ class Photo {
     public function getPhoto(): string {
         return $this ->_photo;
     }
- //   public function getGalleryId(): string {
-   //     return $this ->_gallery_id;
-   // }
-    public function setArticleName(string $articleName): void{
+    public function getArticleId(): string {
+        return $this ->_article_id;
+    }
+   /* public function setArticleName(string $articleName): void{
         $this ->_articleName = $galleryName;
     }
     public function getArticleName(): string {
-        return $this ->_articleName;
+        return $this ->_articleName; */
     }
-}

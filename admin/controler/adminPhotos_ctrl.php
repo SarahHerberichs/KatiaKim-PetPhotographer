@@ -1,5 +1,6 @@
 <?php
 $articleRepo = new ArticleRepository();
+//créa d'une list pour boucler
 $articles = $articleRepo->listArticles();
 $PhotoRepository = new PhotoRepository();
 
@@ -9,9 +10,11 @@ $AdminPhotosMessages = [
     'sendSuccess' => '',
     'requiredPhoto' => '',
 ];
-$fileArray= [];
+
     //si formulaire soumis,création d'un article pour gestion des erreurs ou Set de ses parametres
+    //bouton submit , bouton champ d'entré
     if ( isset ($_POST['submitNewPhoto']) && (isset($_FILES['inputPhoto']))) {
+        //créa d'une nv photo 
         $photo = new Photo ();
     /*-----------------------Gestion Photos-------------------------*/
         $fileName = $_FILES['inputPhoto']['name'];
@@ -29,6 +32,7 @@ $fileArray= [];
        //Set et éventuel msg d'erreur
         $AdminPhotosMessages['requiredPhoto'] = 
         $photo ->setPhoto (
+            //champ d'entré de la photo inputPhoto
             ($_FILES['inputPhoto']['name'])
         );   
         //si pas d'oubli de photo, mais que probleme d'extension, msg d'erreur
@@ -46,15 +50,14 @@ $fileArray= [];
         //);
        
     /*-3-------------Set du nom de l'article associée------------*/
-        $AdminPhotosMessages['requiredArticle'] =
-        $photo ->setArticleName(
-            ($_POST['articleName'])
+        $photo ->setArticleId(
+            ($_POST['articleId'])
         );
     var_dump($photo);
     /*-4------------- si les msg d'erreurs sont vides--------------*/
         if (
             empty ($AdminPhotosMessages['requiredPhoto']) &&
-            empty ($AdminPhotosMessages['requiredArticle']) &&
+           // empty ($AdminPhotosMessages['requiredArticle']) &&
             empty ($AdminPhotosMessages['wrongExt'])
         )
         {

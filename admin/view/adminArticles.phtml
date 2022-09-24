@@ -20,15 +20,18 @@
                     <tr>
                         <form method="POST" enctype="multipart/form-data">
                             <td>
+                                <!-- champp entrée de la photo et buton valid-->
                                 <input type="file" name="inputPhoto">
                                 <input type="submit" value='valider' name='submitNewPhoto'>    
                             </td>
-                            <input type="hidden" name= "articleName" value='<?= $article ->getName() ?>' >
+                            <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
+                            <!-- affichage-->
                             <td><?= $article ->getName() ?></td>
                             <span class="errorMessage"> 
                                 <?=$AdminPhotosMessages['requiredPhoto'] ?>
                                 <?=$AdminPhotosMessages['wrongExt'] ?>
                             </span>
+                            <!-- affichage-->
                             <td><?= $article ->getGalleryName() ?></td>
                         </form>
                     </tr>
