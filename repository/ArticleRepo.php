@@ -6,29 +6,30 @@ class ArticleRepo {
     public function __construct() {
       $this ->_connexion = DataBase::getConnexion();
     }
-    
+    //sort la list des articles+ le nom de la gallery associé + la list des photos associés
     public function listArticlesByGallery(string $galleryName): array {
       $stmt = $this->_connexion->prepare('
-      SELECT Article.photo as ArticlePhoto, Article.name as ArticleName,Article.id as ArticleId, Gallery.name as GalleryName
-      FROM Article 
-      INNER JOIN Gallery ON Article.gallery_id = Gallery.id
-      WHERE Gallery.name  = :GalleryName ;
-      ');
-      $articleRepo=new ArticleRepository();
-      $stmt->bindValue('GalleryName', $galleryName);
-     
-      $stmt->execute();
-  
-      $articles= [];
-      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-       
-        $article = new Article();
-        $article->setPhoto($row['ArticlePhoto']);
-        $article->setName($row['ArticleName']);
-        $article->setGalleryName($row['GalleryName']);
-        $article->setId($row['ArticleId']);
-        array_push($articles, $article);
-      }
-      return $articles;
+      SELECT Article.name ,Article.id as ArticleId, Article.photo, Article.gallery_id, Gallery.name as galleryName
+      FROM Article
+      JOIN Gallery ON Gallery.id = Article.gallery_id
+      WHERE Gallery.name= :galleryname
+      ORDER BY galleryName;
+   ');
+   $stmt ->bindValue ('galleryname', $galleryName);
+   $stmt->execute();
+
+   $articles= [];
+   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+     $article = new Article();
+     $photoRepo = new PhotoRepository();
+     $article->setId($row['ArticleId']);
+     $article->setPhoto($row['photo']);
+     $article->setName($row['name']);
+     $article->setGalleryId($row['gallery_id']);
+     $article->setGalleryName($row['galleryName']);
+     $article->setPhotoList($photoRepo->listPhotosByArticle($row['ArticleId']));
+     array_push($articles, $article); 
+   }
+   return $articles;
     }
 }

@@ -325,12 +325,13 @@ header .title {
 
 .mainDivForm {
   display: flex;
+  border-radius: 30%;
   flex-direction: column;
-  border-radius: 100%;
   width: 100%;
   margin: auto;
   margin-top: 1em;
   padding: 5em;
+  border: 1px solid black;
 }
 .formDiv {
   display: flex;
@@ -384,3 +385,53 @@ table th {
   overflow: scroll;
   padding: 0.2em;
 }
+
+/* Affichage Photos Admin */
+.photosAdmin {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid black;
+}
+.photoListAdmin {
+  border: 2px solid blue;
+  max-width: 45%;
+  grid-gap: 1.5em;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: row dense;
+}
+.photoListAdmin img {
+  margin-right: 1em;
+  width: 10em;
+  height: auto;
+  border: 1px solid black;
+}
+
+/*----------------------------------Anim Formulaire---------------------------------*/
+/*.adminArticlesDiv {
+  position: relative;
+  width: 100%;
+}
+.addArticle {
+  top: 0;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.animForm {
+  animation-name: "formTranslate";
+  animation-duration: 2s;
+}
+@keyframes formTranslate {
+  from {
+    left: -100;
+  }
+  to {
+    left: 0;
+  }
+}
+*/

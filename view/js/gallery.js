@@ -1,15 +1,19 @@
 function viewGridPhotos() {
-  var nthGalleryDivTitle = document.querySelector(".nthGalleryDivTitle");
-  var gridDiv = document.querySelector(".gridDiv");
-  var buttonClassGallery = document.querySelector(".buttonCloseGallery");
-  nthGalleryDivTitle.addEventListener("click", function () {
-    nthGalleryDivTitle.classList.add("invisible");
-    gridDiv.classList.add("gridVisible");
-    buttonClassGallery.classList.remove("invisible");
-  });
-  buttonClassGallery.addEventListener("click", function () {
-    gridDiv.classList.remove("gridVisible");
-    nthGalleryDivTitle.classList.remove("invisible");
-  });
+  var nthGalleryDivTitle = document.querySelectorAll(".nthGalleryDivTitle");
+  var gridDiv = document.querySelectorAll(".gridDiv");
+  var buttonClassGallery = document.querySelectorAll(".buttonCloseGallery");
+
+  console.log(nthGalleryDivTitle[1]);
+  for (let i = 0; i < nthGalleryDivTitle.length; i++) {
+    nthGalleryDivTitle[i].addEventListener("click", function () {
+      nthGalleryDivTitle[i].classList.add("invisible");
+      gridDiv[i].classList.add("gridVisible");
+      buttonClassGallery[i].classList.remove("invisible");
+    });
+    buttonClassGallery[i].addEventListener("click", function () {
+      gridDiv[i].classList.remove("gridVisible");
+      nthGalleryDivTitle[i].classList.remove("invisible");
+    });
+  }
 }
 viewGridPhotos();

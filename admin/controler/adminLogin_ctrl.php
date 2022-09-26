@@ -18,7 +18,6 @@ $userMessages = [
         //si les msg d'erreurs sont vides 
         if ( (empty($userMessages['requiredLogin'])) && (empty($userMessages['requiredPassword'])) ) 
         {
-            
             $adminRep = new AdminRepository();
             //méthode qui retourne id,login,pwd settés
             $adminLog = $adminRep->retrieveAdminLoginDatas();

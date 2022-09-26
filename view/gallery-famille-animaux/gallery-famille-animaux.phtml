@@ -1,6 +1,6 @@
 
 <h3>Photographies Famille et Animaux</h3>
-   <?php foreach($articles as $article) : ?>               
+   <?php foreach($articlesByGallery as $article) : ?>               
       <div class="mainDiv-gallery">
 
          <div class="nthGalleryDivTitle firstGallery">
@@ -8,6 +8,7 @@
             <input type="hidden" name="articleId" value=<?= $article->getId() ?>>
             <img src="../../admin/files/<?= $article->getPhoto() ?>" alt="mainFamilleAnimaux" />
          </div>
+   
    
          <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
             <span class="success"><?=$AdminPhotosMessages['sendSuccess'] ?></span>
@@ -24,20 +25,19 @@
                <input type="submit" value='valider' name='addNewPhoto'>
             </form>
          <?php } ?> 
-   
-   
-   <!-- Pour chaqque photo associé a un Id, créer la bonne image-->
-       
+      <?php endforeach; ?>
+  
+   <!--Boucler photos la ou photo art_id = art.id-->
+      <?php foreach($articlesByGallery as $article) : ?>     
          <div class="gridDiv firstGallery invisible" name="invisible">
-            <?php foreach($photosByArt as $photoByArt) : ?> 
-               <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
-               <img src="../../admin/files/<?= $photoByArt->getPhoto() ?>" alt="<?= $photoByArt->getName() ?>">
+            <?php foreach($article->getPhotoList() as $photoByArt): ?>
+               <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>">
             <?php endforeach; ?>
          </div>
-         
-      <input type='button' value='close' class='buttonCloseGallery invisible'>
+         <input type='button' value='close' class='buttonCloseGallery invisible'>
       </div>
-   <?php endforeach; ?>   
+      <?php endforeach; ?>
+ 
 
 <script src="view/js/gallery.js"></script>
 

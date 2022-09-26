@@ -22,5 +22,6 @@ if (isset ($_POST['delete'])) {
 }
 
 
-    $messages = $messageRepo->listMessages();
+$messages = $messageRepo->listMessages();
+
 require 'admin/view/adminHome.phtml'; 

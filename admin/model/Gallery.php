@@ -12,7 +12,6 @@ class Gallery {
     public function getId(): string {
         return $this ->_id;
     }
-
     public function getName(): string {
         return $this ->_name;
     }

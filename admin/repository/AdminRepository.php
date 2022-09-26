@@ -36,6 +36,7 @@ class AdminRepository {
       $stmt ->bindValue('comment', $message->getComment());
       $stmt ->bindValue('id', $message->getId());
       $stmt ->execute();
+      
       return $message;
       }
 
