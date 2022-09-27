@@ -1,43 +1,45 @@
 
 <h3>Photographies Famille et Animaux</h3>
-   <?php foreach($articlesByGallery as $article) : ?>               
-      <div class="mainDiv-gallery">
+   <div class="mainDivGallery">  
+      <?php foreach($articlesByGallery as $article) : ?>  
 
-         <div class="nthGalleryDivTitle firstGallery">
-            <h4> <?= $article->getName() ?> </h4>
-            <input type="hidden" name="articleId" value=<?= $article->getId() ?>>
-            <img src="../../admin/files/<?= $article->getPhoto() ?>" alt="mainFamilleAnimaux" />
-         </div>
-   
-   
-         <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
-            <span class="success"><?=$AdminPhotosMessages['sendSuccess'] ?></span>
+            <!--TITRE + MAIN IMG -->   
+         <div class="eachArticle">  
+            <div class="nthGalleryDivTitle firstGallery">
+               <h4> <?= $article->getName() ?> </h4>
+               <input type="hidden" name="articleId" value=<?= $article->getId() ?>>
+               <img src="../../admin/files/<?= $article->getPhoto() ?>" alt="mainFamilleAnimaux" />
+            </div>
+
+            <div class="nthGalleryDivPhotos gridDiv invisible" name="invisible">
+               <?php foreach($article->getPhotoList() as $photoByArt): ?>
+                  <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>">
+               <?php endforeach; ?>
+                  
+            </div>
+            <input type='button' value='close' class='buttonCloseGallery invisible'>
             
-            <p>Ajouter Photo</p>
+               <div class="nthDivAdminPhotos">
+                  <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
+                     <span class="success"><?=$AdminPhotosMessages['sendSuccess'] ?></span>
+                     <p>Ajouter Photo</p>
 
-            <form method="POST" enctype="multipart/form-data">
-               <span class="errorMessage"> 
-                  <?=$AdminPhotosMessages['requiredPhoto'] ?>
-                  <?=$AdminPhotosMessages['wrongExt'] ?>
-               </span>
-               <input type="file" value="inputPhoto" name="inputPhoto">
-               <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
-               <input type="submit" value='valider' name='addNewPhoto'>
-            </form>
-         <?php } ?> 
-      <?php endforeach; ?>
+                     <form method="POST" enctype="multipart/form-data">
+                        <span class="errorMessage"> 
+                           <?=$AdminPhotosMessages['requiredPhoto'] ?>
+                           <?=$AdminPhotosMessages['wrongExt'] ?>
+                        </span>
+                        <input type="file" value="inputPhoto" name="inputPhoto">
+                        <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
+                        <input type="submit" value='valider' name='addNewPhoto'>
+                     </form>
+                  <?php } ?> 
+               </div>
+            </div>  
+         <?php endforeach; ?>
+      </div>   
+      
   
-   <!--Boucler photos la ou photo art_id = art.id-->
-      <?php foreach($articlesByGallery as $article) : ?>     
-         <div class="gridDiv firstGallery invisible" name="invisible">
-            <?php foreach($article->getPhotoList() as $photoByArt): ?>
-               <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>">
-            <?php endforeach; ?>
-         </div>
-         <input type='button' value='close' class='buttonCloseGallery invisible'>
-      </div>
-      <?php endforeach; ?>
- 
-
+  
 <script src="view/js/gallery.js"></script>
 

@@ -1,14 +1,15 @@
 
             <!-- Affichage des Articles en ligne et Gallerie Associée
                  +  Options Insertion Photos-->
-<div class="adminArticlesDiv">          
+<div class="adminArticlesDiv">
+       
             <table>
                 <h3>Liste des Articles</h3>
                 <span class="errorMessage"> 
                     <?=$AdminPhotosMessages['requiredPhoto'] ?>
                     <?=$AdminPhotosMessages['wrongExt'] ?>
                 </span>
-                <span class="success"><?= $AdminPhotosMessages['sendSuccess'] ?></span>
+                
                 <thead>
                     <th>Insérer des Photos d'article <input type="submit" class="viewPhotosButton" value='0-0' ></th>
                     <th>Nom de l'article <input type="submit" class='addArticleButton' value='+' ></th>
@@ -27,7 +28,10 @@
                                     <input type="submit" value='valider' name='submitNewPhoto'>    
                                 </td>
                                 <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
-                                <td><?= $article ->getName() ?></td>
+                                <td class="tdMultiple">
+                                    <img src="../../admin/files/<?= $article ->getPhoto() ?>" class ="mainArtImgMini">
+                                    <?= $article ->getName() ?>  
+                                </td>
                                 <td><input type="text" value='O' name='changeTitle'>  </td>
                                 <td><input type="submit" value='X' name='deleteArticle'>  </td>
                                 <td><?= $article ->getGalleryName() ?></td>
@@ -53,8 +57,10 @@
         </section>
     </div>
         <!--   FORMULAIRE AJOUT ARTICLES  -->
-    <div class="addArticle invisible">  
+    <div class="addArticle  <?= $addArticleVisibility ?>">  
+     
         <div class="mainDivForm adminForm">
+            <input type="submit" class="closeAddArticleButton" value='Fermer' >  
             <h3>Ajouter un Article</h3>
             <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
             <form method="POST" enctype="multipart/form-data">

@@ -232,7 +232,7 @@ header .title {
 
 /*-------------------------------MainGallerys----------------------------------*/
 /*Div englobant galleries (titre + div photos-->non visible avant click) */
-.mainDiv-gallery {
+.mainDivGallery {
   text-align: center;
 }
 /* div englobant titre d'une gallery + sa photo */
@@ -286,7 +286,7 @@ header .title {
     width: 30%;
     height: auto;
   }
-  .mainDiv-gallery {
+  .mainDivGallery {
     margin: auto;
   }
   .gridVisible {
@@ -408,8 +408,24 @@ table th {
   height: auto;
   border: 1px solid black;
 }
+.viewArticlesImages {
+  border: 1px solid red;
+}
+.closePhotosButton {
+  margin-left: 90%;
+}
 
 /*----------------------------------Anim Formulaire---------------------------------*/
+.mainArtImgMini {
+  width: 10%;
+  height: auto;
+}
+.tdMultiple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 /*.adminArticlesDiv {
   position: relative;
   width: 100%;

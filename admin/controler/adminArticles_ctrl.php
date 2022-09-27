@@ -10,6 +10,7 @@ $articleRepo = new ArticleRepository();
 $articles = $articleRepo->listArticles();
 
 //Instanciation d'un article repository et création d'un Array de messages d'erreurs vides
+$addArticleVisibility = "invisible";
 $AdminMessages = [
     'wrongExt' => '',
     'sendSuccess' => '',
@@ -73,8 +74,9 @@ $AdminMessages = [
             //insertion de l'article sété dans la BDD et envoi msg de validation
             $articleRepo ->createArticle($article);
             $AdminMessages['sendSuccess'] = 'Article Bien Crée';
+            $addArticleVisibility = "invisible";
             } 
-        }   
+        } $addArticleVisibility = "";
     }  
 /*--------------------------------Créa d'une Photo---------------------------------------- */
     //créa d'une list pour boucler
@@ -118,6 +120,7 @@ $AdminMessages = [
                 ) {
                 $AdminPhotosMessages['wrongExt'] = "Mauvaise Extension";
             } 
+            $addArticleVisibility = "";
             /*-2-------------Set du nom de la photo--------------*/
             $photo ->setName(
                 $_FILES['inputPhoto']['name']

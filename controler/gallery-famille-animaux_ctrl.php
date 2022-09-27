@@ -81,7 +81,6 @@ $galleryGetName = $gallery ->getName();
         */
         $articleRep = new ArticleRepo();
         $articlesByGallery = $articleRep->listArticlesByGallery("galleryFamilleAnimaux");
-        var_dump($articlesByGallery);
          
         
 require 'view/gallery-famille-animaux/gallery-famille-animaux.phtml';
