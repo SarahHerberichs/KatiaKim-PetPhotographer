@@ -2,7 +2,7 @@
             <!-- Affichage des Articles en ligne et Gallerie Associée
                  +  Options Insertion Photos-->
 <div class="adminArticlesDiv">
-       
+            <span class="success"><?= $AdminPhotosMessages['sendSuccess'] ?></span>
             <table>
                 <h3>Liste des Articles</h3>
                 <span class="errorMessage"> 
@@ -50,7 +50,7 @@
                 <div class='photoListAdmin'>
                     <h1><?= $article ->getName() ?></h1>
                     <?php foreach($article->getPhotoList() as $photoByArt): ?>
-                        <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>" alt="mainFamilleAnimaux" />
+                        <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>" />
                     <?php endforeach; ?>
                 </div> 
             <?php endforeach; ?>    
@@ -63,6 +63,7 @@
             <input type="submit" class="closeAddArticleButton" value='Fermer' >  
             <h3>Ajouter un Article</h3>
             <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
+            
             <form method="POST" enctype="multipart/form-data">
                 <div class="formDiv">
                     <label for="gallery">Choisis ta gallery: 

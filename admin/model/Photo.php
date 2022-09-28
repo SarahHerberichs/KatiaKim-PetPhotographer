@@ -7,11 +7,11 @@ class Photo {
     private string $_article_name;
     
 
-    public function setId($id): void {
+    public function setId(string $id): void {
         $this ->_id = $id;
     }
 
-    public function setName($name): void {
+    public function setName(string $name): void {
         $this ->_name = $name;
     }
 
@@ -26,7 +26,7 @@ class Photo {
         $this ->_photo = $photo;
     }
 
-    public function setArticleId( $article_id): void {
+    public function setArticleId(string $article_id): void {
         $this ->_article_id = $article_id;
     }
 

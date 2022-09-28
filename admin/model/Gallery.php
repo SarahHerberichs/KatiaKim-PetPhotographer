@@ -3,10 +3,10 @@ class Gallery {
     private string $_id;
     private string $_name;
 
-    public function setId($id): void {
+    public function setId(string $id): void {
         $this ->_id = $id;
     }
-    public function setName($name): void {
+    public function setName(string $name): void {
         $this ->_name = $name;
     }
     public function getId(): string {

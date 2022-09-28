@@ -1,14 +1,10 @@
 <?php
 
-//Nvelle Repository de la Gallery
-//$articleRepo = new ArticleRepository();
-$photoRepo = new PhotoRepo();
+$photoRepo = new PhotoRepository();
 //Insertion  en dure d'une galleryName
 $gallery = new Gallery();
 $gallerySetName = $gallery ->setName("galleryFamilleAnimaux");
 $galleryGetName = $gallery ->getName();
-
-
 
 //messages d'erreur initialisés
     $AdminPhotosMessages = [
@@ -19,7 +15,6 @@ $galleryGetName = $gallery ->getName();
         //si formulaire soumis,création d'une photo pour gestion des erreurs ou Set de ses parametres
         //bouton submit , bouton champ d'entrée
         if ( isset ($_POST['addNewPhoto']) && (isset($_FILES['inputPhoto']))) {
-            //créa d'une nv photo 
             $photo = new Photo ();
         /*------------------------Gestion Photos-------------------------*/
             $fileName = $_FILES['inputPhoto']['name'];
@@ -41,7 +36,7 @@ $galleryGetName = $gallery ->getName();
                 //champ d'entré de la photo inputPhoto
                 ($_FILES['inputPhoto']['name'])
             );   
-        //si pas d'oubli de photo, mais que probleme d'extension, msg d'erreur
+        //si photoInséree, mais que probleme d'extension, msg d'erreur
             if (
                 $AdminPhotosMessages['requiredPhoto'] === "" 
                 && 
@@ -49,7 +44,6 @@ $galleryGetName = $gallery ->getName();
                 ) {
                 $AdminPhotosMessages['wrongExt'] = "Mauvaise Extension";
             } 
-  
         //-2-------------------Set du nom de la photo--------------------
             $photo ->setName(
                 $_FILES['inputPhoto']['name']
@@ -75,14 +69,8 @@ $galleryGetName = $gallery ->getName();
                 }  
             }   
         }  
-       /* $articleRepo = new ArticleRepository();
-        $articles = $articleRepo->listArticles();
-        var_dump($articles);
-        */
-        $articleRep = new ArticleRepo();
-        $articlesByGallery = $articleRep->listArticlesByGallery("galleryFamilleAnimaux");
-         
-        
+        $articleRepo = new ArticleRepository();
+        $articlesByGallery = $articleRepo->listArticlesByGallery($galleryGetName);
 require 'view/gallery-famille-animaux/gallery-famille-animaux.phtml';
 
 ?>

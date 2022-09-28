@@ -1,5 +1,5 @@
 <?php
-
+/*
 class PhotoRepo {
     private PDO $_connexion;
 
@@ -48,3 +48,4 @@ class PhotoRepo {
       }
     
 }
+*/

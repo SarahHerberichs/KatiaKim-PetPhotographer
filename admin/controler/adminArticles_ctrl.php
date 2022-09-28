@@ -5,6 +5,7 @@
 //Pour Affichage Formulaire Ajout d'articles
 $galleryRepo = new GalleryRepository();
 $gallerys = $galleryRepo->listGallery();
+
 //Pour Liste Articles
 $articleRepo = new ArticleRepository();
 $articles = $articleRepo->listArticles();
@@ -60,7 +61,6 @@ $AdminMessages = [
         $article ->setGalleryId(
             ($_POST['gallerySelect'])
         );
-      
          /*-4------------- si les msg d'erreurs sont vides--------------*/
         if (
             empty ($AdminMessages['requiredPhoto']) &&
@@ -76,7 +76,8 @@ $AdminMessages = [
             $AdminMessages['sendSuccess'] = 'Article Bien Crée';
             $addArticleVisibility = "invisible";
             } 
-        } $addArticleVisibility = "";
+        }  
+        $addArticleVisibility = "";
     }  
 /*--------------------------------Créa d'une Photo---------------------------------------- */
     //créa d'une list pour boucler
@@ -102,6 +103,7 @@ $AdminMessages = [
             $fileExt = ".". strtolower( substr(strchr($fileName, "."),1) );
             //Destination finale de la photo
             $fileDest ="admin/files/".$fileName;
+            
             /*--------------------------------------------------------------*/ 
             /*--------Set des champs saisis et des msg d'erreurs-----------*/
         

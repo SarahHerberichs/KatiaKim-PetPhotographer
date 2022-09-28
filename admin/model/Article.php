@@ -7,10 +7,10 @@ class Article {
     private string $_galleryName;
     private array $_photo_list;
    
-    public function setId($id): void {
+    public function setId(string $id): void {
         $this ->_id = $id;
     }
-    
+
     public function setName(string $name): string {
         if (empty ($name)){
             return "Entrez un Titre d'article";
@@ -20,9 +20,10 @@ class Article {
             return "";
         }
     }
+
     public function setPhoto(string $photo): string {
         if (empty ($photo)) {
-            return "renseigner une photo";
+            return "renseignez une photo";
         }
         else {
             $this ->_photo = $photo;
@@ -30,6 +31,7 @@ class Article {
         }
         $this ->_photo = $photo;
     }
+
     public function setGalleryId(string $gallery_id): string {
         if (empty ($gallery_id)) {
             return "Selectionnez une gallery";
@@ -39,6 +41,7 @@ class Article {
             return "";
         }
     }
+    
     public function getId(): string {
         return $this ->_id;
     }
