@@ -1,11 +1,11 @@
 //Bouton submit pour add un comment
-let commentButton = document.getElementsByName("commentSubmit");
+var commentButton = document.getElementsByName("commentSubmit");
 //Div pour affichage du comment
-let newCommentDiv = document.getElementsByName("newCommentDiv");
+var newCommentDiv = document.getElementsByName("newCommentDiv");
 //textarea pour submit un comment
-let comment = document.getElementsByName("comment");
+var comment = document.getElementsByName("comment");
 //bouton modifier comment
-let reEditButton = document.getElementsByName("reEditButton");
+var reEditButton = document.getElementsByName("reEditButton");
 
 for (let i = 0; i < comment.length; i++) {
   //si la div contenant le comment n'est pas vide

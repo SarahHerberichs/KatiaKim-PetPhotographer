@@ -4,11 +4,11 @@
 
 //Pour Affichage Formulaire Ajout d'articles
 $galleryRepo = new GalleryRepository();
-$gallerys = $galleryRepo->listGallery();
+$gallerys = $galleryRepo ->listGallery();
 
 //Pour Liste Articles
 $articleRepo = new ArticleRepository();
-$articles = $articleRepo->listArticles();
+$articles = $articleRepo ->listArticles();
 
 //Instanciation d'un article repository et création d'un Array de messages d'erreurs vides
 $addArticleVisibility = "invisible";
@@ -19,18 +19,19 @@ $AdminMessages = [
     'requiredTitle' => '',
     'requiredGallery' => ''
 ];
+if (isset ($_POST['deleteArticle'])){
+   $articleRepo-> deleteArticle($_POST['articleId']);
+}
 
-//si formulaire soumis, création d'un article pour gestion des erreurs ou Set de ses parametres
+    //si formulaire soumis, création d'un article pour gestion des erreurs ou Set de ses parametres
     if ( isset ($_POST['submitNewArticle']) && (isset($_FILES['inputMainPhoto']))) {
         $article = new Article();
         /*-----------------------Gestion Photos-------------------------*/
         $fileName = $_FILES['inputMainPhoto']['name'];
         $fileTmpName = $_FILES['inputMainPhoto']['tmp_name'];
-        //list des extensions valides
         $validExt = ['.jpeg', '.jpg', '.gif', '.png'];
         //recup de l'extension du fichier
         $fileExt = ".". strtolower( substr(strchr($fileName, "."),1) );
-        //Destination finale de la photo
         $fileDest = "admin/files/".$fileName;
         /*--------------------------------------------------------------*/ 
 
@@ -77,7 +78,7 @@ $AdminMessages = [
             $addArticleVisibility = "invisible";
             } 
         }  
-        $addArticleVisibility = "";
+            $addArticleVisibility = "";
     }  
 /*--------------------------------Créa d'une Photo---------------------------------------- */
     //créa d'une list pour boucler

@@ -1,17 +1,17 @@
 <h3>Contact</h3>
 
-   <div class="container" class="formContact" > 
+   <div class="formContact" > 
       <form method="post" >
          <span class="success"><?= $userMessages['sendSuccess'] ?></span>
          <div class="mainDivForm"> 
             <div class="formDiv">
-               <label for="firstName">Prenom
+               <label for="firstName">FirstName
                   <span class="errorMessage"><?=$userMessages['requiredFirstName'] ?></span>
                </label>
                <input type="text"  id="firstName" name="firstName">
             </div>
             <div class="formDiv">
-               <label for="lastName">Nom
+               <label for="lastName">Name
                   <span class="errorMessage"><?=$userMessages['requiredLastName'] ?></span>
                </label>
                <input type="text"  id="lastName" name="lastName">
@@ -32,10 +32,10 @@
                <label for="message" >Message
                   <span class="errorMessage"><?=$userMessages['requiredMessage'] ?></span>
                </label>
-               <textarea id='message' name='message'></textarea>
+               <textarea id='message' name='message' rows="5" cols="40" ></textarea>
             </div>
             <div class="formDivSubmit">
-               <input type="submit" value="Envoi" name="sendMessageSubmit">
+               <input type="submit" value="Send" name="sendMessageSubmit">
             </div>
          </div>
       </form>

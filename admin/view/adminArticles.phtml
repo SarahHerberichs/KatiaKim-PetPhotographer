@@ -2,64 +2,9 @@
             <!-- Affichage des Articles en ligne et Gallerie Associée
                  +  Options Insertion Photos-->
 <div class="adminArticlesDiv">
-            <span class="success"><?= $AdminPhotosMessages['sendSuccess'] ?></span>
-            <table>
-                <h3>Liste des Articles</h3>
-                <span class="errorMessage"> 
-                    <?=$AdminPhotosMessages['requiredPhoto'] ?>
-                    <?=$AdminPhotosMessages['wrongExt'] ?>
-                </span>
-                
-                <thead>
-                    <th>Insérer des Photos d'article <input type="submit" class="viewPhotosButton" value='0-0' ></th>
-                    <th>Nom de l'article <input type="submit" class='addArticleButton' value='+' ></th>
-                    <th>Modifier Titre de l'article</th>
-                    <th>Supprimer l'article</th>
-                    <th>Gallerie</th>
-                </thead>
-                <tbody>
-                
-                    <?php foreach($articles as $article): ?>
-                        <tr>
-                            <form method="POST" enctype="multipart/form-data">
-                                <td>
-                                    <!-- champ entrée de la photo et button valid-->
-                                    <input type="file" name="inputPhoto">
-                                    <input type="submit" value='valider' name='submitNewPhoto'>    
-                                </td>
-                                <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
-                                <td class="tdMultiple">
-                                    <img src="../../admin/files/<?= $article ->getPhoto() ?>" class ="mainArtImgMini">
-                                    <?= $article ->getName() ?>  
-                                </td>
-                                <td><input type="text" value='O' name='changeTitle'>  </td>
-                                <td><input type="submit" value='X' name='deleteArticle'>  </td>
-                                <td><?= $article ->getGalleryName() ?></td>
-                            </form>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-
-        <!-- Affichage des Photos pour chaque Article--> 
-    <div class="viewArticlesImages invisible">   
-    <input type="submit" class="closePhotosButton" value='Fermer' >       
-        <section class="photosAdmin">
-            
-            <?php foreach($articles as $article): ?>
-                <div class='photoListAdmin'>
-                    <h1><?= $article ->getName() ?></h1>
-                    <?php foreach($article->getPhotoList() as $photoByArt): ?>
-                        <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>" />
-                    <?php endforeach; ?>
-                </div> 
-            <?php endforeach; ?>    
-        </section>
-    </div>
-        <!--   FORMULAIRE AJOUT ARTICLES  -->
-    <div class="addArticle  <?= $addArticleVisibility ?>">  
-     
-        <div class="mainDivForm adminForm">
+    
+    <div class="addArticleDiv  <?= $addArticleVisibility ?>">      
+        <div class="mainDivForm">
             <input type="submit" class="closeAddArticleButton" value='Fermer' >  
             <h3>Ajouter un Article</h3>
             <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
@@ -95,5 +40,63 @@
             </form>
         </div> 
     </div>  
+      <h3>Liste des Articles</h3>
+<div class="adminArticlesDiv">
+    <div class="adminArticlesTable tableAdmin">
+        <span class="success"><?= $AdminPhotosMessages['sendSuccess'] ?></span>
+        <table>
+          
+            <span class="errorMessage"> 
+                <?=$AdminPhotosMessages['requiredPhoto'] ?>
+                <?=$AdminPhotosMessages['wrongExt'] ?>
+            </span>
+                
+            <thead>
+            
+            
+                <th>Photos d'article <i class="fa-solid fa-eye viewPhotosButton"></i> </th>
+                <th>Article <i class="fa-solid fa-plus addArticleButton"></i></th> 
+                <th>Supprimer l'article</th>
+                <th>Gallerie</th>
+            </thead>
+            <tbody>
+                <?php foreach($articles as $article): ?>
+                    <tr>
+                        <form method="POST" enctype="multipart/form-data">
+                            <td>
+                                <!-- champ entrée de la photo et button valid-->
+                                <input type="file" name="inputPhoto">
+                                <input type="submit" value='valider' name='submitNewPhoto'>    
+                            </td>
+                            <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
+                            <td class="tdMultiple">
+                                <img src="../../admin/files/<?= $article ->getPhoto() ?>" class ="mainArtImgMini">
+                                <?= $article ->getName() ?>  
+                            </td>
+                            <td><button type="submit" value='X' name='deleteArticle'><i class="fa-solid fa-trash"></i></td>
+                            <td><?= $article ->getGalleryName() ?></td>
+                        </form>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>    
+        <!-- Affichage des Photos pour chaque Article--> 
+    <div class="viewArticlesImages invisible">   
+    <input type="submit" class="closePhotosButton" value='Fermer' >       
+        <div class="photosAdmin">
+            <?php foreach($articles as $article): ?>
+                <div class='photoListAdmin'>
+                    <h1><?= $article ->getName() ?></h1>
+                    <?php foreach($article->getPhotoList() as $photoByArt): ?>
+                        <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>" />
+                    <?php endforeach; ?>
+                </div> 
+            <?php endforeach; ?>    
+        </div>
+    </div>
+    
 </div>           
-    <script src="admin/js/adminArticles.js"></script>
+
+<script src="admin/js/adminArticles.js"></script>

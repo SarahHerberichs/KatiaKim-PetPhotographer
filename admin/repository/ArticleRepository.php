@@ -26,7 +26,7 @@ class ArticleRepository {
     public function listArticles(): array {
       $stmt = $this ->_connexion->prepare('
          SELECT Article.name as ArticleName ,Article.id as ArticleId, Article.photo as ArticleMainPhoto, 
-         Article.gallery_id, Gallery.name as galleryName
+         Article.gallery_id, Gallery.name as GalleryName
          FROM Article
          JOIN Gallery ON Gallery.id = Article.gallery_id
          ORDER BY galleryName;
@@ -41,7 +41,7 @@ class ArticleRepository {
         $article ->setId($row['ArticleId']);
         $article ->setPhoto($row['ArticleMainPhoto']);
         $article ->setGalleryId($row['gallery_id']);
-        $article ->setGalleryName($row['galleryName']);
+        $article ->setGalleryName($row['GalleryName']);
         $article ->setPhotoList($photoRepo->listPhotosByArticle($row['ArticleId']));
 
         array_push($articles, $article);
@@ -51,7 +51,7 @@ class ArticleRepository {
     }
       public function listArticlesByGallery(string $galleryName): array {
       $stmt = $this->_connexion->prepare('
-      SELECT Article.name as ArticleName,Article.id as ArticleId, Article.photo as ArticlePhoto, Article.gallery_id, Gallery.name as GalleryName
+      SELECT Article.name as ArticleName, Article.id as ArticleId, Article.photo as ArticleMainPhoto, Article.gallery_id, Gallery.name as GalleryName
       FROM Article
       JOIN Gallery ON Gallery.id = Article.gallery_id
       WHERE Gallery.name= :galleryname
@@ -65,7 +65,7 @@ class ArticleRepository {
      $article = new Article();
      $photoRepo = new PhotoRepository();
      $article->setId($row['ArticleId']);
-     $article->setPhoto($row['ArticlePhoto']);
+     $article->setPhoto($row['ArticleMainPhoto']);
      $article->setName($row['ArticleName']);
      $article->setGalleryId($row['gallery_id']);
      $article->setGalleryName($row['GalleryName']);
@@ -73,5 +73,13 @@ class ArticleRepository {
      array_push($articles, $article); 
    }
    return $articles;
+    }
+    public function deleteArticle ($id){
+      $stmt = $this->_connexion->prepare('
+      DELETE FROM Article 
+      WHERE Article.id = :id
+   ');
+   $stmt ->bindValue (':id', $id);
+   $stmt->execute();
     }
 }

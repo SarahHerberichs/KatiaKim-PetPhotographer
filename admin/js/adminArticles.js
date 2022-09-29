@@ -1,5 +1,5 @@
 var addArticleButton = document.querySelector(".addArticleButton");
-var addArticleDiv = document.querySelector(".addArticle");
+var addArticleDiv = document.querySelector(".addArticleDiv");
 var closeAddArticleButton = document.querySelector(".closeAddArticleButton");
 
 var closePhotosButton = document.querySelector(".closePhotosButton");

@@ -24,6 +24,9 @@ header {
   background-color: #010101;
   color: rgb(222, 218, 209);
 }
+footer {
+  border: 1px solid red;
+}
 main {
   margin-top: 2em;
   text-align: center;
@@ -65,7 +68,7 @@ header .title {
 .nav {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 /* le bouton et ses sous onglets*/
 .nav > a,
@@ -152,7 +155,7 @@ header .title {
   .nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-end;
     padding-bottom: 1em;
   }
@@ -187,14 +190,8 @@ header .title {
   }
   .linkDiv a:hover {
     color: rgb(222, 218, 209);
-    background: linear-gradient(
-      0deg,
-      rgb(13, 12, 13) 0%,
-      rgb(13, 12, 17) 25%,
-      rgb(13, 12, 20) 50%,
-      rgb(20, 15, 30) 100%
-    );
-    opacity: 0.7;
+    background-color: #010101;
+
     border-radius: 0.7em;
   }
   .linkDiv a {
@@ -224,10 +221,31 @@ header .title {
   }
 }
 /*-------------------------Caroussel----------------------------*/
+/*objectfit:cov*/ /*
 .caroussel {
   width: 100%;
-  height: 20em;
   border: 1px solid black;
+  margin: auto;
+}
+.caroussel img {
+  width: auto;
+  height: 10em;
+}*/
+.diapo {
+  position: relative;
+  overflow: hidden;
+}
+.elements {
+  display: flex;
+}
+.element {
+  flex: 1 0 100%;
+  border: 1px solid black;
+  height: 20em;
+}
+.element > img {
+  width: 100%;
+  height: 100%;
 }
 
 /*-------------------------------MainGallerys----------------------------------*/
@@ -251,6 +269,7 @@ header .title {
   display: none;
 }
 /* appliqué à gridDiv après click */
+/*objectfit cover */
 .gridVisible {
   display: block;
 }
@@ -325,39 +344,39 @@ header .title {
 
 .mainDivForm {
   display: flex;
-  border-radius: 30%;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   margin: auto;
   margin-top: 1em;
-  padding: 5em;
-  border: 1px solid black;
+  border: 1px solid red;
 }
 .formDiv {
   display: flex;
-  justify-content: center;
+  width: 80%;
+  justify-content: space-around;
   align-content: center;
   margin: 0.5em;
   padding: 1em;
   border-radius: 4px;
+  border: 1px solid blue;
 }
-.formDiv input {
+
+.formDiv input,
+.formDiv textarea,
+.formDiv select {
   padding: 0.5em;
-  width: 30%;
+  width: 90%;
   border-radius: 4px;
-  height: 1em;
 }
 .formDiv label {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   width: 35%;
   line-height: 2em;
 }
-.formDiv textarea {
-  width: 35%;
-  min-height: 7em;
-  border-radius: 4px;
-}
+
 .errorMessage {
   color: red;
 }
@@ -374,10 +393,26 @@ header .title {
 }
 /*------------------------------Tableau Admin*--------------------------*/
 /* Commun à tous les forms */
-table {
-  border: 1px solid rgba(14, 13, 13, 0.5);
-  border-collapse: collapse;
+.adminArticlesDiv {
+  display: table;
   margin: auto;
+  margin-left: 1em;
+  margin-top: 1em;
+}
+.imgUpload > input {
+  display: none;
+}
+.tableAdmin {
+  padding: 50% 0;
+  height: 0;
+}
+table {
+  border-collapse: collapse;
+  font-size: 0.7em;
+  /* display: block;  */
+  transform-origin: top left;
+  transform: rotate(-90deg) translate(-100%);
+  margin-top: -50%;
 }
 table td,
 table th {
@@ -425,6 +460,28 @@ table th {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: 880px) {
+  .adminArticlesDiv .adminContactDiv {
+    margin: auto;
+  }
+  .mainDivForm {
+    width: 50%;
+  }
+  table {
+    transform: none;
+    margin-top: 0;
+  }
+  table td,
+  table th {
+    font-size: 1em;
+  }
+  .tableAdmin {
+    border: 1px solid blue;
+    padding: 0;
+    height: auto;
+  }
 }
 /*.adminArticlesDiv {
   position: relative;
