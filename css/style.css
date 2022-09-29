@@ -16,20 +16,56 @@ body {
   font-size: 16px;
   box-sizing: border-box;
   text-align: center;
-  margin: auto;
 }
 /* title+ navBar*/
 header {
+  margin-bottom: 2em;
+}
+header,
+footer {
+  padding: 1em;
+  margin-top: none;
   min-height: 10em;
   background-color: #010101;
   color: rgb(222, 218, 209);
 }
-footer {
-  border: 1px solid red;
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.footer .footerContact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+}
+.footer .logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.logos a {
+  font-size: 1.5em;
+  padding: 1em;
+}
+.footer i,
+.footer a {
+  color: rgb(222, 218, 209);
+}
+.footer a {
+  text-decoration: underline;
 }
 main {
   margin-top: 2em;
+  padding: 5em;
+  padding-top: 0;
   text-align: center;
+}
+.article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 /* titre du header */
 h1 {
@@ -43,6 +79,9 @@ h3 {
   font-size: 1.5em;
   animation: "textAnim" 0.7s linear;
   opacity: 0.8;
+}
+.price {
+  display: block;
 }
 @keyframes textAnim {
   from {
@@ -63,6 +102,7 @@ h3 {
 header .title {
   width: 30%;
   text-align: center;
+  margin-left: 0.5em;
 }
 /*comportement quand visible*/
 .nav {
@@ -147,6 +187,7 @@ header .title {
     padding-top: 1em;
     margin-bottom: 4em;
     width: 100%;
+    margin-left: 0;
   }
   main {
     padding-top: 2em;
@@ -241,7 +282,7 @@ header .title {
 .element {
   flex: 1 0 100%;
   border: 1px solid black;
-  height: 20em;
+  height: 22em;
 }
 .element > img {
   width: 100%;
@@ -345,10 +386,8 @@ header .title {
 .mainDivForm {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   margin: auto;
-  margin-top: 1em;
-  border: 1px solid red;
 }
 .formDiv {
   display: flex;
@@ -358,7 +397,6 @@ header .title {
   margin: 0.5em;
   padding: 1em;
   border-radius: 4px;
-  border: 1px solid blue;
 }
 
 .formDiv input,
@@ -398,9 +436,6 @@ header .title {
   margin: auto;
   margin-left: 1em;
   margin-top: 1em;
-}
-.imgUpload > input {
-  display: none;
 }
 .tableAdmin {
   padding: 50% 0;
