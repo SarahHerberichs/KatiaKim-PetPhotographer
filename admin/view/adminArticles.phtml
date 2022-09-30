@@ -1,11 +1,14 @@
 
             <!-- Affichage des Articles en ligne et Gallerie Associée
                  +  Options Insertion Photos-->
-<div class="adminArticlesDiv">
+                 <div class="adminArticlesDiv">
     
     <div class="addArticleDiv  <?= $addArticleVisibility ?>">      
         <div class="mainDivForm">
-            <input type="submit" class="closeAddArticleButton" value='Fermer' >  
+            <div class="formDivSubmit iconDiv">
+                <i class="fa fa-window-close" aria-hidden="true"></i>
+                <input type="submit" class="closeAddArticleButton inputWithIcon" value='Fermer' >  
+            </div>
             <h3>Ajouter un Article</h3>
             <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
             
@@ -54,14 +57,14 @@
             <thead>
             
             
-                <th>Photos d'article <i class="fa-solid fa-eye viewPhotosButton"></i> </th>
-                <th>Article <i class="fa-solid fa-plus addArticleButton"></i></th> 
+                <th>Photos d'article <i class="fa-solid fa-eye viewPhotosButton icon"></i> </th>
+                <th>Article <i class="fa-solid fa-plus addArticleButton icon"></i></th> 
                 <th>Supprimer l'article</th>
                 <th>Gallerie</th>
             </thead>
             <tbody>
                 <?php foreach($articles as $article): ?>
-                    <tr>
+                    <tr class= "trTableAdmin">
                         <form method="POST" enctype="multipart/form-data">
                             <td>
                                 <!-- champ entrée de la photo et button valid-->
@@ -73,7 +76,12 @@
                                 <img src="../../admin/files/<?= $article ->getPhoto() ?>" class ="mainArtImgMini">
                                 <?= $article ->getName() ?>  
                             </td>
-                            <td><button type="submit" value='X' name='deleteArticle'><i class="fa-solid fa-trash"></i></td>
+                            <td>
+                                <div class="formDivSubmit iconDiv">
+                                    <i class="fa-solid fa-trash icon"></i>
+                                    <input type="submit" value='' name="deleteArticle" class="deleteArticle inputWithIcon">
+                                </div>
+                            </td>
                             <td><?= $article ->getGalleryName() ?></td>
                         </form>
                     </tr>
@@ -84,16 +92,20 @@
 </div>    
         <!-- Affichage des Photos pour chaque Article--> 
     <div class="viewArticlesImages invisible">   
-    <input type="submit" class="closePhotosButton" value='Fermer' >       
+          
         <div class="photosAdmin">
-            <?php foreach($articles as $article): ?>
-                <div class='photoListAdmin'>
-                    <h1><?= $article ->getName() ?></h1>
-                    <?php foreach($article->getPhotoList() as $photoByArt): ?>
-                        <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>" />
-                    <?php endforeach; ?>
-                </div> 
-            <?php endforeach; ?>    
+            <div class="formDivSubmit iconDiv">
+                <i class="fa fa-window-close" aria-hidden="true"></i>
+                <input type="submit" class="closePhotosButton inputWithIcon" value='' > 
+            </div>
+                    <?php foreach($articles as $article): ?>
+                        <div class='photoListAdmin'>
+                            <h1><?= $article ->getName() ?></h1>
+                            <?php foreach($article->getPhotoList() as $photoByArt): ?>
+                                <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>" />
+                            <?php endforeach; ?>
+                        </div> 
+                    <?php endforeach; ?>    
         </div>
     </div>
     
