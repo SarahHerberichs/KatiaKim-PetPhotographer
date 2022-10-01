@@ -72,7 +72,7 @@ $galleryGetName = $gallery ->getName();
         }  
         $articleRepo = new ArticleRepository();
         $articlesByGallery = $articleRepo->listArticlesByGallery($galleryGetName); 
-require 'view/gallery-evenements/gallery-evenements.phtml';
+require 'view/gallery-evenements.phtml';
 
 ?>
 

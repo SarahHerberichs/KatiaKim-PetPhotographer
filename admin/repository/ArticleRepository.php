@@ -74,10 +74,12 @@ class ArticleRepository {
    }
    return $articles;
     }
-    public function deleteArticle ($id){
+    public function deleteArticle (string $id){
       $stmt = $this->_connexion->prepare('
+      DELETE FROM Photos
+      WHERE Photos.article_id = :id;  
       DELETE FROM Article 
-      WHERE Article.id = :id
+      WHERE Article.id = :id 
    ');
    $stmt ->bindValue (':id', $id);
    $stmt->execute();

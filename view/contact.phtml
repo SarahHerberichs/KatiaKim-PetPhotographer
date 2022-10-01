@@ -1,0 +1,45 @@
+<h3>Contact</h3>
+
+   <div class="formContact" > 
+      <form method="post" >
+         <span class="success"><?= $userMessages['sendSuccess'] ?></span>
+         <div class="mainDivForm"> 
+            <div class="formDiv">
+               <label for="firstName">FirstName
+                  <span class="errorMessage"><?=$userMessages['requiredFirstName'] ?></span>
+               </label>
+               <input type="text"  id="firstName" name="firstName">
+            </div>
+            <div class="formDiv">
+               <label for="lastName">Name
+                  <span class="errorMessage"><?=$userMessages['requiredLastName'] ?></span>
+               </label>
+               <input type="text"  id="lastName" name="lastName">
+            </div>
+            <div class="formDiv">
+               <label for="phone">Phone
+                  <span class="errorMessage"><?=$userMessages['requiredPhone'] ?></span>
+               </label>
+               <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="formDiv">
+               <label for="eMail">Email
+                  <span class="errorMessage"><?=$userMessages['requiredEmail'] ?></span>
+               </label>
+               <input type="email" id="eMail" name="eMail">
+            </div>
+            <div class="formDiv">
+               <label for="message" >Message
+                  <span class="errorMessage"><?=$userMessages['requiredMessage'] ?></span>
+               </label>
+               <textarea id='message' name='message' rows="5" cols="40" ></textarea>
+            </div>
+            <div class="formDivSubmit iconDiv">
+               <i class="fa-solid fa-paw icon"></i>
+               <input type="submit" value="" name="sendMessageSubmit" class="inputWithIcon">
+            </div>
+         </div>
+      </form>
+   </div>
+    
+   <script src="view/js/contact.js"></script>

@@ -43,8 +43,9 @@
             </form>
         </div> 
     </div>  
-      <h3>Liste des Articles</h3>
+   
 <div class="adminArticlesDiv">
+<h3>Liste des Articles</h3>
     <div class="adminArticlesTable tableAdmin">
         <span class="success"><?= $AdminPhotosMessages['sendSuccess'] ?></span>
         <table>
@@ -55,8 +56,6 @@
             </span>
                 
             <thead>
-            
-            
                 <th>Photos d'article <i class="fa-solid fa-eye viewPhotosButton icon"></i> </th>
                 <th>Article <i class="fa-solid fa-plus addArticleButton icon"></i></th> 
                 <th>Supprimer l'article</th>
@@ -99,8 +98,9 @@
                 <input type="submit" class="closePhotosButton inputWithIcon" value='' > 
             </div>
                     <?php foreach($articles as $article): ?>
+                        
                         <div class='photoListAdmin'>
-                            <h1><?= $article ->getName() ?></h1>
+                        <h4><?= $article ->getName() ?></h4>
                             <?php foreach($article->getPhotoList() as $photoByArt): ?>
                                 <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>" />
                             <?php endforeach; ?>

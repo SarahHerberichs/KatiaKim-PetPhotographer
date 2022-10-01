@@ -47,6 +47,6 @@ if ( isset ($_POST['sendMessageSubmit']) ) {
         $userMessages['sendSuccess'] = 'Message bien envoyé';
     }
 }
-require 'view/contact/contact.phtml';
+require 'view/contact.phtml';
 
 ?>

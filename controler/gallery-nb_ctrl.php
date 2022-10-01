@@ -73,7 +73,7 @@ $galleryGetName = $gallery ->getName();
     $articleRepo = new ArticleRepository();
     $articlesByGallery = $articleRepo->listArticlesByGallery($galleryGetName);
 
-require 'view/gallery-nb/gallery-nb.phtml';
+require 'view/gallery-nb.phtml';
 
 ?>
 
