@@ -23,38 +23,74 @@ mobileNavAnimation();
 /* Gestion Caroussel */
 
 var counter = 0;
-var timer;
-var elements;
-var slides;
-var slideWidth;
+let timer, mainDivCarousel, slides, slideWidth, decal;
+const diapo = document.querySelector(".diapo");
 
 window.onload = () => {
-  var diapo = document.querySelector(".diapo");
-  var next = document.querySelector(".next");
+  //les div contenant les photos
+  mainDivCarousel = document.querySelector(".mainDivCarousel");
+  console.log(typeof mainDivCarousel);
+  //Clone de la 1e image
+  let firstImage = mainDivCarousel.firstElementChild.cloneNode(true);
+  //ajout de cette image a la collection
+  mainDivCarousel.appendChild(firstImage);
+  //Créa d'un tableau a partir d'une nodelist
+  slides = Array.from(mainDivCarousel.children);
+  //les boutons
+  let next = document.querySelector("#rightButton");
+  let prev = document.querySelector("#leftButton");
+  //recup de la largeur d'ecran
+  slideWidth = document.body.clientWidth;
 
-  elements = document.querySelector(".elements");
-
-  //récup de la premiere image
-  let firstImage = elements.firstElementChild.cloneNode(true);
-  // injection de cette image a la fin du diapo
-  elements.appendChild(firstImage);
-
-  slides = Array.from(elements.children);
-  //recup de la largeur d'une slide
-  slideWidth = diapo.getBoundingClientRect().width;
-
+  //au click sur chq bouton, lancer evenement
   next.addEventListener("click", slideNext);
+  prev.addEventListener("click", slidePrev);
 };
 function slideNext() {
+  //incrémentation du compteur
   counter++;
-  elements.style.transition = "1s linear";
-  var decal = -slideWidth * counter;
-  elements.style.transform = `translateX(${decal}px)`;
+  mainDivCarousel.style.transition = "1s linear";
+  //decalage negatif de largeur de l'écran * compteur
+  let decal = -slideWidth * counter;
+  //translate de cette valeur (la premiere translation atteint la premiere image, il peut y avoit 3 transition)
+  mainDivCarousel.style.transform = `translateX(${decal}px)`;
+  //Retour à image initiale si on arrive a la derniere, meme durée de transition
   setTimeout(function () {
-    if (counter <= slides.length - 1) {
+    //si on arrive a la derniere translation possible, on repart à zero (translate zero = img 1)
+    if (counter >= slides.length - 1) {
       counter = 0;
-      elements.style.transition = "unset";
-      elements.style.transform = "translateX(0)";
+      mainDivCarousel.style.transition = "unset";
+      mainDivCarousel.style.transform = "translateX(0)";
     }
   }, 1000);
 }
+
+function slidePrev() {
+  //décrémentation du compteur
+  counter--;
+  mainDivCarousel.style.transition = "1s linear";
+  //s'il est inférieur à zero
+  if (counter < 0) {
+    //si counter = décrémenté arrive à -1, on repart à la derniere img, sans effets
+    counter = slides.length - 1;
+    mainDivCarousel.style.transition = "unset";
+    mainDivCarousel.style.transform = "translateX(0)";
+    //rappel de la fonction (pour recuperer la transition lineaire)
+    setTimeout(slidePrev, 1);
+  }
+  //
+  let decal = -slideWidth * counter;
+  mainDivCarousel.style.transform = `translateX(${decal}px)`;
+}
+//lancement auto toutes les 4secondes d'un slideNext
+timer = setInterval(slideNext, 4000);
+
+//gestion des evenements souris
+function stopTimer() {
+  clearInterval(timer);
+}
+function startTimer() {
+  timer = setInterval(slideNext, 4000);
+}
+diapo.addEventListener("mouseover", stopTimer);
+diapo.addEventListener("mouseout", startTimer);

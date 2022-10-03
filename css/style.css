@@ -31,17 +31,15 @@ body {
   margin: auto;
 }
 main {
-  margin-top: 2em;
+  margin-top: 4em;
   text-align: center;
   font-family: "Lato-Regular";
 }
 /*Header and Footer */
 header {
-  margin-bottom: 2em;
   max-height: 100%;
 }
-header,
-footer {
+header {
   padding-top: 1em;
   padding-bottom: 1em;
   min-height: 10em;
@@ -49,10 +47,15 @@ footer {
   color: rgb(222, 218, 209);
 }
 /*footer*/
-.footer {
+footer {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-top: 1em;
+  padding-top: 0.2;
+  padding-bottom: 0.2em;
+  background-color: #010101;
+  color: rgb(222, 218, 209);
 }
 .contact {
   display: flex;
@@ -99,23 +102,26 @@ h3 {
   animation: "textAnim" 0.7s linear;
 }
 /*ICONS*/
-.iconDiv {
-  text-decoration: none;
+/*div englobant icon et inputsubmit*/
+.formDivSubmit {
   position: relative;
-  margin: auto;
+  width: 100%;
 }
-.icon,
-input[type="submit"] {
+/*.icon,
+input[type="submit"]*/
+.inputWithIcon,
+.icon {
   font-size: 2em;
   cursor: pointer;
 }
-.inputWithIcon {
-  width: 100%;
-  margin: auto;
-  border: 0;
-  margin-left: 20%;
-  padding: 1em;
+.pawButton,
+.deleteArticleButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding-right: 2em;
   background-color: transparent;
+  border: 0;
 }
 .fa-paw {
   position: absolute;
@@ -125,28 +131,49 @@ input[type="submit"] {
   z-index: -1;
   transform: rotate(45deg);
 }
-.fa-window-close {
-  position: absolute;
-  font-size: 3em;
-  right: 5%;
-  z-index: -1;
-}
 .fa-trash {
   position: absolute;
-  font-size: 3em;
-  left: 40%;
-
-  z-index: -5;
+  font-size: 2em;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
 }
+.closePhotosButton {
+  position: absolute;
+  background: transparent;
+  right: 0;
+  padding-left: 1em;
+  border: 0;
+}
+.closeAddArticleButton {
+  position: absolute;
+  width: 2em;
+  background: transparent;
+  right: 0;
+  border: 0;
+}
+.fa-window-close {
+  position: absolute;
+  font-size: 2em;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
 /*ARTICLES*/
 .article {
-  margin: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin: 2em;
 }
+.investmentArticle section,
+.aboutMe {
+  margin: 3em;
+  padding: 1em 0;
+}
+
 .price {
   display: block;
+  margin: 1em;
+  margin-bottom: 4em;
 }
 /*Animation des titres*/
 @keyframes textAnim {
@@ -249,9 +276,17 @@ header .title {
 
 /*----------------------------------Pages générales+navBar-Responsive ----------------------------------*/
 @media (min-width: 880px) {
+  body {
+    font-size: 20px;
+  }
   article {
     padding: 1em 10em;
     text-align: left;
+    margin-bottom: 2em;
+  }
+  article .informations {
+    text-align: center;
+    margin-bottom: 3em;
   }
   article h4 {
     text-align: center;
@@ -259,17 +294,12 @@ header .title {
   header {
     width: 100%;
     z-index: 1;
-    padding: 0.7em;
   }
-  .diapo {
-    margin-top: 8em;
-  }
+
   header .title {
     width: 100%;
   }
-  main {
-    padding: 2em 4em;
-  }
+
   .nav {
     display: flex;
     flex-direction: row;
@@ -343,33 +373,54 @@ header .title {
   }
 }
 /*-------------------------Caroussel----------------------------*/
-/*objectfit:cov*/ /*
-.caroussel {
-  width: 100%;
-  border: 1px solid black;
-  margin: auto;
-}
-.caroussel img {
-  width: auto;
-  height: 10em;
-}*/
+
 .diapo {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  width: 100%;
+  height: auto;
   position: relative;
   overflow: hidden;
+  background-color: #927812;
 }
-.elements {
-  display: flex;
-}
-.element {
-  flex: 1 0 100%;
-  border: 1px solid black;
-  height: 22em;
-}
-.element > img {
-  width: 100%;
-  height: 100%;
+#rightButton,
+#leftButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3em;
+  color: white;
 }
 
+#rightButton {
+  right: 20px;
+}
+#leftButton {
+  left: 20px;
+}
+.mainDivCarousel {
+  display: flex;
+
+  /*transition: 1s linear;*/
+}
+.picturesCarousel {
+  position: relative;
+  /*grow( facteur d'expansion par rapport aux autres),shrink(facteur de rétrécissement),basis(place par rapport a conteneur)*/
+  /* pas d'agrandissement, pas de rétrécissement*/
+  flex: 1 0 100%;
+}
+.picturesCarousel > img {
+  max-width: 100%;
+  height: 16em;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 880px) {
+  .picturesCarousel > img {
+    height: 20em;
+  }
+}
 /*-------------------------------MainGallerys----------------------------------*/
 /*Div englobant galleries (titre + div photos-->non visible avant click) */
 .mainDivGallery {
@@ -452,9 +503,9 @@ header .title {
 /*-----------------------------Formulaire Contact------------------------------*/
 
 .mainDivForm {
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
   margin: auto;
   margin-bottom: 5em;
 }
@@ -463,7 +514,7 @@ header .title {
   width: 100%;
   justify-content: flex-start;
   align-content: center;
-  margin: 2em 0.5em 0.5em;
+  margin: 2em 0;
   border-radius: 4px;
 }
 .formDiv input,
@@ -492,8 +543,8 @@ header .title {
 /* ---------------------------RESPONSIVE --FORMULAIRE------------------*/
 
 @media (min-width: 880px) {
-  .mainDivForm {
-    width: 50%;
+  .formContact .mainDivForm {
+    width: 60%;
   }
 }
 /*------------------------------Tableau Admin*--------------------------*/
@@ -505,10 +556,7 @@ header .title {
 .addArticleDiv {
   border: 1px solid Black;
 }
-.formDivSubmit > .fa-window-close {
-  margin-left: 1.2em;
-  margin-top: 0.2em;
-}
+
 .tableAdmin {
   padding: 50% 0;
   height: 0;
@@ -549,7 +597,7 @@ table th {
   border: 1px solid black;
   border-radius: 0.5em;
   margin: 1em;
-  padding: 0.5em;
+  padding: 1em;
   max-width: 100%;
   display: grid;
   grid-gap: 1em;
@@ -567,12 +615,12 @@ table th {
 }
 .viewArticlesImages {
   padding: 0.7em;
-}
+} /*
 .closePhotosButton {
   margin: auto;
   padding: 1em;
   border: 1px solid blue;
-}
+}*/
 .adminArticlesDiv {
   margin: auto;
 }
@@ -581,12 +629,12 @@ table th {
 @media (min-width: 880px) {
   .photoListAdmin {
     max-width: 40%;
-  }
+  } /*
   .closePhotosButton {
     margin: auto;
     padding: 1em;
     border: 1px solid blue;
-  }
+  }*/
   .adminArticlesDiv .adminContactDiv {
     margin: auto;
   }
@@ -594,9 +642,7 @@ table th {
     margin: auto;
     margin-bottom: 1em;
   }
-  .mainDivForm {
-    width: 50%;
-  }
+
   table {
     transform: none;
     margin-top: 0;

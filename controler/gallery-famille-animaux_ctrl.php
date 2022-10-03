@@ -71,7 +71,8 @@ $galleryGetName = $gallery ->getName();
         }  
         $articleRepo = new ArticleRepository();
         $articlesByGallery = $articleRepo->listArticlesByGallery($galleryGetName);
-require 'view/gallery-famille-animaux.phtml';
+
+        require 'view/gallery-famille-animaux.phtml';
 
 ?>
 

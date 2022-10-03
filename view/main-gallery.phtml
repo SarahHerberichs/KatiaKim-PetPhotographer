@@ -1,3 +1,6 @@
+<?php
+require "carousel.phtml"
+?>
 <div class="mainDivGallery">  
       <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
          <a href="?page=adminArticles">Articles</a>
@@ -14,12 +17,12 @@
             <div class="nthGalleryDivTitle firstGallery">
                <h4> <?= $article->getName() ?> </h4>
                <input type="hidden" name="articleId" value=<?= $article->getId() ?>>
-               <img src="../../admin/files/<?= $article->getPhoto() ?>"  />
+               <img src="admin/files/<?= $article->getPhoto() ?>"  />
             </div>
             <!--Photos de chaque article + bouton close-->
             <div class="nthGalleryDivPhotos gridDiv invisible" name="invisible">
                <?php foreach($article->getPhotoList() as $photoByArt): ?>
-                  <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>">
+                  <img src="../admin/files/<?= $photoByArt ->getPhoto() ?>">
                <?php endforeach; ?> 
             </div>
             <input type='button' value='close' class='buttonCloseGallery invisible'>

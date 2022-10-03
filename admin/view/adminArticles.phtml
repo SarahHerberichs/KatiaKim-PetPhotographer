@@ -7,7 +7,7 @@
         <div class="mainDivForm">
             <div class="formDivSubmit iconDiv">
                 <i class="fa fa-window-close" aria-hidden="true"></i>
-                <input type="submit" class="closeAddArticleButton inputWithIcon" value='Fermer' >  
+                <input type="submit" class="closeAddArticleButton inputWithIcon" value='' >  
             </div>
             <h3>Ajouter un Article</h3>
             <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
@@ -78,7 +78,7 @@
                             <td>
                                 <div class="formDivSubmit iconDiv">
                                     <i class="fa-solid fa-trash icon"></i>
-                                    <input type="submit" value='' name="deleteArticle" class="deleteArticle inputWithIcon">
+                                    <input type="submit" value='' name="deleteArticleButton" class="deleteArticleButton inputWithIcon">
                                 </div>
                             </td>
                             <td><?= $article ->getGalleryName() ?></td>

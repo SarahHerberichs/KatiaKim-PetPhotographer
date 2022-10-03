@@ -11,100 +11,82 @@
     <script src="https://kit.fontawesome.com/f924bf4e1d.js" crossorigin="anonymous"></script>
     <title>Katia Kim Pet Photographer in Truckee Tahoe</title>
 </head>
-<body>
-   <div class="header">
-      <header>
-         <div class="title">
-            <h1>Katia Kim</h1>
-            <h2>Pet Photographer</h2>
-         </div>
-
-         <nav>   
-            <div id="navBar" class="nav">
-               <div class="dropdown">
-                     <a href ="?page=home"><button class="tabButton">Accueil</button></a>
-                     <!--<div class="linkDiv">
-                        <a href="#">SousOnglet1-1</a>
-                        <a href="#">SousOnglet1-2</a>
-                        <a href="#">SousOnglet1-3</a>
-                     </div>-->
-               </div>
-               <div class="dropdown">
-                  <button class="tabButton">Gallery</button>
-                  <div class="linkDiv">
-                     <a href="?page=galleryNB">Noir&Blanc</a>
-                     <a href="?page=galleryFamilleAnimaux">Famille&Animaux</a>
-                     <a href="?page=galleryEvenements">Evenements</a>
-                  </div>
-               </div>
-               <div class="dropdown">
-                  <a href="?page=tarifs-infos"><button class="tabButton">Tarifs&Infos</button></a>
-                  <!--<div class="linkDiv">
-                     <a href="#">SousOnglet3-1</a>
-                     <a href="#">SousOnglet3-2</a>
-                     <a href="#">SousOnglet3-3</a>
-                  </div>-->
-               </div>
-
-               <div class="dropdown">
-                  <a href="?page=contact"><button class="tabButton">Contact</button></a>
-                  <!--<div class="linkDiv">
-                     <a href="#">SousOnglet4-1</a>
-                     <a href="#">SousOnglet4-2</a>
-                     <a href="#">SousOnglet4-3</a>
-                  </div>-->
-               </div>
-               <a href="#" class='iconBurger'>&#9776</a>
+   <body>
+      <div class="header">
+         <header>
+            <div class="title">
+               <h1>Katia Kim</h1>
+               <h2>Pet Photographer</h2>
             </div>
-         </nav>
-      </header>
-   </div>
-   <!--<section class="caroussel">SECTION CAROUSSEL-->
-   <div class="diapo">
-      <div class="next">NEXT</div>
-      <div class="elements">
-         <div class="element">
-            <img src="admin\files\0EF814C5-EB2B-4FC9-87F7-6B88E7FE7334(1).jpg" alt="">
+
+            <nav>   
+               <div id="navBar" class="nav">
+                  <div class="dropdown">
+                        <a href ="?page=home"><button class="tabButton">Accueil</button></a>
+                        <!--<div class="linkDiv">
+                           <a href="#">SousOnglet1-1</a>
+                           <a href="#">SousOnglet1-2</a>
+                           <a href="#">SousOnglet1-3</a>
+                        </div>-->
+                  </div>
+                  <div class="dropdown">
+                     <button class="tabButton">Gallery</button>
+                     <div class="linkDiv">
+                        <a href="?page=galleryNB">Noir&Blanc</a>
+                        <a href="?page=galleryFamilleAnimaux">Famille&Animaux</a>
+                        <a href="?page=galleryEvenements">Evenements</a>
+                     </div>
+                  </div>
+                  <div class="dropdown">
+                     <a href="?page=tarifs-infos"><button class="tabButton">Tarifs&Infos</button></a>
+                     <!--<div class="linkDiv">
+                        <a href="#">SousOnglet3-1</a>
+                        <a href="#">SousOnglet3-2</a>
+                        <a href="#">SousOnglet3-3</a>
+                     </div>-->
+                  </div>
+
+                  <div class="dropdown">
+                     <a href="?page=contact"><button class="tabButton">Contact</button></a>
+                     <!--<div class="linkDiv">
+                        <a href="#">SousOnglet4-1</a>
+                        <a href="#">SousOnglet4-2</a>
+                        <a href="#">SousOnglet4-3</a>
+                     </div>-->
+                  </div>
+                  <a href="#" class='iconBurger'>&#9776</a>
+               </div>
+            </nav>
+         </header>
+      </div>
+      <!--<section class="caroussel">SECTION CAROUSSEL-->
+      <main>
+         <?php require 'router.php' ?>
+      </main>
+
+   </body>
+
+   <footer>
+      <div class="footer">
+         <div class="social">
+            <div class="logos">
+               <a href="INSTA"><i class="fa fa-instagram"></i></a>
+               <a href="TWITTER"><i class="fa-brands fa-twitter"></i></a>
+               <a href="FB"><i class="fa-brands fa-facebook"></i></a>
+               <a href="Linkedin"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
          </div>
-         <div class="element">
-            <img src="admin\files\KAT_2916-Edit.jpg" alt="">
-         </div>
-         <div class="element">
-            <img src="admin\files\6E2B0454-F479-495B-95B2-94F76493F6CC(1).jpg" alt="">
-         </div>
-         <div class="element">
-            <img src="admin\files\48E5D114-B419-4FC0-953B-38DFA41DB860(1).jpg" alt="">
+         <div class="contact">
+            <a href="?page=contact">Contact me</a>
+            <div class="adressAndPhone">
+               <p>+650 328 456</p>
+               <p>728 Oak St </p>
+               <p> Truckee CA</p>
+            </div>
+            <p>katiakimphotos@gmail.com</p>
          </div>
       </div>
-   </div> 
-
-   <main>
-      <?php require 'router.php' ?>
-   </main>
-
-</body>
-
-<footer>
-   <div class="footer">
-      <div class="social">
-         <div class="logos">
-            <a href="INSTA"><i class="fa fa-instagram"></i></a>
-            <a href="TWITTER"><i class="fa-brands fa-twitter"></i></a>
-            <a href="FB"><i class="fa-brands fa-facebook"></i></a>
-            <a href="Linkedin"><i class="fa-brands fa-linkedin"></i></a>
-         </div>
-      </div>
-      <div class="contact">
-         <a href="?page=contact">Contact me</a>
-         <div class="adressAndPhone">
-            <p>+650 328 456</p>
-            <p>728 Oak St </p>
-            <p> Truckee </p>
-         </div>
-         <p>katiakimphotos@gmail.com</p>
-      </div>
-   </div>
+   </footer>
    
-</footer>
 <script src="index.js"></script>
 </html>
