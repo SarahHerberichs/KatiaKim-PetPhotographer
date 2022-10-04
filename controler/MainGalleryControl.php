@@ -5,10 +5,9 @@ Class MainGalleryControl {
         private array $POST;
         private array $FILES;
         private PhotoRepository $photoRepo;
-        private string $galleryGetName;
 
-    public function controlPhotos($AdminPhotosMesages,$POST,$FILES,$photoRepo,$galleryGetName) {
-        $AdminPhotosMesages=[    
+    public function controlPhotos($POST,$FILES,$photoRepo) {
+        $AdminPhotosMessages=[    
         'wrongExt' => '',
         'sendSuccess' => '',
         'requiredPhoto' => ''
@@ -45,32 +44,26 @@ Class MainGalleryControl {
                 $AdminPhotosMessages['wrongExt'] = "Invalid File Extension";
             } 
         //-2-------------------Set du nom de la photo--------------------
-            $photo ->setName(
-                $FILES['inputPhoto']['name']
-            );
+            $photo ->setName( $FILES['inputPhoto']['name']);
         //-3-----------------Set de l'article_id associé-----------------
-            $photo ->setArticleId(
-                ($POST['articleId'])
-                );
+            $photo ->setArticleId(($POST['articleId']));
            
         //-4------------- si les msg d'erreurs sont vides----------------
             if (
                 empty ($AdminPhotosMessages['requiredPhoto']) &&
                // empty ($AdminPhotosMessages['requiredArticle']) &&
                 empty ($AdminPhotosMessages['wrongExt'])
-            )
-            {
+            ) {
         //et que le telechargement de la photo a reussi
                 if (move_uploaded_file($fileTmpName, $fileDest)) {
                 //ALORS créa d'une photo à partir des elts saisis
                 $photoRepo ->createPhoto($photo);
                 // ajout de cette photo dans PhotoList
                 $AdminPhotosMessages ['sendSuccess'] = 'Picture added';
-                }  
-               
+                }     
             }  
             
-            }
-            return $AdminPhotosMessages;
         }
-    }  
+            return $AdminPhotosMessages;
+    }
+}  

@@ -2,6 +2,7 @@
    <?=$AdminPhotosMessages['requiredPhoto'] ?>
    <?=$AdminPhotosMessages['wrongExt'] ?>
 </span>
+<span class="success"><?=$AdminPhotosMessages['sendSuccess'] ?></span>
 <?php
 require "carousel.phtml"
 ?>
@@ -29,7 +30,7 @@ require "carousel.phtml"
             <!-- Ajout de photos pour admin -->
             <div class="nthDivAdminPhotos">
                <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
-                  <span class="success"><?=$AdminPhotosMessages['sendSuccess'] ?></span>
+                 
                   <p>Ajouter Photo</p>
                   <form method="POST" enctype="multipart/form-data">
                      <input type="file" value="inputPhoto" name="inputPhoto">
