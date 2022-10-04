@@ -14,6 +14,7 @@ class MessageRepository {
         ) VALUES (
           UUID(), :firstName, :lastName, :phone, :mail, :message , " "
         );
+      
     ');
 
     $stmt->bindValue ('firstName', $message->getFirstName());
@@ -29,6 +30,7 @@ class MessageRepository {
   public function listMessages(): array {
     $stmt = $this->_connexion->prepare('
       SELECT * FROM contact
+      ORDER BY date DESC
     ');
     $stmt->execute();
 
@@ -51,7 +53,9 @@ class MessageRepository {
   public function setNewMsgWhereId(String $id) :Message {
     $stmt = $this->_connexion->prepare('
     SELECT * FROM contact 
-    WHERE id = :id');
+    WHERE id = :id
+    ORDER BY date DESC'
+  );
     $stmt->bindValue('id', $id);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);

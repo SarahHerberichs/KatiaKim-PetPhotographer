@@ -44,7 +44,7 @@ if ( isset ($_POST['sendMessageSubmit']) ) {
     {
         //insertion du message sété dans la BDD et envoi msg de validation
         $messageRepository->createMessage($message);
-        $userMessages['sendSuccess'] = 'Message bien envoyé';
+        $userMessages['sendSuccess'] = 'Thanks for your message';
     }
 }
 require 'view/contact.phtml';

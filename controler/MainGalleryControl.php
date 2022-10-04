@@ -1,25 +1,24 @@
 <?php
 
+Class MainGalleryControl {
+        private array $AdminPhotosMessages;
+        private array $POST;
+        private array $FILES;
+        private PhotoRepository $photoRepo;
+        private string $galleryGetName;
 
-$photoRepo = new PhotoRepository();
-//Insertion  en dure d'une galleryName
-$gallery = new Gallery();
-$gallerySetName = $gallery ->setName("galleryEvenements");
-$galleryGetName = $gallery ->getName();
-
-//messages d'erreur initialisés
-    $AdminPhotosMessages = [
+    public function controlPhotos($AdminPhotosMesages,$POST,$FILES,$photoRepo,$galleryGetName) {
+        $AdminPhotosMesages=[    
         'wrongExt' => '',
         'sendSuccess' => '',
-        'requiredPhoto' => '',
+        'requiredPhoto' => ''
     ];
-        //si formulaire soumis,création d'une photo pour gestion des erreurs ou Set de ses parametres
-        //bouton submit , bouton champ d'entrée
-        if ( isset ($_POST['addNewPhoto']) && (isset($_FILES['inputPhoto']))) {
+
+        if ( isset ($POST['addNewPhoto']) && (isset($FILES['inputPhoto']))) {
             $photo = new Photo ();
         /*------------------------Gestion Photos-------------------------*/
-            $fileName = $_FILES['inputPhoto']['name'];
-            $fileTmpName = $_FILES['inputPhoto']['tmp_name'];
+            $fileName = $FILES['inputPhoto']['name'];
+            $fileTmpName = $FILES['inputPhoto']['tmp_name'];
             //list des extensions valides
             $validExt = ['.jpeg', '.jpg', '.gif', '.png'];
             //recup de l'extension du fichier
@@ -27,7 +26,7 @@ $galleryGetName = $gallery ->getName();
             //Destination finale de la photo
             $fileDest = "admin/files/".$fileName;
         /*--------------------------------------------------------------*/ 
-
+    
         /*---------Set des champs saisis et des msg d'erreurs-----------*/
            
         //-1----------------------Set la photo------------------------
@@ -35,7 +34,7 @@ $galleryGetName = $gallery ->getName();
             $AdminPhotosMessages['requiredPhoto'] = 
             $photo ->setPhoto (
                 //champ d'entré de la photo inputPhoto
-                ($_FILES['inputPhoto']['name'])
+                ($FILES['inputPhoto']['name'])
             );   
         //si photoInséree, mais que probleme d'extension, msg d'erreur
             if (
@@ -43,15 +42,15 @@ $galleryGetName = $gallery ->getName();
                 && 
             (!in_array($fileExt, $validExt)) 
                 ) {
-                $AdminPhotosMessages['wrongExt'] = "Mauvaise Extension";
+                $AdminPhotosMessages['wrongExt'] = "Invalid File Extension";
             } 
         //-2-------------------Set du nom de la photo--------------------
             $photo ->setName(
-                $_FILES['inputPhoto']['name']
+                $FILES['inputPhoto']['name']
             );
         //-3-----------------Set de l'article_id associé-----------------
             $photo ->setArticleId(
-                ($_POST['articleId'])
+                ($POST['articleId'])
                 );
            
         //-4------------- si les msg d'erreurs sont vides----------------
@@ -66,15 +65,12 @@ $galleryGetName = $gallery ->getName();
                 //ALORS créa d'une photo à partir des elts saisis
                 $photoRepo ->createPhoto($photo);
                 // ajout de cette photo dans PhotoList
-                $AdminPhotosMessages ['sendSuccess'] = 'Photo Bien Crée';
+                $AdminPhotosMessages ['sendSuccess'] = 'Picture added';
                 }  
+               
             }  
-        }  
-        $articleRepo = new ArticleRepository();
-        $articlesByGallery = $articleRepo->listArticlesByGallery($galleryGetName); 
-        
-        require 'view/gallery-evenements.phtml';
-
-?>
-
-
+            
+            }
+            return $AdminPhotosMessages;
+        }
+    }  

@@ -10,16 +10,22 @@
   src: url("fonts/Oswald-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Oswald-ExtraLight";
+  font-family: "Oswald-Bold";
   font-style: normal;
   font-weight: bold;
-  src: url("fonts/Oswald-ExtraLight.ttf") format("truetype");
+  src: url("fonts/Oswald-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "Lato-Regular";
   font-style: normal;
   font-weight: 400;
   src: url("fonts/Lato-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lato-Bold";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Lato-Bold.ttf") format("truetype");
 }
 /*------------------------Grands blocs---------------------------*/
 body {
@@ -94,12 +100,19 @@ footer {
 /*Titres*/
 h1,
 h2 {
-  font-family: "Oswald-Regular", Verdana, sans-serif;
+  font-family: "Oswald-Bold", Verdana, sans-serif;
 }
 /*Titres de chq page*/
 h3 {
   font-size: 1.5em;
   animation: "textAnim" 0.7s linear;
+}
+.adminLink {
+  font-size: 1.5em;
+  color: rgb(39, 45, 144);
+}
+.adminLink:before {
+  content: "->";
 }
 /*ICONS*/
 /*div englobant icon et inputsubmit*/
@@ -195,7 +208,7 @@ input[type="submit"]*/
 header .title {
   width: 30%;
   text-align: center;
-  margin-left: 1em;
+  padding-left: 1em;
 }
 /*Comportement quand visible*/
 .nav {
@@ -534,6 +547,7 @@ header .title {
 
 .errorMessage {
   color: red;
+  font-size: 2em;
 }
 .success {
   color: rgb(13, 151, 13);
@@ -558,6 +572,7 @@ header .title {
 }
 
 .tableAdmin {
+  margin: 1em;
   padding: 50% 0;
   height: 0;
 }
@@ -681,3 +696,40 @@ table th {
   }
 }
 */
+.mainDivMobileBoxes {
+  width: 90%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 1em;
+  border: 1px solid red;
+}
+.mobileBoxes {
+  width: 100%;
+  height: auto;
+  border: 1px solid black;
+  /* margin: auto;*/
+  text-align: center;
+  border-radius: 1em;
+  opacity: 0.8;
+  margin-bottom: 1em;
+}
+.mobileBoxes div:nth-child(odd) {
+  background-color: #927812;
+  border-radius: 1em;
+}
+.mobileBoxes div:nth-child(even) {
+  background-color: rgb(222, 218, 209);
+  border-radius: 1em;
+}
+
+@media (min-width: 880px) {
+  .adminContactDiv {
+    display: block;
+  }
+  .mainDivMobileBoxes {
+    display: none;
+  }
+}

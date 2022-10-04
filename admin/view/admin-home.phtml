@@ -1,0 +1,108 @@
+<h2>Vos messages reçus</h2>
+<a href="?page=admin-articles" class="adminLink">Liste des Articles</a>
+<div class="adminContactDiv invisible">
+  <div class="tableAdmin">
+    <table>
+      <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>FirstName</th>
+        <th>Phone</th>
+        <th>eMail</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>Delete Comment</th>
+      </thead>
+
+      <tbody>
+        <?php foreach($messages as $message): ?>
+          <tr>
+            <td><?= $message->getId() ?></td>
+            <td><?= $message->getFirstName() ?></td>
+            <td><?= $message->getLastName() ?></td>
+            <td><?= $message->getPhone() ?></td>
+            <td><?= $message->getEmail() ?></td>
+            <td><?= $message->getMessage() ?></td>
+            <td><?= $message->getDate() ?></td>
+            <td>
+              <form method="POST" class="commentForm">
+                <label for="comment"></label>
+                <textarea name="comment" id="comment" type="text"></textarea>
+                <textarea name="reEditcomment" id="reEditComment" type="text" class='invisible'></textarea>
+                <input type="hidden" name="id" value= '<?= $message->getId() ?>' />           
+                <input type="submit" name="commentSubmit" value="Valider" />
+              </form>
+              <div class="newComment" name="newCommentDiv"><?= $message->getComment() ?></div>
+              <input type="submit" class="invisible" name="reEditButton" value="Edit">
+            </td> 
+            <td>
+              <form method="POST" class="removeMessage">
+                <input type="hidden" name="id" value= '<?= $message->getId() ?>' />    
+                <input type="submit" class="deleteLine" name="delete" value="Delete"></input>
+              </form>
+            </td> 
+          </tr>
+        <?php endforeach; ?> 
+      </tbody>
+    </table>
+  </div>
+</div>  
+          <div class="mainDivMobileBoxes">
+            <?php foreach($messages as $message): ?>
+              <div class="mobileBoxes">
+                
+                  <div class="id">
+                    <h4>iD</h4>
+                    <?= $message->getId() ?>
+                  </div>
+                  <div class="name">
+                    <h4>Name</h4>
+                    <?= $message->getFirstName() ?>
+                  </div>
+                  <div class="phone">
+                    <h4>Phone</h4>
+                    <?= $message->getPhone() ?>
+                  </div>
+                  <div class="mail">
+                    <h4>Email</h4>
+                    <?= $message->getEmail() ?>
+                  </div>
+                  <div class="message">
+                    <h4>Message</h4>
+                    <?= $message->getMessage() ?>
+                  </div>
+                  <div class="date">
+                    <h4>Date</h4>
+                    <?= $message->getDate() ?>
+                  </div>
+                  
+                  <div class= "commentMessage">
+                    <div class="form">
+                      <h4>Comment</h4>
+                      <form method="POST" class="commentForm">
+                        <label for="comment"></label>
+                        <textarea name="comment" id="comment" type="text"></textarea>
+                        <textarea name="reEditcomment" id="reEditComment" type="text" class='invisible'></textarea>
+                        <input type="hidden" name="id" value= '<?= $message->getId() ?>' />           
+                        <input type="submit" name="commentSubmit" value="Valider" />
+                      </form>
+                    </div>
+                    <input type="submit" class="invisible" name="reEditButton" value="Edit">
+                    <div class="newComment" name="newCommentDiv"><?= $message->getComment() ?></div>
+                  </div>
+
+                  <div class="deleteMessage">
+                    <h4>Delete Message</h4>
+                    <form method="POST" class="removeMessage">
+                      <input type="hidden" name="id" value= '<?= $message->getId() ?>' />    
+                      <input type="submit" class="deleteLine" name="delete" value="Delete"></input>
+                    </form>
+                  </div>
+                  
+              </div>
+              <?php endforeach; ?> 
+
+          </div>
+
+<script src="admin/js/adminHome.js"></script>

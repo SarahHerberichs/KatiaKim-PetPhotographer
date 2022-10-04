@@ -46,7 +46,7 @@ if (isset ($_POST['deleteArticleButton'])) {
             && 
             (!in_array($fileExt, $validExt)) 
             ) {
-                $AdminMessages['wrongExt'] = "Mauvaise Extension";
+                $AdminMessages['wrongExt'] = "Invalid file Extension";
         } 
         /*-2---------------Set du titre et de la gallery--------------*/
         $AdminMessages ['requiredTitle'] =
@@ -66,7 +66,7 @@ if (isset ($_POST['deleteArticleButton'])) {
             if (move_uploaded_file($fileTmpName, $fileDest)) {
             //insertion de l'article sété dans la BDD et envoi msg de validation
                 $articleRepo ->createArticle($article);
-                $AdminMessages['sendSuccess'] = 'Article Bien Crée';
+                $AdminMessages['sendSuccess'] = 'Article added';
                 $addArticleVisibility = "invisible";
             } 
         }  
@@ -113,7 +113,7 @@ if (isset ($_POST['deleteArticleButton'])) {
                 && 
                 (!in_array($fileExt, $validExt)) 
                 ) {
-                    $AdminPhotosMessages['wrongExt'] = "Mauvaise Extension";
+                    $AdminPhotosMessages['wrongExt'] = "Invalid File Extension";
             } 
             $addArticleVisibility = "";
             /*-2-------------Set du nom de la photo--------------*/
@@ -131,12 +131,12 @@ if (isset ($_POST['deleteArticleButton'])) {
                 if (move_uploaded_file($fileTmpName, $fileDest)) {
                 //insertion de l'article sété dans la BDD et envoi msg de validation
                     $photoRepo ->createPhoto($photo);
-                    $AdminPhotosMessages['sendSuccess'] = 'Photo Bien Crée';
+                    $AdminPhotosMessages['sendSuccess'] = 'Picture added';
                 } 
             }   
         }  
       
 
     //rediriger vers bonne page?? si article =...si article=...si article=...header();
-    require 'admin/view/adminArticles.phtml';
+    require 'admin/view/admin-articles.phtml';
 

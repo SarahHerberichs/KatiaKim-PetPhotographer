@@ -1,8 +1,13 @@
 <?php
 
-Class mainGalleryControl {
 
-    public function mainGalleryCtrl ( $galleryGetName, $photoRepo) {
+$photoRepo = new PhotoRepository();
+//Insertion  en dure d'une galleryName
+$gallery = new Gallery();
+$gallerySetName = $gallery ->setName("gallery events");
+$galleryGetName = $gallery ->getName();
+
+//messages d'erreur initialisés
     $AdminPhotosMessages = [
         'wrongExt' => '',
         'sendSuccess' => '',
@@ -38,7 +43,7 @@ Class mainGalleryControl {
                 && 
             (!in_array($fileExt, $validExt)) 
                 ) {
-                $AdminPhotosMessages['wrongExt'] = "Mauvaise Extension";
+                $AdminPhotosMessages['wrongExt'] = "Invalid File Extension";
             } 
         //-2-------------------Set du nom de la photo--------------------
             $photo ->setName(
@@ -61,11 +66,15 @@ Class mainGalleryControl {
                 //ALORS créa d'une photo à partir des elts saisis
                 $photoRepo ->createPhoto($photo);
                 // ajout de cette photo dans PhotoList
-                $AdminPhotosMessages ['sendSuccess'] = 'Photo Bien Crée';
+                $AdminPhotosMessages ['sendSuccess'] = 'Picture added';
                 }  
             }  
         }  
         $articleRepo = new ArticleRepository();
         $articlesByGallery = $articleRepo->listArticlesByGallery($galleryGetName); 
-}
-}
+        
+        require 'view/gallery-events.phtml';
+
+?>
+
+

@@ -17,7 +17,7 @@ class Photo {
 
     public function setPhoto(string $photo): string {
         if (empty ($photo)) {
-            return "renseignez une photo";
+            return "Insert a picture";
         }
         else {
             $this ->_photo = $photo;

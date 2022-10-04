@@ -4,7 +4,7 @@
 $photoRepo = new PhotoRepository();
 //Insertion  en dure d'une galleryName
 $gallery = new Gallery();
-$gallerySetName = $gallery ->setName("galleryNB");
+$gallerySetName = $gallery ->setName("gallery black & white");
 $galleryGetName = $gallery ->getName();
 
 //messages d'erreur initialisés
@@ -43,7 +43,7 @@ $galleryGetName = $gallery ->getName();
                 && 
             (!in_array($fileExt, $validExt)) 
                 ) {
-                $AdminPhotosMessages['wrongExt'] = "Mauvaise Extension";
+                $AdminPhotosMessages['wrongExt'] = "Invalid File Extension";
             } 
         //-2-------------------Set du nom de la photo--------------------
             $photo ->setName(
@@ -66,14 +66,14 @@ $galleryGetName = $gallery ->getName();
                 //ALORS créa d'une photo à partir des elts saisis
                 $photoRepo ->createPhoto($photo);
                 // ajout de cette photo dans PhotoList
-                $AdminPhotosMessages ['sendSuccess'] = 'Photo Bien Crée';
+                $AdminPhotosMessages ['sendSuccess'] = 'Picture added';
                 }  
             }   
         }  
     $articleRepo = new ArticleRepository();
     $articlesByGallery = $articleRepo->listArticlesByGallery($galleryGetName);
 
-require 'view/gallery-nb.phtml';
+require 'view/gallery-black-and-white.phtml';
 
 ?>
 

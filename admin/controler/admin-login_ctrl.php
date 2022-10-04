@@ -29,13 +29,13 @@ $userMessages = [
                         $TryConnectCredentials->isValidLogin($adminLog->getLogin())
                        ) { //session is logged = true
                             $_SESSION['isAdmin'] = true;
-                            header('Location:?page=adminHome');
+                            header('Location:?page=admin-home');
                         }
                     } else {
                         //si conditions d'identifications pas valides, redirection
                             $_SESSION['isAdmin'] = false;
-                            header('Location:?page=adminLogin');
+                            header('Location:?page=admin-login');
                     }
             }
     }
-require 'admin/view/adminLogin.phtml';
+require 'admin/view/admin-login.phtml';

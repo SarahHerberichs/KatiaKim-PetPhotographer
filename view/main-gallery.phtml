@@ -1,3 +1,7 @@
+<span class="errorMessage"> 
+   <?=$AdminPhotosMessages['requiredPhoto'] ?>
+   <?=$AdminPhotosMessages['wrongExt'] ?>
+</span>
 <?php
 require "carousel.phtml"
 ?>
@@ -5,24 +9,20 @@ require "carousel.phtml"
       <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
          <a href="?page=adminArticles">Articles</a>
       <?php } ?> 
-      <span class="errorMessage"> 
-         <?=$AdminPhotosMessages['requiredPhoto'] ?>
-         <?=$AdminPhotosMessages['wrongExt'] ?>
-      </span>
 
       <?php foreach($articlesByGallery as $article) : ?>  
             <!--TITRE + MAIN IMG -->   
          <div class="eachArticle">  
 
-            <div class="nthGalleryDivTitle firstGallery">
+            <div class="nthGalleryDivTitle">
                <h4> <?= $article->getName() ?> </h4>
                <input type="hidden" name="articleId" value=<?= $article->getId() ?>>
-               <img src="admin/files/<?= $article->getPhoto() ?>"  />
+               <img src="admin/files/<?= $article->getPhoto() ?>"  alt= "Main photo from <?= $article->getName() ?> article" />
             </div>
             <!--Photos de chaque article + bouton close-->
             <div class="nthGalleryDivPhotos gridDiv invisible" name="invisible">
                <?php foreach($article->getPhotoList() as $photoByArt): ?>
-                  <img src="../admin/files/<?= $photoByArt ->getPhoto() ?>">
+                  <img src="../admin/files/<?= $photoByArt ->getPhoto() ?>" alt ="photo from <?= $article->getName() ?> article">
                <?php endforeach; ?> 
             </div>
             <input type='button' value='close' class='buttonCloseGallery invisible'>

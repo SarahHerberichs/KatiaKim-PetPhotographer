@@ -11,7 +11,7 @@ private string $_password;
         $this ->_password = hash('sha256', $password);
         return '';
     }
-    return 'Veuillez renseigner votre mot de passe';
+    return 'Please, insert your password';
   }
 
   public function setLogin(string $login): string {
@@ -19,7 +19,7 @@ private string $_password;
         $this ->_login = $login;
         return '';
     }
-    return 'Veuillez renseigner votre login';
+    return 'Please, insert your loggin';
     }
     //function de validation de l'identité
   public function isValidPassword(string $accountPassword): bool {

@@ -13,7 +13,7 @@ class Article {
 
     public function setName(string $name): string {
         if (empty ($name)){
-            return "Entrez un Titre d'article";
+            return "Insert a title";
         }
         else {
             $this->_name = $name;
@@ -23,7 +23,7 @@ class Article {
 
     public function setPhoto(string $photo): string {
         if (empty ($photo)) {
-            return "renseignez une photo";
+            return "Insert a picture";
         }
         else {
             $this ->_photo = $photo;
@@ -34,7 +34,7 @@ class Article {
 
     public function setGalleryId(string $gallery_id): string {
         if (empty ($gallery_id)) {
-            return "Selectionnez une gallery";
+            return "Select a gallery";
         }
         else {
             $this ->_gallery_id = $gallery_id;

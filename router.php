@@ -9,29 +9,29 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
         case 'home':
             require 'controler/home_ctrl.php';
             break;
-        case 'galleryEvenements':
-            require 'controler/gallery-evenements_ctrl.php';
+        case 'gallery-events':
+            require 'controler/gallery-events_ctrl.php';
             break;
-        case 'galleryFamilleAnimaux':
-            require 'controler/gallery-famille-animaux_ctrl.php';
+        case 'gallery-pets-and-family':
+            require 'controler/gallery-pets-and-family_ctrl.php';
             break;
-        case 'galleryNB' : 
-            require 'controler/gallery-nb_ctrl.php';
+        case 'gallery-black-and-white' : 
+            require 'controler/gallery-black-and-white_ctrl.php';
             break;
-        case 'tarifs-infos':
-            require 'controler/tarifs-infos_ctrl.php';
+        case 'investment':
+            require 'controler/investment_ctrl.php';
             break;
         case 'contact':
             require 'controler/contact_ctrl.php';
             break;
-        case 'adminLogin':
-            require 'admin/controler/adminLogin_ctrl.php';
+        case 'admin-login':
+            require 'admin/controler/admin-login_ctrl.php';
             break;
-        case 'adminHome':
-            require 'admin/controler/adminHome_ctrl.php';
+        case 'admin-home':
+            require 'admin/controler/admin-home_ctrl.php';
             break;
-        case 'adminArticles';
-            require 'admin/controler/adminArticles_ctrl.php';
+        case 'admin-articles';
+            require 'admin/controler/admin-articles_ctrl.php';
             break;
         default:
             require 'controler/home_ctrl.php';
@@ -46,23 +46,23 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
         case 'home':
             require 'controler/home_ctrl.php';
             break;
-        case 'galleryEvenements':
-            require 'controler/gallery-evenements_ctrl.php';
+        case 'gallery-events':
+            require 'controler/gallery-events_ctrl.php';
             break;
-        case 'galleryFamilleAnimaux':
-            require 'controler/gallery-famille-animaux_ctrl.php';
+        case 'gallery-pets-and-family':
+            require 'controler/gallery-pets-and-family_ctrl.php';
             break;
-        case 'galleryNB' : 
-            require 'controler/gallery-nb_ctrl.php';
+        case 'gallery-black-and-white' : 
+            require 'controler/gallery-black-and-white_ctrl.php';
             break;
-        case 'tarifs-infos':
-            require 'controler/tarifs-infos_ctrl.php';
+        case 'investment':
+            require 'controler/investment_ctrl.php';
             break;
         case 'contact':
             require 'controler/contact_ctrl.php';
             break;
-        case 'adminLogin':
-            require 'admin/controler/adminLogin_ctrl.php';
+        case 'admin-login':
+            require 'admin/controler/admin-login_ctrl.php';
             break;
         default:
             require 'controler/home_ctrl.php';

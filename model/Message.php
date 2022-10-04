@@ -27,7 +27,7 @@ class Message {
     }
     public function setFirstName(string $firstName): string {
         if (empty($firstName)) {
-            return "Entrez votre prenom";
+            return "Please provide a firstname";
         }
         else {
             $this ->_firstName = $firstName;
@@ -37,7 +37,7 @@ class Message {
     }
     public function setLastName(string $lastName): string {
         if (empty($lastName)) {
-            return "Entrez votre nom";
+            return "Please provide a name";
         }
         else {
             $this ->_lastName = $lastName;
@@ -46,7 +46,7 @@ class Message {
     }
     public function setPhone(string $phone): string {
         if (empty($phone)) {
-            return "Entrez votre telephone";
+            return "Please provide a phone number";
         }
         else {
             $this ->_phone = $phone;
@@ -55,7 +55,7 @@ class Message {
     }
     public function setEmail(string $email): string {
         if (empty ($email)) {
-            return "Entrez votre email";
+            return "Please provide your email adress";
         }
         else {
             $this ->_email = $email;
@@ -64,7 +64,7 @@ class Message {
     }
     public function setMessage(string $message): string {
         if (empty ($message)) {
-            return "Votre message est tout vide!";
+            return "Your message is empty!";
         }
         else {
             $this ->_message = $message;
