@@ -1,8 +1,59 @@
 /*objectfit cover */
-* {
-  list-style-type: none;
-  text-decoration: none;
+:root {
+  --main-color: rgb(244, 242, 237);
 }
+@keyframes underlineAnim {
+  from {
+    width: 0%;
+    left: 20%;
+  }
+  to {
+    width: 50%;
+    left: 25%;
+  }
+}
+/*Animation des titres*/
+@keyframes textAnim {
+  from {
+    opacity: 0.4;
+    transform: rotateY(3.142rad);
+    text-shadow: 5px 5px rgba(103, 101, 101, 0.4);
+    font-size: 1em;
+  }
+  to {
+    opacity: 0.8;
+    transform: rotateY(0);
+    text-shadow: none;
+    font-size: 1.5em;
+  }
+}
+@keyframes heightProgressAnimation {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+@keyframes widthProgress {
+  from {
+    width: 60%;
+    opacity: 0.2;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+@keyframes opacityProgress {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @font-face {
   font-family: "Oswald-Regular";
   font-style: normal;
@@ -28,6 +79,10 @@
   src: url("fonts/Lato-Bold.ttf") format("truetype");
 }
 /*------------------------Grands blocs---------------------------*/
+* {
+  list-style-type: none;
+  text-decoration: none;
+}
 body {
   width: 100vw;
   height: 100vh;
@@ -35,11 +90,10 @@ body {
   box-sizing: border-box;
   text-align: center;
   margin: auto;
+  background-color: var(--main-color);
 }
 main {
   margin-top: 4em;
-  line-height: 2em;
-  text-align: center;
   font-family: "Lato-Regular";
 }
 /*Header and Footer */
@@ -49,7 +103,7 @@ header {
   padding-bottom: 1em;
   min-height: 10em;
   background-color: #010101;
-  color: rgb(222, 218, 209);
+  color: var(--main-color);
 }
 /*footer*/
 footer {
@@ -57,16 +111,15 @@ footer {
   flex-direction: column;
   justify-content: space-evenly;
   margin-top: 1em;
-  padding-top: 0.2;
-  padding-bottom: 0.2em;
+  padding-top: 0.4;
+  padding-bottom: 2em;
   background-color: #010101;
-  color: rgb(222, 218, 209);
+  color: var(--main-color);
 }
 .contact {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1em;
 }
 .footer .logos {
   display: flex;
@@ -79,23 +132,22 @@ footer {
 }
 .footer i,
 .footer a {
-  color: rgb(222, 218, 209);
+  color: var(--main-color);
 }
 .footer a {
   text-decoration: underline;
 }
 /*Visibilité*/
-
 .invisible {
   display: none;
 }
-
 .gridVisible {
   display: block;
 }
 .visible {
   display: block;
 }
+
 /*Titres*/
 h1,
 h2 {
@@ -105,7 +157,9 @@ h2 {
 h3 {
   font-size: 1.5em;
   animation: "textAnim" 0.7s linear;
+  margin-bottom: 2em;
 }
+/*liens pour l'administrateur*/
 .adminLink {
   font-size: 1.5em;
   color: rgb(39, 45, 144);
@@ -116,15 +170,14 @@ h3 {
 .adminLink:after {
   content: "<-";
 }
-/*ICONS*/
-/*div englobant icon et inputsubmit*/
+
+/*------ICONS------*/
+/*Div contenant button inputWithIcon et icon*/
 .formDivSubmit {
   position: relative;
   width: 100%;
   height: auto;
 }
-/*.icon,
-input[type="submit"]*/
 .inputWithIcon,
 .icon {
   font-size: 2em;
@@ -177,22 +230,20 @@ input[type="submit"]*/
 }
 
 /*ARTICLES*/
-/*animation tabButton*/
-
 article {
   margin: 2em;
+  line-height: 2em;
 }
-
-h5 {
+/**/
+section h5 {
   position: relative;
   text-decoration: none;
   line-height: 2em;
   width: 15em;
   margin: auto;
 }
-h5:after {
+section h5:after {
   background-color: #11131a;
-
   content: "";
   position: absolute;
   bottom: 0;
@@ -202,38 +253,12 @@ h5:after {
   margin: 0 auto;
   animation: "underlineAnim" 0.7s linear;
 }
-
-@keyframes underlineAnim {
-  from {
-    width: 0%;
-    left: 20%;
-  }
-  to {
-    width: 50%;
-    left: 25%;
-  }
-}
-
 .price {
   display: block;
   margin: 1em;
   margin-bottom: 4em;
 }
-/*Animation des titres*/
-@keyframes textAnim {
-  from {
-    opacity: 0.4;
-    transform: rotateY(3.142rad);
-    text-shadow: 5px 5px rgba(103, 101, 101, 0.4);
-    font-size: 1em;
-  }
-  to {
-    opacity: 0.8;
-    transform: rotateY(0);
-    text-shadow: none;
-    font-size: 1.5em;
-  }
-}
+
 /*---------------------------Style de la navBar------------------------------*/
 /* h1 et h2 du titre*/
 header .title {
@@ -251,7 +276,7 @@ header .title {
 .nav .tabButton {
   display: none;
   margin: auto;
-  color: rgb(222, 218, 209);
+  color: var(--main-color);
   background-color: transparent;
   font-size: 1.5em;
   cursor: pointer;
@@ -261,7 +286,6 @@ header .title {
 .nav .linkDiv {
   display: none;
 }
-
 /*-----------Au click sur iconBurgerBurger: la div navBar prend la class BurgerClicked)-------------- */
 
 /*navBar */
@@ -280,29 +304,19 @@ header .title {
   display: block;
 }
 /*class heightProgress a dropdown au click sur 1 dropdown*/
-/*--> style des blocks de sousOnglets*/
-
+/* style des blocks de sousOnglets*/
 .heightProgress .linkDiv {
   /* passage de none a flex*/
   display: flex;
   flex-direction: column;
   width: 100%;
-  /*occupe toute hauteur dispo en fonction de son parent (dropDown a auto) */
   height: 100%;
-  background-color: rgb(222, 218, 209);
+  background-color: var(--main-color);
   color: #010101;
   animation-name: "heightProgressAnimation";
   animation-duration: 1.5s;
 }
 
-@keyframes heightProgressAnimation {
-  from {
-    height: 0;
-  }
-  to {
-    height: 100%;
-  }
-}
 .linkDiv a {
   color: #010101;
   padding: 2em;
@@ -313,7 +327,7 @@ header .title {
   right: 0.5em;
   top: 1em;
   width: 5%;
-  color: rgb(222, 218, 209);
+  color: var(--main-color);
   font-size: 2em;
 }
 
@@ -321,6 +335,13 @@ header .title {
 @media (min-width: 880px) {
   body {
     font-size: 20px;
+  }
+  header {
+    width: 100%;
+    z-index: 1;
+  }
+  header .title {
+    width: 100%;
   }
   article {
     padding: 1em 10em;
@@ -332,17 +353,10 @@ header .title {
   }
   section h4 {
     text-align: center;
+    margin-bottom: 1em;
     text-decoration: underline;
   }
-  header {
-    width: 100%;
-    z-index: 1;
-  }
-
-  header .title {
-    width: 100%;
-  }
-
+  /* navBar*/
   .nav {
     display: flex;
     flex-direction: row;
@@ -379,7 +393,7 @@ header .title {
     display: none;
   }
   .linkDiv a:hover {
-    color: rgb(222, 218, 209);
+    color: var(--main-color);
     background-color: #010101;
     border-radius: 0.7em;
   }
@@ -393,7 +407,7 @@ header .title {
     content: "";
     height: 3px;
     width: 0%;
-    background-color: rgb(222, 218, 209);
+    background-color: var(--main-color);
     transition: 0.5s;
   }
   .tabButton:after {
@@ -432,7 +446,7 @@ header .title {
   top: 50%;
   transform: translateY(-50%);
   font-size: 3em;
-  color: white;
+  background-color: var(--main-color);
 }
 
 #rightButton {
@@ -443,8 +457,6 @@ header .title {
 }
 .mainDivCarousel {
   display: flex;
-
-  /*transition: 1s linear;*/
 }
 .picturesCarousel {
   position: relative;
@@ -489,16 +501,6 @@ header .title {
   animation-duration: 3s;
   background-color: #11131a;
 }
-@keyframes widthProgress {
-  from {
-    width: 60%;
-    opacity: 0.2;
-  }
-  to {
-    width: 100%;
-    opacity: 1;
-  }
-}
 .gridDiv img {
   width: 70%;
 }
@@ -512,6 +514,7 @@ header .title {
     margin: auto;
   }
   .gridVisible {
+    max-width: 90%;
     display: grid;
     grid-gap: 1.5em;
     grid-template-columns: repeat(4, 1fr);
@@ -534,17 +537,9 @@ header .title {
     animation-duration: 2.5s;
   }
 }
-@keyframes opacityProgress {
-  from {
-    opacity: 0.3;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 /*-----------------------------Formulaire Contact------------------------------*/
-
+/* classe reutilisée*/
 .mainDivForm {
   max-width: 100%;
   display: flex;
@@ -671,22 +666,6 @@ table th {
 
 /*-------------------------------Responsibe Formulaire---------------*/
 @media (min-width: 880px) {
-  /*.gridAdminView {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-auto-rows: auto;
-  }*/
-  /*.photoListAdmin {
-    max-width: 40%;
-  } */
-
-  /*
-  .closePhotosButton {
-    margin: auto;
-    padding: 1em;
-    border: 1px solid blue;
-  }*/
   .adminArticlesDiv .adminContactDiv {
     margin: auto;
   }
@@ -708,31 +687,6 @@ table th {
     height: auto;
   }
 }
-/*.adminArticlesDiv {
-  position: relative;
-  width: 100%;
-}
-.addArticle {
-  top: 0;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-}
-.animForm {
-  animation-name: "formTranslate";
-  animation-duration: 2s;
-}
-@keyframes formTranslate {
-  from {
-    left: -100;
-  }
-  to {
-    left: 0;
-  }
-}
-*/
 
 .mainDivMobileBoxes {
   width: 90%;
@@ -758,7 +712,7 @@ table th {
   border-radius: 1em;
 }
 .mobileBoxe div:nth-child(even) {
-  background-color: rgb(222, 218, 209);
+  background-color: var(--main-color);
   border-radius: 1em;
 }
 .deleteMessage {
