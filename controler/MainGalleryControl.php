@@ -28,14 +28,12 @@ Class MainGalleryControl {
     
         /*---------Set des champs saisis et des msg d'erreurs-----------*/
            
-        //-1----------------------Set la photo------------------------
-           //Set et éventuel msg d'erreur
+            //-1----------------------Set la photo------------------------
+           //Set et éventuel messages d'erreur
             $AdminPhotosMessages['requiredPhoto'] = 
-            $photo ->setPhoto (
-                //champ d'entré de la photo inputPhoto
-                ($FILES['inputPhoto']['name'])
-            );   
-        //si photoInséree, mais que probleme d'extension, msg d'erreur
+            $photo ->setPhoto ( ($FILES['inputPhoto']['name']) );   
+
+            //si photoInséree, mais que probleme d'extension, msg d'erreur
             if (
                 $AdminPhotosMessages['requiredPhoto'] === "" 
                 && 
@@ -43,18 +41,18 @@ Class MainGalleryControl {
                 ) {
                 $AdminPhotosMessages['wrongExt'] = "Invalid File Extension";
             } 
-        //-2-------------------Set du nom de la photo--------------------
+            //-2-------------------Set du nom de la photo--------------------
             $photo ->setName( $FILES['inputPhoto']['name']);
-        //-3-----------------Set de l'article_id associé-----------------
+            //-3-----------------Set de l'article_id associé-----------------
             $photo ->setArticleId(($POST['articleId']));
            
-        //-4------------- si les msg d'erreurs sont vides----------------
+            //-4------------- si les msg d'erreurs sont vides----------------
             if (
                 empty ($AdminPhotosMessages['requiredPhoto']) &&
                // empty ($AdminPhotosMessages['requiredArticle']) &&
                 empty ($AdminPhotosMessages['wrongExt'])
             ) {
-        //et que le telechargement de la photo a reussi
+                //et que le telechargement de la photo a reussi
                 if (move_uploaded_file($fileTmpName, $fileDest)) {
                 //ALORS créa d'une photo à partir des elts saisis
                 $photoRepo ->createPhoto($photo);

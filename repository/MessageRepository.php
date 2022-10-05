@@ -50,7 +50,7 @@ class MessageRepository {
     return $messages;
   }
   //selectionne tout dans contact la ou l'id = celui en parametre
-  public function setNewMsgWhereId(String $id) :Message {
+  public function getMsgById(String $id) :Message {
     $stmt = $this->_connexion->prepare('
     SELECT * FROM contact 
     WHERE id = :id

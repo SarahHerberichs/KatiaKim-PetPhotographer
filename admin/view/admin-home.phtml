@@ -13,7 +13,7 @@
         <th>Message</th>
         <th>Date</th>
         <th>Comment</th>
-        <th>Delete Comment</th>
+        <th>Delete Message</th>
       </thead>
 
       <tbody>
@@ -26,17 +26,24 @@
             <td><?= $message->getEmail() ?></td>
             <td><?= $message->getMessage() ?></td>
             <td><?= $message->getDate() ?></td>
+            <!-- GESTION COMMENTAIRES -->
             <td>
               <form method="POST" class="commentForm">
                 <label for="comment"></label>
+                <!-- textArea initial et textArea de réédition -->
                 <textarea name="comment" id="comment" type="text"></textarea>
                 <textarea name="reEditcomment" id="reEditComment" type="text" class='invisible'></textarea>
-                <input type="hidden" name="id" value= '<?= $message->getId() ?>' />           
+                <!-- recup cachée de l'id correspondant -->
+                <input type="hidden" name="id" value= '<?= $message->getId() ?>' /> 
+                <!-- soumission du comment initial-->          
                 <input type="submit" name="commentSubmit" value="Valider" />
               </form>
+              <!--injection du texte soumis -->
               <div class="newComment" name="newCommentDiv"><?= $message->getComment() ?></div>
+              <!--boutton submit de la réédition de comment -->
               <input type="submit" class="invisible" name="reEditButton" value="Edit">
             </td> 
+            
             <td>
               <form method="POST" class="removeMessage">
                 <input type="hidden" name="id" value= '<?= $message->getId() ?>' />    

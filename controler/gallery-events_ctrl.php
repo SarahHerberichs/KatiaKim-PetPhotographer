@@ -1,7 +1,7 @@
 <?php
 
 $photoRepo = new PhotoRepository();
-//Insertion  en dure d'une galleryName
+
 $gallery = new Gallery();
 $gallerySetName = $gallery ->setName("gallery events");
 $galleryGetName = $gallery ->getName();

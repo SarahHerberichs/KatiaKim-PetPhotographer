@@ -10,7 +10,7 @@ class Message {
     private string $_date;
     private string $_comment;
 
-    public function pushInArray () {
+   /* public function pushInArray () {
         return [
             'id' => $this ->getId(),
             'firstName' => $this ->getFirstName(),
@@ -21,7 +21,7 @@ class Message {
             'date' => $this ->getDate(),
             'comment' => $this ->getComment(),
         ];
-    }
+    }*/
     public function setId($id): void {
         $this ->_id = $id;
     }
@@ -33,7 +33,6 @@ class Message {
             $this ->_firstName = $firstName;
             return "";
         }
-
     }
     public function setLastName(string $lastName): string {
         if (empty($lastName)) {

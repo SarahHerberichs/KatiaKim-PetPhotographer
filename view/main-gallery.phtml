@@ -8,17 +8,18 @@
 
 <div class="mainDivGallery">  
    <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
-      <a href="?page=adminArticles">Articles</a>
+      <a href="?page=admin-articles" class= "adminLink">Articles</a>
    <?php } ?> 
-
+   <!-- Affichage des articles (mainPhoto et titre) -->
    <?php foreach($articlesByGallery as $article) : ?>  
-         <!--TITRE + MAIN IMG -->   
+         <!--Recupération du TITRE + MAIN IMG -->   
       <div class="eachArticle">  
          <div class="nthGalleryDivTitle">
             <h4> <?= $article->getName() ?> </h4>
             <input type="hidden" name="articleId" value=<?= $article->getId() ?>>
             <img src="admin/files/<?= $article->getPhoto() ?>"  alt= "Main photo from <?= $article->getName() ?> article" />
          </div>
+
          <!--Photos de chaque article + bouton close-->
          <div class="nthGalleryDivPhotos gridDiv invisible" name="invisible">
             <?php foreach($article->getPhotoList() as $photoByArt): ?>
@@ -26,7 +27,8 @@
             <?php endforeach; ?> 
          </div>
          <input type='button' value='close' class='buttonCloseGallery invisible'>
-         <!-- Ajout de photos pour admin -->
+         
+         <!-- Ajout de photos SI ADMIN -->
          <div class="nthDivAdminPhotos">
             <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
               
@@ -41,3 +43,5 @@
       </div>  
    <?php endforeach; ?>
 </div>   
+
+<script src="../js/gallery.js"></script>

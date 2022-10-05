@@ -6,19 +6,19 @@ $messageRepo = new MessageRepository();
 if (isset($_POST['commentSubmit'])) {
     $adminRep = new AdminRepository();
     //instanciation pour créa d'un message (id et comment associé)
-    $setNewMsgById = $messageRepo ->setNewMsgWhereId($_POST['id']);
+    $msgById = $messageRepo ->getMsgById($_POST['id']);
     //set du comment de ce message associé au formulaire de la vue adminHome
-    $setNewMsgById ->setComment($_POST['comment']);
+    $msgById ->setComment($_POST['comment']);
     //update du comment
-    $updateComment = $adminRep->updateComment($setNewMsgById);
+    $updateComment = $adminRep->updateComment($msgById);
 }
     //array contenant toutes les infos d'un msg submit
 
 
 if (isset ($_POST['delete'])) {
     $adminRep = new AdminRepository();
-    $setNewMsgById = $messageRepo ->setNewMsgWhereId($_POST['id']);
-    $deleteMessage = $adminRep ->deleteLine($setNewMsgById);
+    $msgById = $messageRepo ->getMsgById($_POST['id']);
+    $deleteMessage = $adminRep ->deleteLine($msgById);
 }
 
 

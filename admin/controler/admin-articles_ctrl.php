@@ -2,7 +2,7 @@
 
 /*--------------------------CREA D'UN ARTICLE SELON LA GALLERY SELECTIONNEE-------------------------- */
 
-//Pour Affichage Formulaire Ajout d'articles
+//Pour Affichage des galleries(formulaire ajout d'article)
 $galleryRepo = new GalleryRepository();
 $gallerys = $galleryRepo->listGallery();
 
@@ -72,7 +72,7 @@ if (isset ($_POST['deleteArticleButton'])) {
         }  
             $addArticleVisibility = "";
     }  
-/*--------------------------------Créa d'une Photo---------------------------------------- */
+/*-----------------------------------Créa d'une Photo---------------------------------------- */
     //créa d'une list pour boucler
     $photoRepo = new PhotoRepository();
     
