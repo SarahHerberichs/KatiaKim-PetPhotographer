@@ -1,7 +1,9 @@
-/*objectfit cover */
 :root {
   --main-color: rgb(244, 242, 237);
 }
+/************************************************************************************************************************/
+/*                                               Animations                                                             */
+/************************************************************************************************************************/
 @keyframes underlineAnim {
   from {
     width: 0%;
@@ -53,7 +55,9 @@
     opacity: 1;
   }
 }
-
+/************************************************************************************************************************/
+/*                                                   FONTS                                                              */
+/************************************************************************************************************************/
 @font-face {
   font-family: "Oswald-Regular";
   font-style: normal;
@@ -78,7 +82,9 @@
   font-weight: 400;
   src: url("fonts/Lato-Bold.ttf") format("truetype");
 }
-/*------------------------Grands blocs---------------------------*/
+/************************************************************************************************************************/
+/*                                               BLOCS PRINCIPAUX                                                       */
+/************************************************************************************************************************/
 * {
   list-style-type: none;
   text-decoration: none;
@@ -96,7 +102,7 @@ main {
   margin-top: 4em;
   font-family: "Lato-Regular";
 }
-/*Header and Footer */
+/*Header*/
 header {
   max-height: 100%;
   padding-top: 1em;
@@ -105,7 +111,7 @@ header {
   background-color: #010101;
   color: var(--main-color);
 }
-/*footer*/
+/*Footer*/
 footer {
   display: flex;
   flex-direction: column;
@@ -141,13 +147,18 @@ footer {
 .invisible {
   display: none;
 }
-.gridVisible {
-  display: block;
-}
 .visible {
   display: block;
 }
-
+/*Messages d'errer*/
+.errorMessage {
+  color: red;
+  font-size: 1.2em;
+}
+.success {
+  color: rgb(13, 151, 13);
+  font-size: 1.2em;
+}
 /*Titres*/
 h1,
 h2 {
@@ -159,20 +170,10 @@ h3 {
   animation: "textAnim" 0.7s linear;
   margin-bottom: 2em;
 }
-/*liens pour l'administrateur*/
-.adminLink {
-  font-size: 1.5em;
-  color: rgb(39, 45, 144);
-}
-.adminLink:before {
-  content: "->";
-}
-.adminLink:after {
-  content: "<-";
-}
 
-/*------ICONS------*/
-/*Div contenant button inputWithIcon et icon*/
+/************************************************************************************************************************/
+/*                                                      ICONS                                                           */
+/************************************************************************************************************************/
 .formDivSubmit {
   position: relative;
   width: 100%;
@@ -229,37 +230,9 @@ h3 {
   z-index: -1;
 }
 
-/*ARTICLES*/
-article {
-  margin: 2em;
-  line-height: 2em;
-}
-/**/
-section h5 {
-  position: relative;
-  text-decoration: none;
-  line-height: 2em;
-  width: 15em;
-  margin: auto;
-}
-section h5:after {
-  background-color: #11131a;
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 25%;
-  width: 50%;
-  height: 3px;
-  margin: 0 auto;
-  animation: "underlineAnim" 0.7s linear;
-}
-.price {
-  display: block;
-  margin: 1em;
-  margin-bottom: 4em;
-}
-
-/*---------------------------Style de la navBar------------------------------*/
+/************************************************************************************************************************/
+/*                                                    NAVBAR                                                            */
+/************************************************************************************************************************/
 /* h1 et h2 du titre*/
 header .title {
   width: 30%;
@@ -286,9 +259,8 @@ header .title {
 .nav .linkDiv {
   display: none;
 }
-/*-----------Au click sur iconBurgerBurger: la div navBar prend la class BurgerClicked)-------------- */
+/*Au click sur iconBurgerBurger: la div navBar prend la class BurgerClicked*/
 
-/*navBar */
 .burgerClicked {
   height: 100vh;
 }
@@ -316,7 +288,6 @@ header .title {
   animation-name: "heightProgressAnimation";
   animation-duration: 1.5s;
 }
-
 .linkDiv a {
   color: #010101;
   padding: 2em;
@@ -331,7 +302,9 @@ header .title {
   font-size: 2em;
 }
 
-/*----------------------------------Pages générales+navBar-Responsive ----------------------------------*/
+/************************************************************************************************************************/
+/*                                         DESKTOP :BLOCS PRINCIPAUX et NAVBAR                                          */
+/************************************************************************************************************************/
 @media (min-width: 880px) {
   body {
     font-size: 20px;
@@ -429,7 +402,42 @@ header .title {
     z-index: -1;
   }
 }
-/*-------------------------Caroussel----------------------------*/
+
+/************************************************************************************************************************/
+/*                                                  ARTICLES                                                            */
+/************************************************************************************************************************/
+article {
+  margin: 2em;
+  line-height: 2em;
+}
+
+.eltWithScrollAnimationVisible {
+  position: relative;
+  text-decoration: none;
+  line-height: 2em;
+  width: 15em;
+  margin: auto;
+}
+
+.eltWithScrollAnimation:after {
+  background-color: #11131a;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  margin: 0 auto;
+  animation: "underlineAnim" 0.7s linear;
+}
+.price {
+  display: block;
+  margin: 1em;
+  margin-bottom: 4em;
+}
+/************************************************************************************************************************/
+/*                                                      CAROUSSEL                                                       */
+/************************************************************************************************************************/
 
 .diapo {
   margin-top: 5em;
@@ -476,17 +484,20 @@ header .title {
     height: 20em;
   }
 }
+/************************************************************************************************************************/
+/*                                                     GALLERIES                                                        */
+/************************************************************************************************************************/
 /*-------------------------------MainGallerys----------------------------------*/
 /*Div englobant galleries (titre + div photos-->non visible avant click) */
 .mainDivGallery {
   text-align: center;
 }
 /* div englobant titre d'une gallery + sa photo */
-.nthGalleryDivTitle {
+.nthArticleDivTitle {
   margin: 2em;
 }
 /* img principale pr chq gallery*/
-.nthGalleryDivTitle img {
+.nthArticleDivTitle img {
   width: 70%;
   height: auto;
 }
@@ -504,9 +515,11 @@ header .title {
 .gridDiv img {
   width: 70%;
 }
-/*--------------------------RESPONSIVE---GALLERY--------------------------*/
+/************************************************************************************************************************/
+/*                                               DESKTOP : GALLERIES                                                    */
+/************************************************************************************************************************/
 @media (min-width: 880px) {
-  .nthGalleryDivTitle img {
+  .nthArticleDivTitle img {
     width: 30%;
     height: auto;
   }
@@ -524,6 +537,9 @@ header .title {
     padding-bottom: 1em;
     padding-top: 1em;
   }
+  /*.gridVisible {
+    display: block;
+  }*/
   .gridDiv img {
     border-radius: 0.1em;
     box-shadow: 0px 20px 40px -10px rgba(114, 112, 112, 0.85);
@@ -538,7 +554,9 @@ header .title {
   }
 }
 
-/*-----------------------------Formulaire Contact------------------------------*/
+/************************************************************************************************************************/
+/*                                               FORMULAIRE DE CONTACT                                                  */
+/************************************************************************************************************************/
 /* classe reutilisée*/
 .mainDivForm {
   max-width: 100%;
@@ -569,16 +587,6 @@ header .title {
   align-items: center;
   width: 35%;
 }
-
-.errorMessage {
-  color: red;
-  font-size: 1.2em;
-}
-.success {
-  color: rgb(13, 151, 13);
-  font-size: 1.2em;
-}
-
 /* ---------------------------RESPONSIVE --FORMULAIRE------------------*/
 
 @media (min-width: 880px) {
@@ -586,7 +594,20 @@ header .title {
     width: 60%;
   }
 }
-/*------------------------------Tableau Admin*--------------------------*/
+/************************************************************************************************************************/
+/*                                                  PARTIE ADMINISTRATEUR                                               */
+/************************************************************************************************************************/
+/*liens pour l'administrateur*/
+.adminLink {
+  font-size: 1.5em;
+  color: rgb(39, 45, 144);
+}
+.adminLink:before {
+  content: "->";
+}
+.adminLink:after {
+  content: "<-";
+}
 .mainAdminArticleDiv {
   margin: auto;
 }
@@ -661,33 +682,8 @@ table th {
 .viewArticlesImages {
   width: 100%;
   height: 100%;
-} /*
-
-
-/*-------------------------------Responsibe Formulaire---------------*/
-@media (min-width: 880px) {
-  .adminArticlesDiv .adminContactDiv {
-    margin: auto;
-  }
-  .adminArticlesDiv {
-    margin: auto;
-    margin-bottom: 1em;
-  }
-
-  table {
-    transform: none;
-    margin-top: 0;
-  }
-  table td,
-  table th {
-    font-size: 1em;
-  }
-  .tableAdmin {
-    padding: 0;
-    height: auto;
-  }
 }
-
+/* Affichage Messages */
 .mainDivMobileBoxes {
   width: 90%;
   height: auto;
@@ -718,8 +714,29 @@ table th {
 .deleteMessage {
   border: 2px solid red;
 }
-
+/************************************************************************************************************************/
+/*                                              DESKTOP : PARTIE ADMINISTRATEUR                                         */
+/************************************************************************************************************************/
 @media (min-width: 880px) {
+  .adminArticlesDiv .adminContactDiv {
+    margin: auto;
+  }
+  .adminArticlesDiv {
+    margin: auto;
+    margin-bottom: 1em;
+  }
+  table {
+    transform: none;
+    margin-top: 0;
+  }
+  table td,
+  table th {
+    font-size: 1em;
+  }
+  .tableAdmin {
+    padding: 0;
+    height: auto;
+  }
   .adminContactDiv {
     display: block;
   }

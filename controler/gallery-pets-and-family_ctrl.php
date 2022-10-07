@@ -5,7 +5,7 @@ $photoRepo = new PhotoRepository();
 $gallery = new Gallery();
 $gallerySetName = $gallery ->setName("gallery pets and family");
 $galleryGetName = $gallery ->getName();
-
+/*camelcase*/
 
 $galleryControl = new MainGalleryControl();
 $AdminPhotosMessages= $galleryControl->controlPhotos ($_POST,$_FILES,$photoRepo); 
