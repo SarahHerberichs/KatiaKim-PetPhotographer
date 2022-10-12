@@ -27,7 +27,7 @@ $userMessages = [
                         $TryConnectCredentials->isValidPassword($adminLog->getPassword())
                          &&
                         $TryConnectCredentials->isValidLogin($adminLog->getLogin())
-                       ) { //session is logged = true
+                       ) { //session admin= true
                             $_SESSION['isAdmin'] = true;
                             header('Location:?page=admin-home');
                         }

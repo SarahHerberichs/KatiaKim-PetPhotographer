@@ -1,0 +1,773 @@
+/*objectfit cover */
+* {
+  list-style-type: none;
+  text-decoration: none;
+}
+@font-face {
+  font-family: "Oswald-Regular";
+  font-style: normal;
+  font-weight: bold;
+  src: url("fonts/Oswald-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Oswald-Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("fonts/Oswald-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lato-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Lato-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lato-Bold";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Lato-Bold.ttf") format("truetype");
+}
+/*------------------------Grands blocs---------------------------*/
+body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  margin: auto;
+}
+main {
+  margin-top: 4em;
+  line-height: 2em;
+  text-align: center;
+  font-family: "Lato-Regular";
+}
+/*Header and Footer */
+header {
+  max-height: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  min-height: 10em;
+  background-color: #010101;
+  color: rgb(222, 218, 209);
+}
+/*footer*/
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 1em;
+  padding-top: 0.2;
+  padding-bottom: 0.2em;
+  background-color: #010101;
+  color: rgb(222, 218, 209);
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+}
+.footer .logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.logos a {
+  font-size: 1.5em;
+  padding: 1em;
+}
+.footer i,
+.footer a {
+  color: rgb(222, 218, 209);
+}
+.footer a {
+  text-decoration: underline;
+}
+/*Visibilité*/
+
+.invisible {
+  display: none;
+}
+
+.gridVisible {
+  display: block;
+}
+.visible {
+  display: block;
+}
+/*Titres*/
+h1,
+h2 {
+  font-family: "Oswald-Bold", Verdana, sans-serif;
+}
+/*Titres de chq page*/
+h3 {
+  font-size: 1.5em;
+  animation: "textAnim" 0.7s linear;
+}
+.adminLink {
+  font-size: 1.5em;
+  color: rgb(39, 45, 144);
+}
+.adminLink:before {
+  content: "->";
+}
+.adminLink:after {
+  content: "<-";
+}
+/*ICONS*/
+/*div englobant icon et inputsubmit*/
+.formDivSubmit {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+/*.icon,
+input[type="submit"]*/
+.inputWithIcon,
+.icon {
+  font-size: 2em;
+  cursor: pointer;
+}
+.pawButton,
+.deleteArticleButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding-right: 2em;
+  background-color: transparent;
+  border: 0;
+}
+.fa-paw {
+  position: absolute;
+  top: 20%;
+  font-size: 3.5em;
+  left: 50%;
+  z-index: -1;
+  transform: rotate(45deg);
+}
+.fa-trash {
+  position: absolute;
+  font-size: 2em;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+}
+.closePhotosButton {
+  position: absolute;
+  background: transparent;
+  right: 0;
+  padding-left: 1em;
+  border: 0;
+}
+.closeAddArticleButton {
+  position: absolute;
+  width: 2em;
+  background: transparent;
+  right: 0;
+  border: 0;
+}
+.fa-window-close {
+  position: absolute;
+  font-size: 2em;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+/*ARTICLES*/
+
+article {
+  margin: 2em;
+}
+
+.eltWithScrollAnimationVisible {
+  position: relative;
+  text-decoration: none;
+  line-height: 2em;
+  width: 15em;
+  margin: auto;
+}
+.eltWithScrollAnimationVisible:after {
+  background-color: #11131a;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  margin: 0 auto;
+  animation: "underlineAnim" 1.2s linear;
+}
+@keyframes underlineAnim {
+  from {
+    width: 0%;
+    left: 20%;
+  }
+  to {
+    width: 50%;
+    left: 25%;
+  }
+}
+
+.price {
+  display: block;
+  margin: 1em;
+  margin-bottom: 4em;
+}
+/*Animation des titres*/
+@keyframes textAnim {
+  from {
+    opacity: 0.4;
+    transform: rotateY(3.142rad);
+    text-shadow: 5px 5px rgba(103, 101, 101, 0.4);
+    font-size: 1em;
+  }
+  to {
+    opacity: 0.8;
+    transform: rotateY(0);
+    text-shadow: none;
+    font-size: 1.5em;
+  }
+}
+/*---------------------------Style de la navBar------------------------------*/
+/* h1 et h2 du titre*/
+header .title {
+  width: 30%;
+  text-align: center;
+}
+/*Comportement quand visible*/
+.nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+/* le bouton et ses sous onglets*/
+.nav > a,
+.nav .tabButton {
+  display: none;
+  margin: auto;
+  color: rgb(222, 218, 209);
+  background-color: transparent;
+  font-size: 1.5em;
+  cursor: pointer;
+  border: none;
+}
+/* Div qui englobe les sousOnglets */
+.nav .linkDiv {
+  display: none;
+}
+
+/*-----------Au click sur iconBurgerBurger: la div navBar prend la class BurgerClicked)-------------- */
+
+/*navBar */
+.burgerClicked {
+  height: 100vh;
+}
+/* Div englobant Onglet et sous onglets*/
+.burgerClicked .dropdown {
+  text-align: center;
+  /*espacement entre chq onglet*/
+  margin: 3em 0 2em 0;
+  height: auto;
+}
+/* Onglet */
+.burgerClicked .tabButton {
+  display: block;
+}
+/*class heightProgress a dropdown au click sur 1 dropdown*/
+/*--> style des blocks de sousOnglets*/
+
+.heightProgress .linkDiv {
+  /* passage de none a flex*/
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /*occupe toute hauteur dispo en fonction de son parent (dropDown a auto) */
+  height: 100%;
+  background-color: rgb(222, 218, 209);
+  color: #010101;
+  animation-name: "heightProgressAnimation";
+  animation-duration: 1.5s;
+}
+
+@keyframes heightProgressAnimation {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+.linkDiv a {
+  color: #010101;
+  padding: 2em;
+}
+.nav .iconBurger {
+  display: block;
+  position: absolute;
+  right: 0.5em;
+  top: 1em;
+  width: 5%;
+  color: rgb(222, 218, 209);
+  font-size: 2em;
+}
+
+/*----------------------------------Pages générales+navBar-Responsive ----------------------------------*/
+@media (min-width: 880px) {
+  body {
+    font-size: 20px;
+  }
+  article {
+    padding: 1em 10em;
+    margin-bottom: 2em;
+  }
+  article .informations {
+    text-align: center;
+    margin-bottom: 3em;
+  }
+  section h4 {
+    text-align: center;
+    text-decoration: underline;
+  }
+  header {
+    width: 100%;
+    z-index: 1;
+  }
+
+  header .title {
+    width: 100%;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .nav .dropdown {
+    position: relative;
+    width: 100%;
+    margin: 0;
+  }
+  .nav .tabButton {
+    display: block;
+    /*pour animation absolute */
+    position: relative;
+    width: 50%;
+  }
+  .nav .linkDiv {
+    display: none;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 10em;
+    opacity: 0.5em;
+    bottom: -11em;
+    padding-top: 1em;
+    z-index: 2;
+  }
+  .nav .dropdown:hover .linkDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav .iconBurger {
+    display: none;
+  }
+  .linkDiv a:hover {
+    color: rgb(222, 218, 209);
+    background-color: #010101;
+    border-radius: 0.7em;
+  }
+  .linkDiv a {
+    padding: 1em;
+  }
+  /*animation tabButton*/
+  .tabButton:after,
+  .tabButton:before {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 0%;
+    background-color: rgb(222, 218, 209);
+    transition: 0.5s;
+  }
+  .tabButton:after {
+    left: 0;
+    bottom: -10px;
+  }
+  .tabButton:before {
+    right: 0;
+    top: -10px;
+  }
+  .tabButton:hover:after,
+  .tabButton:hover:before {
+    width: 100%;
+  }
+  .fa-window-close {
+    position: absolute;
+    font-size: 3em;
+    margin-left: 0%;
+    z-index: -1;
+  }
+}
+/*-------------------------Caroussel----------------------------*/
+
+.diapo {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  background-color: #927812;
+}
+#rightButton,
+#leftButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3em;
+  color: white;
+}
+
+#rightButton {
+  right: 20px;
+}
+#leftButton {
+  left: 20px;
+}
+.mainDivCarousel {
+  display: flex;
+
+  /*transition: 1s linear;*/
+}
+.picturesCarousel {
+  position: relative;
+  line-height: 0;
+  /*grow( facteur d'expansion par rapport aux autres),shrink(facteur de rétrécissement),basis(place par rapport a conteneur)*/
+  /* pas d'agrandissement, pas de rétrécissement*/
+  flex: 1 0 100%;
+}
+.picturesCarousel > img {
+  max-width: 100%;
+  height: 16em;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 880px) {
+  .picturesCarousel > img {
+    height: 20em;
+  }
+}
+/*-------------------------------MainGallerys----------------------------------*/
+/*Div englobant galleries (titre + div photos-->non visible avant click) */
+.mainDivGallery {
+  text-align: center;
+}
+/* div englobant titre d'une gallery + sa photo */
+.nthArticleDivTitle {
+  margin: 2em;
+}
+/* img principale pr chq gallery*/
+.nthArticleDivTitle img {
+  width: 70%;
+  height: auto;
+}
+
+/*-------------------------------EachGallerys------------------------------*/
+
+.gridDiv {
+  margin: auto;
+  width: 100%;
+  height: auto;
+  animation-name: "widthProgress";
+  animation-duration: 3s;
+  background-color: #11131a;
+}
+@keyframes widthProgress {
+  from {
+    width: 60%;
+    opacity: 0.2;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+.gridDiv img {
+  width: 70%;
+}
+/*--------------------------RESPONSIVE---GALLERY--------------------------*/
+@media (min-width: 880px) {
+  .nthArticleDivTitle img {
+    width: 30%;
+    height: auto;
+  }
+  .mainDivGallery {
+    margin: auto;
+  }
+  .gridVisible {
+    display: grid;
+    grid-gap: 1.5em;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: row dense;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+  }
+  .gridDiv img {
+    border-radius: 0.1em;
+    box-shadow: 0px 20px 40px -10px rgba(114, 112, 112, 0.85);
+    margin: auto;
+  }
+  .gridDiv img:hover {
+    z-index: 2;
+    transition: all 600ms ease-in;
+    transform: scale(1.5);
+    animation-name: "opacityProgress";
+    animation-duration: 2.5s;
+  }
+}
+@keyframes opacityProgress {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*-----------------------------Formulaire Contact------------------------------*/
+
+.mainDivForm {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 5em;
+}
+.formDiv {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-content: center;
+  margin: 2em 0;
+  border-radius: 4px;
+}
+.formDiv input,
+.formDiv textarea,
+.formDiv select {
+  padding: 0.5em;
+  width: 50%;
+  border-radius: 4px;
+}
+.formDiv label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 1.2em;
+}
+.success {
+  color: rgb(13, 151, 13);
+  font-size: 1.2em;
+}
+
+/* ---------------------------RESPONSIVE --FORMULAIRE------------------*/
+
+@media (min-width: 880px) {
+  .formContact .mainDivForm {
+    width: 60%;
+  }
+}
+/*------------------------------Tableau Admin*--------------------------*/
+.mainAdminArticleDiv {
+  margin: auto;
+}
+.adminArticlesDiv {
+  display: table;
+  margin-bottom: 1em;
+}
+.addArticleDiv {
+  border: 1px solid Black;
+}
+
+.tableAdmin {
+  margin: 1em;
+  padding: 50% 0;
+  height: 0;
+}
+table {
+  border-collapse: collapse;
+  font-size: 0.7em;
+  /* display: block;  */
+  transform-origin: top left;
+  transform: rotate(-90deg) translate(-100%);
+  margin-top: -50%;
+}
+table td,
+table th {
+  border: 1px solid rgba(14, 13, 13, 0.5);
+  overflow: scroll;
+  padding: 0.2em;
+}
+.mainArtImgMini {
+  width: 3em;
+  height: auto;
+}
+
+.tdMultiple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.mainDivAdminView {
+  width: 100%;
+  height: 100%;
+}
+/* Affichage Photos Admin */
+.gridAdminView {
+  display: grid;
+  grid-template-columns: (minmax(50%, 100%));
+  grid-auto-flow: dense;
+}
+.photoListAdmin {
+  border: 1px solid black;
+  border-radius: 0.5em;
+  margin: 1em;
+  padding: 0.5em;
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
+  grid-auto-flow: dense;
+}
+.photoListAdmin img {
+  margin-right: 1em;
+  height: auto;
+  border: 1px solid pink;
+  max-width: 80%;
+}
+.photoListAdmin h4 {
+  border: 1px solid pink;
+  max-height: 4em;
+}
+.viewArticlesImages {
+  width: 100%;
+  height: 100%;
+} /*
+
+
+/*-------------------------------Responsibe Formulaire---------------*/
+@media (min-width: 880px) {
+  /*.gridAdminView {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
+  }*/
+  /*.photoListAdmin {
+    max-width: 40%;
+  } */
+
+  /*
+  .closePhotosButton {
+    margin: auto;
+    padding: 1em;
+    border: 1px solid blue;
+  }*/
+  .adminArticlesDiv .adminContactDiv {
+    margin: auto;
+  }
+  .adminArticlesDiv {
+    margin: auto;
+    margin-bottom: 1em;
+  }
+
+  table {
+    transform: none;
+    margin-top: 0;
+  }
+  table td,
+  table th {
+    font-size: 1em;
+  }
+  .tableAdmin {
+    padding: 0;
+    height: auto;
+  }
+}
+/*.adminArticlesDiv {
+  position: relative;
+  width: 100%;
+}
+.addArticle {
+  top: 0;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.animForm {
+  animation-name: "formTranslate";
+  animation-duration: 2s;
+}
+@keyframes formTranslate {
+  from {
+    left: -100;
+  }
+  to {
+    left: 0;
+  }
+}
+*/
+
+.mainDivMobileBoxes {
+  width: 90%;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 1em;
+}
+.mobileBoxe {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  /* margin: auto;*/
+  text-align: center;
+  border-radius: 1em;
+  opacity: 0.8;
+  margin-bottom: 1em;
+}
+.mobileBoxe div:nth-child(odd) {
+  background-color: #927812;
+  border-radius: 1em;
+}
+.mobileBoxe div:nth-child(even) {
+  background-color: rgb(222, 218, 209);
+  border-radius: 1em;
+}
+.deleteMessage {
+  border: 2px solid red;
+}
+
+@media (min-width: 880px) {
+  .adminContactDiv {
+    display: block;
+  }
+  .mainDivMobileBoxes {
+    display: none;
+  }
+}

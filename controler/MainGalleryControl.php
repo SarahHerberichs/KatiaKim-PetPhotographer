@@ -18,11 +18,10 @@ Class MainGalleryControl {
         /*------------------------Gestion Photos-------------------------*/
             $fileName = $FILES['inputPhoto']['name'];
             $fileTmpName = $FILES['inputPhoto']['tmp_name'];
-            //list des extensions valides
             $validExt = ['.jpeg', '.jpg', '.gif', '.png'];
             //recup de l'extension du fichier
             $fileExt = ".". strtolower( substr(strchr($fileName, "."),1) );
-            //Destination finale de la photo
+            //Destination de la photo
             $fileDest = "admin/files/".$fileName;
         /*--------------------------------------------------------------*/ 
     

@@ -8,8 +8,13 @@ var comment = document.getElementsByName("comment");
 var reEditButton = document.getElementsByName("reEditButton");
 
 var markAsReadButton = document.getElementsByClassName("markAsRead");
-
+//toutes les box msg
 var mainDivMobilesBoxes = document.getElementsByClassName("mainDivMobileBoxes");
+//tous les span contenant l'id du message
+var idMobileBox = document.getElementsByClassName("idMobileBox");
+//tableau pour stocker messages "lus"
+var arrayReadMessages = [];
+var eachBox = mainDivMobilesBoxes[0].children;
 
 /*-----------Gestion visibilité dans la gestion des commentaires---------*/
 
@@ -37,21 +42,34 @@ for (let i = 0; i < comment.length; i++) {
 /*----------- Gestion de l'opacité des messages lus -----------*/
 
 function opacityMessages() {
-  var arrayReadMessages = [];
-  for (let i = 0; i < mainDivMobilesBoxes[0].children.length; i++) {
+  for (let i = 0; i < eachBox.length; i++) {
+    //au click sur un des boutons, ajout style
     markAsReadButton[i].addEventListener("click", function () {
-      //application d'un style immédiat au message lu et insertion dans tableau
-      mainDivMobilesBoxes[0].children[i].style.opacity = "0.5";
-      arrayReadMessages.push(i);
-      //insertion du tableau dans local storage
-      localStorage.setItem("elementToStore", JSON.stringify(arrayReadMessages));
+      eachBox[i].style.opacity = "0.5";
+      //l'id est stocké dans tableau
+      arrayReadMessages.push(idMobileBox[i].textContent);
+      console.log(arrayReadMessages);
+      console.log(idMobileBox[i].textContent);
     });
   }
+  //insertion du tableau contenant les id des box "lues"
+  localStorage.setItem("readMessages", JSON.stringify(arrayReadMessages));
 }
 opacityMessages();
-var retreiveReadMessages = JSON.parse(localStorage.getItem("elementToStore"));
-//parcours du tableau et application du style aux messagesBoxes dont l'index a été défini comme lu
-for (let y = 0; y < retreiveReadMessages.length; y++) {
-  mainDivMobilesBoxes[0].children[retreiveReadMessages[y]].style.opacity =
-    "0.5";
+
+//recup du local storage (tableau: id des elements lus), si dans ce tableau ET dans le tableau idMobileBox il y a les mm valeurs,
+//retrouver la mobileBox associée et lui appliquer style. (idMobileBox[i] --> eachBox[i] correspondant)
+var readMessagesStored = JSON.parse(localStorage.getItem("readMessages"));
+//parcours ce tableau
+for (let y = 0; y < readMessagesStored.length; y++) {
+  // et parcours chaque box
+  for (let z = 0; z < eachBox.length; z++) {
+    //si un index du tableau stocké dans localStorage = un des ids --->mainDivMobilseBoxes[z] (longueur = a celle des id donc ok)
+
+    if (readMessagesStored[y] === idMobileBox[z].innerText) {
+      eachBox[z].style.opacity = "0.5";
+      console.log(readMessagesStored[y]);
+      console.log(idMobileBox[z]);
+    }
+  }
 }

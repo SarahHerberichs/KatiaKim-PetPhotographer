@@ -2,7 +2,7 @@
 
 $messageRepo = new MessageRepository();
 
-//si le form est validé
+//si le form "comment" est validé
 if (isset($_POST['commentSubmit'])) {
     $adminRep = new AdminRepository();
     //instanciation pour créa d'un message (id et comment associé)
@@ -12,8 +12,6 @@ if (isset($_POST['commentSubmit'])) {
     //update du comment
     $updateComment = $adminRep->updateComment($msgById);
 }
-    //array contenant toutes les infos d'un msg submit
-
 
 if (isset ($_POST['delete'])) {
     $adminRep = new AdminRepository();

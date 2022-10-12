@@ -2,21 +2,21 @@
 let eltWithScrollAnim = document.getElementsByClassName(
   "eltWithScrollAnimation"
 );
-console.log(eltWithScrollAnim.length);
+let height = window.innerHeight;
+
 for (let i = 0; i < eltWithScrollAnim.length; i++) {
-  //hauteur écran
-  let height = window.innerHeight;
-  console.log("hauter d'ecran : " + height);
-  //au scroll , si la position fenetre est supérieure a position de l'élément - 1/2 écran
+  let heightObject = eltWithScrollAnim[i].offsetHeight;
+  let eltPosition = eltWithScrollAnim[i].offsetTop;
   // ET inférieure a position de l'élément + 1/2 écran
   window.addEventListener("scroll", function () {
-    if (
-      window.scrollY > eltWithScrollAnim[i].offsetTop - height / 2 &&
-      window.scrollY < eltWithScrollAnim[i].offsetTop + height / 2
-    ) {
-      eltWithScrollAnim[i].classList.add = "eltWithScrollAnimationVisible";
-      console.log(eltWithScrollAnim[i]);
+    let scrollPosition = window.scrollY;
+    //initialisation, si au dessus de l'élement a animer, supprimer animation
+    if (scrollPosition < eltPosition + heightObject - height) {
+      eltWithScrollAnim[i].classList.remove("eltWithScrollAnimationVisible");
     }
-    console.log(window.scrollY);
+    //si arrivée dans zone de l'élement, ajouter animation
+    if (scrollPosition > eltPosition + heightObject - height) {
+      eltWithScrollAnim[i].classList.add("eltWithScrollAnimationVisible");
+    }
   });
 }

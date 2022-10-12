@@ -31,6 +31,7 @@ if (isset ($_POST['deleteArticleButton'])) {
         $validExt = ['.jpeg', '.jpg', '.gif', '.png'];
         //recup de l'extension du fichier
         $fileExt = ".". strtolower( substr(strchr($fileName, "."),1) );
+        //Desination de la photo
         $fileDest = "admin/files/".$fileName;
         /*--------------------------------------------------------------*/ 
 
