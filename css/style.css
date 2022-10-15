@@ -1,4 +1,12 @@
 /*-------------------------------------------------------------*/
+/*----------------------------VAR----------------------------*/
+/*-------------------------------------------------------------*/
+:root {
+  --main-white-color: rgb(245, 245, 240);
+  --main-black-color: #010101;
+}
+
+/*-------------------------------------------------------------*/
 /*----------------------------FONTS----------------------------*/
 /*-------------------------------------------------------------*/
 
@@ -83,6 +91,7 @@
     opacity: 1;
   }
 }
+
 /*-------------------------------------------------------------*/
 /*---------------------BLOCS PRINCIPAUX------------------------*/
 /*-------------------------------------------------------------*/
@@ -99,9 +108,10 @@ body {
   box-sizing: border-box;
   text-align: center;
   margin: auto;
+  background-color: var(--main-white-color);
 }
 main {
-  margin-top: 4em;
+  margin-top: 2em;
   line-height: 2em;
   text-align: center;
   font-family: "Lato-Regular";
@@ -111,18 +121,15 @@ main {
 
 .errorMessage {
   color: red;
-  font-size: 1.2em;
 }
 .success {
   color: rgb(13, 151, 13);
-  font-size: 1.2em;
 }
 
 /*Visibilité*/
 .invisible {
   display: none;
 }
-
 .gridVisible {
   display: block;
 }
@@ -135,7 +142,7 @@ h1,
 h2 {
   font-family: "Oswald-Bold", Verdana, sans-serif;
 }
-/*Titres de chq page*/
+
 h3 {
   font-size: 1.5em;
   animation: "textAnim" 0.7s linear;
@@ -148,8 +155,8 @@ header {
   padding-top: 1em;
   padding-bottom: 1em;
   min-height: 10em;
-  background-color: #010101;
-  color: rgb(222, 218, 209);
+  background-color: var(--main-black-color);
+  color: var(--main-white-color);
 }
 /*Footer*/
 footer {
@@ -159,8 +166,8 @@ footer {
   margin-top: 1.5em;
   padding-top: 0.2;
   padding-bottom: 0.2em;
-  background-color: #010101;
-  color: rgb(222, 218, 209);
+  background-color: var(--main-black-color);
+  color: var(--main-white-color);
 }
 .contact {
   display: flex;
@@ -179,7 +186,7 @@ footer {
 }
 .footer i,
 .footer a {
-  color: rgb(222, 218, 209);
+  color: var(--main-white-color);
 }
 .footer a {
   text-decoration: underline;
@@ -264,7 +271,7 @@ header .title {
 .nav .tabButton {
   display: none;
   margin: auto;
-  color: rgb(222, 218, 209);
+  color: var(--main-white-color);
   background-color: transparent;
   font-size: 1.5em;
   cursor: pointer;
@@ -299,17 +306,18 @@ header .title {
   /* passage de none a flex*/
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   /*occupe toute hauteur dispo en fonction de son parent (dropDown a auto) */
   height: 100%;
-  background-color: rgb(222, 218, 209);
-  color: #010101;
+  background-color: var(--main-white-color);
+  color: var(--main-black-color);
   animation-name: "heightProgressAnimation";
   animation-duration: 1.5s;
 }
 
 .linkDiv a {
-  color: #010101;
+  color: var(--main-black-color);
   padding: 2em;
 }
 .nav .iconBurger {
@@ -318,7 +326,7 @@ header .title {
   right: 0.5em;
   top: 1em;
   width: 5%;
-  color: rgb(222, 218, 209);
+  color: var(--main-white-color);
   font-size: 2em;
 }
 
@@ -360,7 +368,7 @@ article {
 /*-------------------------------------------------------------*/
 
 .diapo {
-  margin-top: 5em;
+  margin-top: 2em;
   margin-bottom: 2em;
   width: 100%;
   height: auto;
@@ -374,7 +382,7 @@ article {
   top: 50%;
   transform: translateY(-50%);
   font-size: 3em;
-  color: white;
+  color: var(--main-white-color);
 }
 
 #rightButton {
@@ -418,6 +426,18 @@ article {
   width: 70%;
   height: auto;
 }
+.nthArticleDivTitle img {
+  cursor: pointer;
+  border-radius: 0.1em;
+  transition: all 0.2s;
+}
+.nthArticleDivTitle img:hover {
+  border: 2px solid #000000;
+  box-shadow: 8px 8px 10px 0 rgba(100, 97, 97, 0.5);
+}
+.nthArticleDivPhotos {
+  padding-top: 1em;
+}
 .gridDiv {
   margin: auto;
   width: 100%;
@@ -427,7 +447,9 @@ article {
   background-color: #11131a;
 }
 .gridDiv img {
+  border-radius: 0.1em;
   width: 70%;
+  box-shadow: 0px 20px 40px -10px rgba(170, 170, 170, 0.85);
 }
 
 /*-------------------------------------------------------------*/
@@ -436,18 +458,19 @@ article {
 
 .mainDivForm {
   text-align: center;
-  max-width: 100%;
   display: flex;
   flex-direction: column;
   margin: auto;
   margin-bottom: 5em;
+  font-size: 0.8em;
+  line-height: 1em;
 }
 .formDiv {
   display: flex;
   width: 100%;
   justify-content: flex-start;
   align-content: center;
-  margin: 2em 0;
+  margin: 0.5em 0;
   border-radius: 4px;
 }
 .formDiv input,
@@ -660,7 +683,7 @@ table th {
   /* LIENS */
   .linkDiv a:hover {
     color: rgb(222, 218, 209);
-    background-color: #010101;
+    background-color: var(--main-black-color);
     border-radius: 0.7em;
   }
   .linkDiv a {
@@ -712,8 +735,6 @@ table th {
     padding-top: 1em;
   }
   .gridDiv img {
-    border-radius: 0.1em;
-    box-shadow: 0px 20px 40px -10px rgba(114, 112, 112, 0.85);
     margin: auto;
   }
   .gridDiv img:hover {
@@ -775,7 +796,14 @@ table th {
   /*-------------------------------------------------------------*/
 
   .formContact .mainDivForm {
-    width: 60%;
+    width: 40%;
+    padding: 5em auto;
+  }
+  .formDiv {
+    margin-bottom: 1em;
+  }
+  .pawButton {
+    margin-top: 1em;
   }
   .addArticleDiv {
     width: 60%;
