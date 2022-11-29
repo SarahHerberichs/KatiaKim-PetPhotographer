@@ -42,6 +42,14 @@ class Article {
         }
     }
     
+    public function setGalleryName(string $galleryName): void {
+        $this ->_galleryName = $galleryName;
+    }
+    
+    public function setPhotoList(array $photo_list): void {
+        $this ->_photo_list = $photo_list;
+    }
+    
     public function getId(): string {
         return $this ->_id;
     }
@@ -54,15 +62,11 @@ class Article {
     public function getGalleryId(): string {
         return $this ->_gallery_id;
     }
-    public function setGalleryName(string $galleryName): void{
-        $this ->_galleryName = $galleryName;
-    }
+  
     public function getGalleryName(): string {
         return $this ->_galleryName;
     }
-    public function setPhotoList(array $photo_list): void{
-        $this ->_photo_list = $photo_list;
-    }
+
     public function getPhotoList(): array {
         return $this ->_photo_list;
     }

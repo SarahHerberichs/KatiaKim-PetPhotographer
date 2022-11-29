@@ -1,17 +1,19 @@
-<div class="form-container">
-  <h2>Espace Admin</h2>
-  <form method="post">
-    <span class="success"><?= $userMessages['sendSuccess'] ?></span>
-      <label for="inputLogin">Login
+<div class="form-container loginContainer">
+  <div id="statusOffline"></div>
+  <h2>ADMIN</h2>
+  
+  <form method="post" id="formLogin">
+    <label for="inputLogin">Login
       <span class="errorMessage"><?= $userMessages['requiredLogin'] ?></span>
-      </label>
-      <input name="login" id="inputLogin" type="text"/>
+    </label>
+    <input name="login" id="inputLogin" type="text"/>
 
-      <label for="inputPassword">Mot de passe
+    <label for="inputPassword">Password
       <span class="errorMessage"><?= $userMessages['requiredPassword'] ?></span>
-      </label>
-      <input name="password" id="inputPassword" type="password" />
+    </label>
+    <input name="password" id="inputPassword" type="password" />
 
-      <input type="submit" name="accountSubmit" value="Valider" />
+    <input type="submit" name="accountSubmit" value="GO" />
   </form>
 </div>
+<script src="admin/js/adminLogin.js"></script>

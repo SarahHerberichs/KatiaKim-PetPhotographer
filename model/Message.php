@@ -22,9 +22,11 @@ class Message {
             'comment' => $this ->getComment(),
         ];
     }
+
     public function setId($id): void {
         $this ->_id = $id;
     }
+
     public function setFirstName(string $firstName): string {
         if (empty($firstName)) {
             return "Please provide a firstname";
@@ -34,6 +36,7 @@ class Message {
             return "";
         }
     }
+
     public function setLastName(string $lastName): string {
         if (empty($lastName)) {
             return "Please provide a name";
@@ -43,6 +46,7 @@ class Message {
             return "";
         }
     }
+
     public function setPhone(string $phone): string {
         if (empty($phone)) {
             return "Please provide a phone number";
@@ -52,6 +56,7 @@ class Message {
             return "";
         }
     }
+
     public function setEmail(string $email): string {
         if (empty ($email)) {
             return "Please provide your email adress";
@@ -61,6 +66,7 @@ class Message {
             return "";
         }
     }
+
     public function setMessage(string $message): string {
         if (empty ($message)) {
             return "Your message is empty!";
@@ -70,6 +76,7 @@ class Message {
             return "";
         }
     }
+
     public function setDate(string $date): void {
             $this ->_date = $date;
     }

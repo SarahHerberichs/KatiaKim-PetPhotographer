@@ -1,14 +1,16 @@
-/*-------------------------------------------------------------*/
-/*----------------------------VAR----------------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------VAR---------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 :root {
   --main-white-color: rgb(245, 245, 240);
-  --main-black-color: #010101;
+  --main-black-color: rgba(1, 1, 1, 0.9);
+  --main-orange-color: rgba(146, 120, 18, 1);
+  --main-red-color: rgba(141, 18, 18, 0.8);
 }
 
-/*-------------------------------------------------------------*/
-/*----------------------------FONTS----------------------------*/
-/*-------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------FONTS-------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------*/
 
 @font-face {
   font-family: "Oswald-Regular";
@@ -34,9 +36,10 @@
   font-weight: 400;
   src: url("fonts/Lato-Bold.ttf") format("truetype");
 }
-/*-------------------------------------------------------------*/
-/*------------------------ANIMATIONS---------------------------*/
-/*-------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------ANIMATIONS------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 
 @keyframes heightProgressAnimation {
   from {
@@ -79,7 +82,7 @@
     opacity: 0.2;
   }
   to {
-    width: 100%;
+    width: 90%;
     opacity: 1;
   }
 }
@@ -92,9 +95,10 @@
   }
 }
 
-/*-------------------------------------------------------------*/
-/*---------------------BLOCS PRINCIPAUX------------------------*/
-/*-------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------BLOCS PRINCIPAUX---------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 
 * {
   list-style-type: none;
@@ -104,36 +108,37 @@
 body {
   width: 100vw;
   height: 100vh;
-  font-size: 16px;
-  box-sizing: border-box;
-  text-align: center;
   margin: auto;
   background-color: var(--main-white-color);
+  text-align: center;
+  font-size: 16px;
+  box-sizing: border-box;
 }
+
 main {
   margin-top: 2em;
   line-height: 2em;
   text-align: center;
-  font-family: "Lato-Regular";
+  font-family: "Lato-Regular", Arial, Helvetica, sans-serif;
 }
 
 /*Messages d'erreurs*/
 
 .errorMessage {
-  color: red;
+  color: var(--main-red-color);
 }
 .success {
   color: rgb(13, 151, 13);
 }
 
 /*Visibilité*/
+.visible {
+  display: block;
+}
 .invisible {
   display: none;
 }
 .gridVisible {
-  display: block;
-}
-.visible {
   display: block;
 }
 
@@ -147,33 +152,36 @@ h3 {
   font-size: 1.5em;
   animation: "textAnim" 0.7s linear;
 }
-/*-------------------------------------------------------------*/
-/*----------------------HEADER AND FOOTER----------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------HEADER AND FOOTER-------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 header {
-  max-height: 100%;
+  /*max-height: 100%;*/
+  min-height: 10em;
   padding-top: 1em;
   padding-bottom: 1em;
-  min-height: 10em;
   background-color: var(--main-black-color);
   color: var(--main-white-color);
 }
 /*Footer*/
 footer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-top: 1.5em;
   padding-top: 0.2;
   padding-bottom: 0.2em;
+  margin-top: 1.5em;
   background-color: var(--main-black-color);
   color: var(--main-white-color);
+  font-size:14px;
 }
+
 .contact {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1em;
+  padding-bottom: .8em;
 }
 .footer .logos {
   display: flex;
@@ -181,7 +189,7 @@ footer {
   justify-content: space-evenly;
 }
 .logos a {
-  font-size: 1.5em;
+  font-size: 1.3em;
   padding: 1em;
 }
 .footer i,
@@ -192,15 +200,15 @@ footer {
   text-decoration: underline;
 }
 
-/*-------------------------------------------------------------*/
-/*-----------------------------ICONS---------------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------ICONS------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 
 /*div englobant icon et inputsubmit*/
 .formDivSubmit {
-  position: relative;
   width: 100%;
   height: auto;
+  position: relative;
 }
 .inputWithIcon,
 .icon {
@@ -216,66 +224,168 @@ footer {
   background-color: transparent;
   border: 0;
 }
+.pawButton {
+  margin: auto;
+}
 .fa-paw {
   position: absolute;
   top: 20%;
-  font-size: 3.5em;
   left: 50%;
   z-index: -1;
+  font-size: 3.5em;
   transform: rotate(45deg);
 }
 .fa-trash {
   position: absolute;
-  font-size: 2em;
   top: 50%;
   left: 50%;
   z-index: -1;
+  font-size: 2em;
 }
 .closePhotosButton {
   position: absolute;
-  background: transparent;
   right: 0;
   padding-left: 1em;
   border: 0;
+  background: transparent;
+  z-index: 20;
 }
 .closeAddArticleButton {
-  position: absolute;
   width: 2em;
-  background: transparent;
+  position: absolute;
   right: 0;
   border: 0;
+  background: transparent;
+  z-index: 20;
 }
 .fa-window-close {
   position: absolute;
-  font-size: 2em;
   right: 0;
   top: 0;
   z-index: -1;
+  font-size: 2em;
 }
 
-/*-------------------------------------------------------------*/
-/*----------------------------NAVBAR---------------------------*/
-/*-------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------ACCESSIBILITE------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------*/
+
+.accessibility {
+  width: 25%;
+  height: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.accessibility-vision {
+  font-family: Arial, Verdana;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 3em;
+  word-wrap: break-word;
+}
+.accessibility-vision main {
+  text-align: left;
+}
+.accessibility-vision h3,
+.accessibility-vision h4 {
+  text-align: center;
+}
+.accessibility-vision .buttonCloseGallery {
+  width: 5em;
+  height: 2em;
+  border: 2px solid var(--main-red-color);
+  text-transform: uppercase;
+}
+.accessibility-vision + footer {
+  font-size: 1.8em;
+}
+.accessibility-vision .formDiv {
+  width: 100%;
+  justify-content: space-between;
+}
+.accessibility-dys {
+  font-family: Arial, Verdana;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  font-size: 1.1em;
+  line-height: 3em;
+}
+
+.toggleVis,
+.toggleDys {
+  width: 2em;
+  height: 1em;
+  border: 0.02em solid white;
+  color: var(--main-white-color);
+  border-radius: 1em;
+  transform: 0.3;
+  position:relative;
+}
+
+.toggleButtonVis,
+.toggleButtonDys {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: var(--main-white-color);
+  cursor: pointer;
+  transform: 0.3;
+  border:3px solid blue;
+  position:absolute;
+  left:0;
+}
+.toggleTextVis {
+  margin-left: 0.1em;
+}
+.toggleVis.active,
+.toggleDys.active {
+  background-color: var(--main-red-color);
+}
+
+.toggleVis.active .toggleButtonVis,
+.toggleDys.active .toggleButtonDys {
+  margin-left: 1em;
+}
+.toggleContainer.containerVis::before {
+  content: "V";
+  color: white;
+  left: 15px;
+  top: 1px;
+}
+.toggleContainer.containerDys::before {
+  content: "D";
+  color: white;
+  left: 15px;
+  top: 1px;
+}
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------NAVBAR------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+
 header .title {
   width: 30%;
+  padding-left: 0.3em;
   text-align: center;
 }
 /*Comportement quand visible*/
 .nav {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 /* le bouton et ses sous onglets*/
 .nav > a,
 .nav .tabButton {
   display: none;
   margin: auto;
-  color: var(--main-white-color);
+  border: none;
   background-color: transparent;
+  color: var(--main-white-color);
   font-size: 1.5em;
   cursor: pointer;
-  border: none;
 }
 /* Div qui englobe les sousOnglets */
 .nav .linkDiv {
@@ -290,10 +400,10 @@ header .title {
 }
 /* Div englobant Onglet et sous onglets*/
 .burgerClicked .dropdown {
-  text-align: center;
+  height: auto;
   /*espacement entre chq onglet*/
   margin: 3em 0 2em 0;
-  height: auto;
+  text-align: center;
 }
 /* Onglet */
 .burgerClicked .tabButton {
@@ -303,13 +413,13 @@ header .title {
 /* style des blocks de sousOnglets*/
 
 .heightProgress .linkDiv {
+  width: 100%;
+  /*occupe toute hauteur dispo en fonction de son parent (dropDown a auto) */
+  height: 100%;
   /* passage de none a flex*/
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  /*occupe toute hauteur dispo en fonction de son parent (dropDown a auto) */
-  height: 100%;
   background-color: var(--main-white-color);
   color: var(--main-black-color);
   animation-name: "heightProgressAnimation";
@@ -317,43 +427,97 @@ header .title {
 }
 
 .linkDiv a {
-  color: var(--main-black-color);
   padding: 2em;
+  color: var(--main-black-color);
 }
-.nav .iconBurger {
-  display: block;
+.iconBurger span {
+  color: white;
+}
+
+.nav .iconBurger,
+.nav .iconClose {
+  width: 5%;
   position: absolute;
   right: 0.5em;
   top: 1em;
-  width: 5%;
+  cursor: pointer;
   color: var(--main-white-color);
   font-size: 2em;
 }
 
-/*-------------------------------------------------------------*/
-/*----------------TEXTES(investment and home)------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------TEXTES and Pictures(investment and home)-----------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 
+.blockKatiasPic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+.blockKatiasPicBottom {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+.blockKatiasPic span {
+  width: 5em;
+  height: 5.3em;
+  display: inline-block;
+  margin: 0 0 1em 1em;
+  padding: 0.3em 0.1em 1.3em 0.1em;
+  background: var(--main-white-color);
+  color: #8b8b8b;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-decoration: none;
+}
+.blockKatiasPic img {
+  width: 5em;
+  height: auto;
+  border: rgba(0, 0, 0, 0.24) 0px 3px 5px;
+}
+.blockKatiasPicBottom img {
+  width: 7em;
+  margin-top: 0.5em;
+}
+.blockKatiasPic span:nth-child(1) {
+  transform: rotate(10deg);
+}
+.blockKatiasPic span:nth-child(2) {
+  transform: rotate(3deg);
+  transform: translateY(1.2em);
+}
+.blockKatiasPic span:nth-child(3) {
+  transform: rotate(25deg);
+}
+.blockKatiasPic span:nth-child(4) {
+  transform: rotate(-5deg);
+}
+.blockKatiasPic span:nth-child(5) {
+  transform: rotate(17deg);
+}
+.blockKatiasPic span:nth-child(6) {
+  transform: rotate(-10deg);
+}
 article {
   margin: 2em;
 }
 
 .eltWithScrollAnimationVisible {
+  width: 15em;
   position: relative;
+  margin: auto;
   text-decoration: none;
   line-height: 2em;
-  width: 15em;
-  margin: auto;
 }
 .eltWithScrollAnimationVisible:after {
-  background-color: #11131a;
-  content: "";
+  width: 50%;
+  height: 3px;
   position: absolute;
   bottom: 0;
   left: 25%;
-  width: 50%;
-  height: 3px;
   margin: 0 auto;
+  content: "";
+  background-color: #11131a;
   animation: "underlineAnim" 1.2s linear;
 }
 
@@ -363,26 +527,26 @@ article {
   margin-bottom: 4em;
 }
 
-/*-------------------------------------------------------------*/
-/*---------------------------CAROUSEL--------------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------CAROUSEL-----------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 
 .diapo {
-  margin-top: 2em;
-  margin-bottom: 2em;
   width: 100%;
   height: auto;
   position: relative;
+  margin-top: 2em;
+  margin-bottom: 2em;
   overflow: hidden;
-  background-color: #927812;
 }
 #rightButton,
 #leftButton {
   position: absolute;
   top: 50%;
+  color: var(--main-black-color);
+  font-size: 1em;
   transform: translateY(-50%);
-  font-size: 3em;
-  color: var(--main-white-color);
+  cursor: pointer;
 }
 
 #rightButton {
@@ -393,6 +557,7 @@ article {
 }
 .mainDivCarousel {
   display: flex;
+  text-align:center;
 }
 .diapo {
   line-height: 0;
@@ -402,17 +567,18 @@ article {
   /*grow( facteur d'expansion par rapport aux autres),shrink(facteur de rétrécissement),basis(place par rapport a conteneur)*/
   /* pas d'agrandissement, pas de rétrécissement*/
   flex: 1 0 100%;
+  
 }
 .picturesCarousel > img {
-  max-width: 100%;
-  height: 16em;
-  object-fit: cover;
-  object-position: center;
+  width: 80%;
+  height: 15em;
+  /*object-fit: cover;
+  object-position: center;*/
 }
 
-/*-------------------------------------------------------------*/
-/*--------------------------GALLERIES--------------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------GALLERIES-----------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 
 .mainDivGallery {
   text-align: center;
@@ -437,72 +603,120 @@ article {
 }
 .nthArticleDivPhotos {
   padding-top: 1em;
+
+}
+.chevronUp{
+  position:fixed;
+  right:2.5em;
+  top:50vh;
+  color:white;
+  cursor:pointer;
+  z-index:5;
+}
+.chevronUp i{
+  width:100%;
+  height:100%;
+  border:1px solid black;
+  border-radius:50%;
+  background-color:black;
+}
+.nthDivAdminPhotos p {
+  border-top: 1px dotted black;
+  border-bottom: 1px dotted black;
 }
 .gridDiv {
-  margin: auto;
-  width: 100%;
+  width: 90%;
   height: auto;
+  margin: auto;
+  background-color: #11131a;
   animation-name: "widthProgress";
   animation-duration: 3s;
-  background-color: #11131a;
 }
 .gridDiv img {
-  border-radius: 0.1em;
   width: 70%;
+  border-radius: 0.1em;
   box-shadow: 0px 20px 40px -10px rgba(170, 170, 170, 0.85);
 }
 
-/*-------------------------------------------------------------*/
-/*---------------------FORMULAIRE CONTACT----------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------FORMULAIRE CONTACT-------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 
 .mainDivForm {
-  text-align: center;
   display: flex;
   flex-direction: column;
   margin: auto;
   margin-bottom: 5em;
+  text-align: center;
   font-size: 0.8em;
   line-height: 1em;
 }
 .formDiv {
+  width: 80%;
   display: flex;
-  width: 100%;
   justify-content: flex-start;
+  margin: auto;
   align-content: center;
-  margin: 0.5em 0;
-  border-radius: 4px;
+  padding-bottom: 0.5em;
 }
 .formDiv input,
 .formDiv textarea,
 .formDiv select {
-  padding: 0.5em;
   width: 50%;
+  padding: 0.5em;
   border-radius: 4px;
 }
 .formDiv label {
+  width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 35%;
+  align-items: flex-start;
 }
 
-/*-------------------------------------------------------------*/
-/*--------------------------PARTIE ADMIN-----------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------PARTIE ADMIN--------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+.adminLogOut {
+  position: absolute;
+  right: 1em;
+  top: 6em;
+
+  border: 2px solid var(--main-red-color);
+  background-color: var(--main-red-color);
+  color: var(--main-white-color);
+}
+#formLogin {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+#formLogin input {
+  width: 16em;
+  text-align: center;
+}
+#formLogin input[type="submit"] {
+  margin-top: 0.5em;
+}
 table {
   margin: auto;
 }
 .adminLink {
+  padding: 0 0.5em;
+  margin: 1em 0.5rem;
+  border: 1px solid var(--main-black-color);
+  border-radius: 25px;
+  color: var(--main-black-color);
+  background-color: var(--main-orange-color);
   font-size: 1.5em;
-  color: rgb(39, 45, 144);
+  cursor: pointer;
 }
-.adminLink:before {
-  content: "->";
-}
+.adminLink:before,
 .adminLink:after {
-  content: "<-";
+  content: "*";
 }
 .mainAdminArticleDiv {
   margin: auto;
@@ -514,8 +728,15 @@ table {
   border: 1px solid Black;
   margin: 1em;
 }
+.tableAdmin {
+  margin: 0 0.5em;
+}
+
 .tableAdmin th {
   background-color: rgb(222, 218, 209);
+}
+.tableAdmin tr {
+  padding: 0;
 }
 table {
   border-collapse: collapse;
@@ -525,13 +746,11 @@ table td,
 table th {
   border: 1px solid rgba(14, 13, 13, 0.5);
   overflow: scroll;
-  padding: 0.2em;
 }
 .mainArtImgMini {
   width: 3em;
   height: auto;
 }
-
 .tdMultiple {
   display: flex;
   flex-direction: column;
@@ -549,75 +768,91 @@ table th {
   grid-auto-flow: dense;
 }
 .photoListAdmin {
-  border: 1px solid black;
-  border-radius: 0.5em;
-  margin: 1em;
-  padding: 0.5em;
   display: grid;
   grid-gap: 0.5em;
   grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
   grid-auto-flow: dense;
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 0.5em;
 }
 .photoListAdmin img {
-  margin-right: 1em;
   height: auto;
+  max-width: 95%;
+  /*margin-right: 1em;*/
   border: 1px solid pink;
-  max-width: 80%;
 }
 .photoListAdmin h4 {
-  border: 1px solid pink;
   max-height: 4em;
+  border: 1px solid pink;
 }
 .viewArticlesImages {
   width: 100%;
   height: 100%;
 }
+.eachPictureSeeAndDelete {
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.formDeleteThisPhoto {
+  position: absolute;
+  top: 0;
+  right: 0.2em;
+}
+.formDeleteThisPhoto input {
+  font-size: 0.8em;
+}
 .mainDivMobileBoxes {
   width: 90%;
   height: auto;
-  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin: auto;
   border-radius: 1em;
 }
 .mobileBoxe {
   width: 100%;
   height: 100%;
+  margin-bottom: 1em;
   border: 1px solid black;
   /* margin: auto;*/
   text-align: center;
   border-radius: 1em;
   opacity: 0.8;
-  margin-bottom: 1em;
 }
 .mobileBoxe div:nth-child(odd) {
-  background-color: #927812;
   border-radius: 1em;
+  background-color: var(--main-orange-color);
 }
 .mobileBoxe div:nth-child(even) {
-  background-color: rgb(222, 218, 209);
   border-radius: 1em;
+  background-color: rgb(222, 218, 209);
 }
 .deleteMessage {
-  border: 2px solid red;
+  border: 2px solid var(--main-red-color);
 }
 
-/*-------------------------------------------------------------*/
-/*-------------------------DESKTOP-----------------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------DESKTOP--------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 
 /* PAGES GENERALES*/
-@media (min-width: 880px) {
+@media (min-width: 768px) {
   body {
-    font-size: 20px;
+    font-size: 18px;
   }
   header {
     width: 100%;
     z-index: 1;
+    font-size:.8em;
   }
   header .title {
     width: 100%;
+    padding-left: 0;
   }
 
   /* NAVBAR */
@@ -628,25 +863,25 @@ table th {
     align-items: flex-end;
   }
   .nav .dropdown {
-    position: relative;
     width: 100%;
+    position: relative;
     margin: 0;
   }
   .nav .tabButton {
+    width: 50%;
     display: block;
     /*pour animation absolute */
     position: relative;
-    width: 50%;
   }
   .nav .linkDiv {
-    display: none;
-    position: absolute;
-    text-align: center;
     width: 100%;
     height: 10em;
-    opacity: 0.5em;
+    display: none;
+    position: absolute;
     bottom: -11em;
     padding-top: 1em;
+    text-align: center;
+    opacity: 0.5em;
     z-index: 2;
   }
   .nav .dropdown:hover .linkDiv {
@@ -660,10 +895,10 @@ table th {
   /*Animation tabButton*/
   .tabButton:after,
   .tabButton:before {
+    width: 0%;
+    height: 3px;
     position: absolute;
     content: "";
-    height: 3px;
-    width: 0%;
     background-color: rgb(222, 218, 209);
     transition: 0.5s;
   }
@@ -682,20 +917,20 @@ table th {
 
   /* LIENS */
   .linkDiv a:hover {
-    color: rgb(222, 218, 209);
-    background-color: var(--main-black-color);
     border-radius: 0.7em;
+    color: var(--main-white-color);
+    background-color: var(--main-black-color);
   }
   .linkDiv a {
-    padding: 1em;
+    padding: .6em;
   }
 
   /* ICONS */
   .fa-window-close {
     position: absolute;
-    font-size: 3em;
     margin-left: 0%;
-    z-index: -1;
+    font-size: 3em;
+    z-index: 10;
   }
   /* Textes */
   article {
@@ -703,8 +938,8 @@ table th {
     margin-bottom: 2em;
   }
   article .informations {
-    text-align: center;
     margin-bottom: 3em;
+    text-align: center;
   }
   section h4 {
     text-align: center;
@@ -712,11 +947,11 @@ table th {
   }
 }
 
-/*-------------------------------------------------------------*/
-/*-------------------------GALLERIES---------------------------*/
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------GALLERIES------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
 
-@media (min-width: 880px) {
+@media (min-width: 768px) {
   .nthArticleDivTitle img {
     width: 30%;
     height: auto;
@@ -726,53 +961,59 @@ table th {
   }
   .gridVisible {
     display: grid;
-    grid-gap: 1.5em;
+    grid-gap: .5em;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-flow: row dense;
     margin-top: 1em;
     margin-bottom: 1em;
-    padding-bottom: 1em;
-    padding-top: 1em;
+    padding:1em;
   }
   .gridDiv img {
     margin: auto;
   }
   .gridDiv img:hover {
     z-index: 2;
-    transition: all 600ms ease-in;
+    transition: all 1s ease-in;
     transform: scale(1.5);
     animation-name: "opacityProgress";
     animation-duration: 2.5s;
   }
 }
 
-/*-------------------------------------------------------------*/
-/*-------------------------CAROUSEL----------------------------*/
-/*-------------------------------------------------------------*/
-@media (min-width: 880px) {
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------CAROUSEL-------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+@media (min-width: 768px) {
   .picturesCarousel > img {
     height: 20em;
+    width:60%;
   }
 }
 
-/*-------------------------------------------------------------*/
-/*--------------------------ADMIN PAGES------------------------*/
-/*-------------------------------------------------------------*/
-@media (min-width: 880px) {
+/*-------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------ADMIN PAGES---------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------------------------*/
+@media (min-width: 768px) {
+  .adminLogOut {
+    right: 1em;
+    top: 1em;
+  }
   .adminArticlesDiv .adminContactDiv {
     margin: auto;
     text-align: center;
   }
   .adminArticlesDiv {
+    width: 90%;
     margin: auto;
     margin-bottom: 1em;
-    width: 90%;
   }
-
+  .photoListAdmin {
+    padding: 2em;
+  }
   table {
-    transform: none;
-    margin-top: 0;
     width: 100%;
+    margin-top: 0;
+    transform: none;
   }
   table td,
   table th {
@@ -780,10 +1021,11 @@ table th {
   }
   .tableAdmin {
     width: 95%;
-    text-align: center;
+    height: auto;
     margin: auto;
     padding: 0;
-    height: auto;
+    text-align: center;
+    font-size:.8em;
   }
   .adminContactDiv {
     display: block;
@@ -791,22 +1033,32 @@ table th {
   .mainDivMobileBoxes {
     display: none;
   }
-  /*-------------------------------------------------------------*/
-  /*--------------------------FORMULAIRES------------------------*/
-  /*-------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------------------------------------------------*/
+  /*-----------------------------------------------------FORMULAIRES---------------------------------------------------*/
+  /*-------------------------------------------------------------------------------------------------------------------*/
 
   .formContact .mainDivForm {
-    width: 40%;
+    width: 60%;
     padding: 5em auto;
   }
   .formDiv {
+    width: 70%;
     margin-bottom: 1em;
   }
-  .pawButton {
-    margin-top: 1em;
-  }
+
   .addArticleDiv {
     width: 60%;
     margin: auto;
+  }
+  /*-------------------------------------------------------------------------------------------------------------------*/
+  /*-------------------------------------------- Pictures(investment and home)-----------------------------------------*/
+  /*-------------------------------------------------------------------------------------------------------------------*/
+  .blockKatiasPic span {
+    width: 8em;
+    height: 8.5em;
+  }
+  .blockKatiasPic img {
+    height: 6em;
+    width: 80%;
   }
 }

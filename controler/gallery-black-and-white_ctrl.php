@@ -1,26 +1,28 @@
 <?php
-/* Recup des infos pour affichage d'un article déjà crée + gestion d'ajout de photos*/
+/*----------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------AFFICHAGE D'ARTICLES + AJOUT PHOTO  PAR L'ADMIN--------------------------------- */
+/*----------------------------------------------------------------------------------------------------------------------*/
 
-/*Classe qui contient la créa et la recup des photos*/
+//Classe pour création et recup photos
 $photoRepo = new PhotoRepository();
 
-/*Insertion en dure d'une galleryName*/
+//Insertion de la galleryName en dur
 $gallery = new Gallery();
 $gallerySetName = $gallery ->setName("gallery black & white");
 $galleryGetName = $gallery ->getName();
 
-/*AJOUT PHOTOS PAR ADMIN */
-/*Classe contenant methode pour ajouter une photo dans un article et Set les messages d'erreur */
+//AJOUT PHOTOS 
+
+//Classe contenant methode pour ajouter une photo dans un article et Set les messages d'erreur 
 $galleryControl = new MainGalleryControl();
-$AdminPhotosMessages = $galleryControl->controlPhotos ($_POST,$_FILES,$photoRepo); 
+//Ajout / Supress + Msg erreurs
+$AdminPhotosMessages= $galleryControl->addPhotos ( 'addNewPhoto', 'inputPhoto', 'articleId');
+$galleryControl->deleteThisPhoto ('deleteThisPhoto','photoIdToDelete', 'articleId');
 
 
-/* Affichage */
+// Affichage des articles
 $articleRepo = new ArticleRepository();
 $articlesByGallery = $articleRepo->listArticlesByGallery($galleryGetName); 
-
-
-
 
 
 require 'view/gallery-black-and-white.phtml';

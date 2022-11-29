@@ -1,5 +1,5 @@
 <?php
-
-require 'view/layout.phtml';
+ 
+require 'layout.phtml';
 
 ?>

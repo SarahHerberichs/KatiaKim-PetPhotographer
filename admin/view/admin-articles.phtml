@@ -1,122 +1,162 @@
+<!--Lien Logout -->
+<a href="?page=admin-login" class= "adminLogOut">LogOut</a>
 
-<div class="adminArticlesDiv">
-    <!-- Formulaire d'ajout d'articles -->
-    <div class="addArticleDiv  <?= $addArticleVisibility ?>">      
-        <div class="mainDivForm">
+  <!--BLOCK VUE DES ARTICLES + GESTION -->
+  <div class="adminArticlesDiv">
 
-            <div class="formDivSubmit iconDiv">
-                <i class="fa fa-window-close" aria-hidden="true"></i>
-                <input type="submit" class="closeAddArticleButton inputWithIcon" value='' >  
-            </div>
-
-            <h3>Add a New Article</h3>
-            <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
-            
-            <form method="POST" enctype="multipart/form-data">
-
-                <div class="formDiv">
-                    <label for="gallery">Choose a Gallery
-                        <span class="errorMessage"> <?=$AdminMessages['requiredGallery'] ?></span>
-                    </label>
-                    <select name="gallerySelect" id="gallery">
-                        <?php foreach($gallerys as $gallery) : ?>
-                            <option value='<?= $gallery->getId() ?>' > <?= $gallery->getName() ?> </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>  
+    <h3>List of Articles</h3>
     
-                <div class="formDiv">
-                    <label for="inputTitle">Name of The Article
-                        <span class="errorMessage"> <?=$AdminMessages['requiredTitle'] ?></span>
-                    </label>
-                    <input type="text" name="inputTitle" id="inputTitle">
-                </div>
+    <a href="?page=admin-home" class="adminLink">Back to : Home Page</a>
+    <div class="tableAdmin">
+      <!--Msg SUCCESS-->
+      <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
+      <span class="success"><?= $AdminPhotosMessages['sendSuccess'] ?></span>
 
-                <div class="formDiv">
-                    <label for="inputMainPhoto">Photo d'entête
-                        <span class="errorMessage"> 
-                            <?=$AdminMessages['requiredPhoto'] ?>
-                            <?=$AdminMessages['wrongExt'] ?>
-                        </span>
-                    </label>
-                    <input type="file" name="inputMainPhoto" id="inputMainPhoto">
-                </div>
-
-                <input type="submit" class="submitNewArticle" name="submitNewArticle" value="confirm">
-            </form>
-        </div> 
-    </div>  
-   <!-- Vue des articles et options (ajout photos,supprimer)-->
-    <div class="adminArticlesDiv">
-
-        <h3>List of Articles</h3>
-        
-        <a href="?page=admin-home" class="adminLink">Home Page</a>
-        <div class="tableAdmin">
-            <span class="success"><?= $AdminPhotosMessages['sendSuccess'] ?></span>
-            <table>
-            
-                <span class="errorMessage"> 
-                    <?=$AdminPhotosMessages['requiredPhoto'] ?>
-                    <?=$AdminPhotosMessages['wrongExt'] ?>
-                </span>
-                    
-                <thead>
-                    <th>Pictures<i class="fa-solid fa-eye viewPhotosButton icon"></i> </th>
-                    <th>Article <i class="fa-solid fa-plus addArticleButton icon"></i></th> 
-                    <th>Delete Article</th>
-                    <th>Gallery</th>
-                </thead>
-                <tbody>
-                    <?php foreach($articles as $article): ?>
-                        <tr class= "trTableAdmin">
-                            <form method="POST" enctype="multipart/form-data">
-                                <td>
-                                    <!-- champ entrée de la photo et button valid-->
-                                    <input type="file" name="inputPhoto">
-                                    <input type="submit" value='valider' name='addNewPhoto'>    
-                                </td>
-                                <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
-                                <td class="tdMultiple">
-                                    <img src="../../admin/files/<?= $article ->getPhoto() ?>" class ="mainArtImgMini">
-                                    <?= $article ->getName() ?>  
-                                </td>
-                                <td>
-                                    <div class="formDivSubmit iconDiv">
-                                        <i class="fa-solid fa-trash icon"></i>
-                                        <input type="submit" value='' name="deleteArticleButton" class="deleteArticleButton inputWithIcon">
-                                    </div>
-                                </td>
-                                <td><?= $article ->getGalleryName() ?></td>
-                            </form>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+      <!--TABLE VUE + GESTION-->
+      <table>
+        <!--msg erreur -->
+        <span class="errorMessage"> 
+          <?=$AdminPhotosMessages['requiredPhoto'] ?>
+          <?=$AdminPhotosMessages['wrongExt'] ?>
+        </span>
+                  
+        <thead>
+          <tr>
+            <th>Pictures<i class="fa-solid fa-eye viewPhotosButton icon"></i> </th>
+            <th>Article <i class="fa-solid fa-plus addArticleButton icon"></i></th> 
+            <th>Delete Article</th>
+            <th>Gallery</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach($articles as $article): ?>
+            <tr class= "trTableAdmin">
+              
+              <form method="POST" enctype="multipart/form-data">
+                <td>
+                  <!-- AJOUT PHOTOS-->
+                  <label for ="inputPhoto"></label>
+                  <input type="file" name="inputPhoto[]" id="inputPhoto" multiple>
+                  <input type="submit" value='confirm' name='addNewPhoto'>    
+                </td>
+                <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
+                <td class="tdMultiple">
+                  <!--VUE MAINPHOTO + Name-->
+                  <img src="admin/files/<?= $article ->getPhoto() ?>" class ="mainArtImgMini">
+                  <!--VUE NOM DE L'ARTICLE-->
+                  <p><?= $article ->getName() ?></p>
+                </td>
+                <td>
+                  <!--BTN SUPRESSION ARTICLE-->
+                  <div class="formDivSubmit iconDiv">
+                    <i class="fa-solid fa-trash icon"></i>
+                    <input type="submit" value='' name="deleteArticleButton" class="deleteArticleButton inputWithIcon">
+                  </div>
+                </td>
+                <td><?= $article ->getGalleryName() ?></td>
+              </form>
+              
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+      <!--FIN TABLE VUE + GESTION -->
     </div>    
-        <!-- Affichage des Photos pour chaque Article--> 
-    <div class="viewArticlesImages invisible">   
-        <div class="photosAdmin">
-            <div class="formDivSubmit iconDiv">
-                <i class="fa fa-window-close" aria-hidden="true"></i>
-                <input type="submit" class="closePhotosButton inputWithIcon" value='' > 
-            </div>
-            <div class="mainDivAdminView">
-                <div class="gridAdminView">     
-                    <?php foreach($articles as $article): ?>        
-                        <div class='photoListAdmin'>
-                        <h4><?= $article ->getName() ?></h4>
-                            <?php foreach($article->getPhotoList() as $photoByArt): ?>
-                                <img src="../../admin/files/<?= $photoByArt ->getPhoto() ?>" />
-                            <?php endforeach; ?>
-                        </div> 
-                    <?php endforeach; ?>    
+  </div>
+  <!--FIN BLOCK VUE ARTICLES + GESTION-->
+
+  <!-- AFFICHAGE DE TOUTES LES PHOTOS--> 
+  <div class="viewArticlesImages invisible">   
+    <div class="photosAdmin">
+      <!--Btn CLOSE -->
+      <div class="formDivSubmit iconDiv">
+        <i class="fa fa-window-close" aria-hidden="true"></i>
+        <input type="submit" class="closePhotosButton inputWithIcon" value='' > 
+      </div>
+      <!--BLOCK VUE PHOTOS-->
+      <div class="mainDivAdminView">
+        <div class="gridAdminView">     
+
+          <?php foreach($articles as $article): ?>
+            <!--Boite de chaque article -->
+            <div class='photoListAdmin'>
+              <!--Titre de l'article-->
+              <h4><?= $article ->getName() ?></h4>
+               <!-- VUE+SUPRESSION d'une des photos-->           
+              <?php foreach($article->getPhotoList() as $photoByArt): ?>
+                <!--VUE-->
+                <div class="eachPictureSeeAndDelete">
+                  <img src="admin/files/<?= $photoByArt ->getPhoto() ?>" />
+                                      
+                  <!--SUPRESSION d'une PHOTOS-->
+                  <form method="post" class="formDeleteThisPhoto">
+                      <input type="hidden" name="articleId" value='<?= $article ->getId() ?>' >  
+                      <input type="hidden" name="photoIdToDelete" value='<?= $photoByArt ->getId() ?>' >
+                      <input type="submit" name="deleteThisPhoto" class="deletePhotoButton" value='x' >
+                  </form>
+                                  <!---->
                 </div>
-            </div>  
+              <?php endforeach; ?>
+                         
+            </div> 
+            <!--FIN Boite chaque article-->
+          <?php endforeach; ?>    
         </div>
+      </div>  
+      <!--FIN BLOCK VUE PHOTOS-->
     </div>
+  </div>
+  <!--FIN AFFICHAGE PHOTOS-->
+
+  <!-- AJOUT D'ARTICLES DIV ENGLOB-->
+  <div class="addArticleDiv  <?= $addArticleVisibility ?>">     
+    <!--BLOCK AJOUT ARTICLES-->
+    <div class="mainDivForm">
+      <!--Btn Close Formulaire-->
+      <div class="formDivSubmit iconDiv">
+        <i class="fa fa-window-close" aria-hidden="true"></i>
+        <input type="submit" class="closeAddArticleButton inputWithIcon" value='' >  
+      </div>
+      
+      <h3>Add a New Article</h3>
+      <span class="success"><?= $AdminMessages['sendSuccess'] ?></span>
+      
+      <form method="POST" enctype="multipart/form-data">
+        <!--CHOIX GALLERIE-->
+        <div class="formDiv">
+          <label for="gallery">Choose a Gallery
+            <span class="errorMessage"> <?=$AdminMessages['requiredGallery'] ?></span>
+          </label>
+          <select name="gallerySelect" id="gallery">
+            <?php foreach($gallerys as $gallery) : ?>
+              <option value='<?= $gallery->getId() ?>' > <?= $gallery->getName() ?> </option>
+            <?php endforeach; ?>
+          </select>
+        </div>  
+        <!--CHOIX TITRE-->
+        <div class="formDiv">
+          <label for="inputTitle">Name of The Article
+            <span class="errorMessage"> <?=$AdminMessages['requiredTitle'] ?></span>
+          </label>
+          <input type="text" name="inputTitle" id="inputTitle">
+        </div>
+        <!--CHOIX MAINPHOTO-->
+        <div class="formDiv">
+          <label for="inputMainPhoto">Main Photo
+            <span class="errorMessage"> 
+              <?=$AdminMessages['requiredPhoto'] ?>
+              <?=$AdminMessages['wrongExt'] ?>
+            </span>
+          </label>
+          <input type="file" name="inputMainPhoto" id="inputMainPhoto">
+        </div>
+        <!--BTN SUBMIT-->
+        <input type="submit" class="submitNewArticle" name="submitNewArticle" value="confirm">
+      </form>
+    </div> 
+    <!--FIN BLOCK AJOUT ARTICLES-->
+  </div> 
+  <!--FIN DIV ENGLOBANTE AJOUT ARTICLES --> 
     
-</div>           
 
 <script src="admin/js/adminArticles.js"></script>

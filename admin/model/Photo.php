@@ -46,7 +46,7 @@ class Photo {
         return $this ->_article_id;
     }
 
-    public function setArticleName(string $article_name): void{
+    public function setArticleName(string $article_name): void {
         $this ->_article_name = $article_name;
     }
     

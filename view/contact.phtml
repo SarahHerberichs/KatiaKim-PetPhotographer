@@ -1,9 +1,13 @@
+<?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
+         <a href="?page=admin-login" class= "adminLogOut">LogOut</a>
+<?php } ?>
 
 <h3>Contact</h3>
 
-   <div class="formContact" > 
+   <section class="formContact" > 
       <form method="post" >
          <span class="success"><?= $userMessages['sendSuccess'] ?></span>
+         <span class="errorMessage"><?=$userMessages['problemOnSubmit'] ?></span>
          <div class="mainDivForm"> 
             <div class="formDiv">
                <label for="firstName">First Name
@@ -14,11 +18,13 @@
             <div class="formDiv">
                <label for="lastName">Last Name
                   <span class="errorMessage"><?=$userMessages['requiredLastName'] ?></span>
+                  
                </label>
                <input type="text"  id="lastName" name="lastName" placeholder="Jackson">
             </div>
             <div class="formDiv">
                <label for="phone">Phone
+                  <span class="errorMessage"><?=$userMessages['onlyNumber'] ?></span>
                   <span class="errorMessage"><?=$userMessages['requiredPhone'] ?></span>
                </label>
                <input type="tel" id="phone" name="phone" placeholder="650 450 388">
@@ -41,6 +47,6 @@
             </div>
          </div>
       </form>
-   </div>
+   </section>
     
-   <script src="../js/contact.js"></script>
+   <script src="js/contact.js"></script>

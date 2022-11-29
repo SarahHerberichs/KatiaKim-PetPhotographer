@@ -1,3 +1,4 @@
+
 <span class="errorMessage"> 
    <?=$AdminPhotosMessages['requiredPhoto'] ?>
    <?=$AdminPhotosMessages['wrongExt'] ?>
@@ -7,23 +8,41 @@
 <?php require "carousel.phtml"?>
 
 <div class="mainDivGallery">  
+ 
+   <!--Liens Si Admin -->
    <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
-      <a href="?page=admin-articles" class= "adminLink">Articles</a>
+      <a href="?page=admin-articles" class= "adminLink">Back to : Articles</a>
    <?php } ?> 
-   <!-- Affichage des articles (mainPhoto et titre) -->
+
+   <!-- Vue des articles et options d'ajout SI ADMIN-->
    <?php foreach($articlesByGallery as $article) : ?>  
-         <!--Recupération du TITRE + MAIN IMG -->   
-      <div class="eachArticle">  
+
+      <!--Recupération elts de chq Article-->   
+      <div class="eachArticle">
          <div class="nthArticleDivTitle">
+            <!--TITRE-->
             <h4> <?= $article->getName() ?> </h4>
             <input type="hidden" name="articleId" value=<?= $article->getId() ?>>
+            <!--MAIN PHOTO-->
             <img src="admin/files/<?= $article->getPhoto() ?>"  alt= "Main photo from <?= $article->getName() ?> article" />
          </div>
 
-         <!--Photos de chaque article + bouton close-->
+         <!--Toutes Photos de chaque article + bouton close-->
          <div class="nthArticleDivPhotos gridDiv invisible" name="invisible">
+            <!--Lien remonter et close article -->
+            <a href="#top" class="chevronUp" ><i class="fa-solid fa-circle-chevron-up"></i></a>
             <?php foreach($article->getPhotoList() as $photoByArt): ?>
-               <img src="../admin/files/<?= $photoByArt ->getPhoto() ?>" alt ="photo from <?= $article->getName() ?> article">
+               <div class="eachPictureSeeAndDelete">
+                  <img src="admin/files/<?= $photoByArt ->getPhoto() ?>" alt ="photo from <?= $article->getName() ?> article">
+                  <!--SUPRESSION PHOTOS ASSOCIE A L'Article-->
+                  <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
+                     <form method="post" class="formDeleteThisPhoto">
+                        <input type="hidden" name="articleId" value='<?= $article ->getId() ?>' >  
+                        <input type="hidden" name="photoIdToDelete" value='<?= $photoByArt ->getId() ?>' >
+                        <input type="submit" name="deleteThisPhoto" class="deletePhotoButton" value='x' >
+                     </form>
+                  <?php } ?> 
+               </div>      
             <?php endforeach; ?> 
          </div>
          <input type='button' value='close' class='buttonCloseGallery invisible'>
@@ -31,12 +50,12 @@
          <!-- Ajout de photos SI ADMIN -->
          <div class="nthDivAdminPhotos">
             <?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
-              
                <p>Add Picture</p>
                <form method="POST" enctype="multipart/form-data">
-                  <input type="file" value="inputPhoto" name="inputPhoto">
+                  <label for ="inputPhoto"></label>
+                  <input type="file" id="inputPhoto" value="inputPhoto" name="inputPhoto[]" multiple>
                   <input type="hidden" name= "articleId" value='<?= $article ->getId() ?>' >
-                  <input type="submit" value='valider' name='addNewPhoto'>
+                  <input type="submit" value='confirm' name='addNewPhoto'>
                </form>
             <?php } ?> 
          </div>
@@ -44,4 +63,4 @@
    <?php endforeach; ?>
 </div>   
 
-<script src="../js/gallery.js"></script>
+<script src="js/gallery.js"></script>

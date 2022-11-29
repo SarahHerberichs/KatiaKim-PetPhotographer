@@ -1,25 +1,29 @@
 <?php
-
+/*-------------------------------------------------------------------------------------------*/
+/*--------------------------------MESSAGERERIE:COMMENT + DELETE----------------------------- */
+/*-------------------------------------------------------------------------------------------*/
 $messageRepo = new MessageRepository();
 
+//COMMENT
+
 //si le form "comment" est validé
-if (isset($_POST['commentSubmit'])) {
+if ( isset($_POST['commentSubmit']) ) {
     $adminRep = new AdminRepository();
-    //instanciation pour créa d'un message (id et comment associé)
+    //Recup Message
     $msgById = $messageRepo ->getMsgById($_POST['id']);
-    //set du comment de ce message associé au formulaire de la vue adminHome
+    //Set du Commentaire
     $msgById ->setComment($_POST['comment']);
-    //update du comment
+    //Update du comment
     $updateComment = $adminRep->updateComment($msgById);
 }
 
-if (isset ($_POST['delete'])) {
+//DELETE 
+if ( isset ($_POST['delete']) ) {
     $adminRep = new AdminRepository();
     $msgById = $messageRepo ->getMsgById($_POST['id']);
     $deleteMessage = $adminRep ->deleteLine($msgById);
 }
-
-
+//Pour Affichage
 $messages = $messageRepo->listMessages();
 
 require 'admin/view/admin-home.phtml'; 

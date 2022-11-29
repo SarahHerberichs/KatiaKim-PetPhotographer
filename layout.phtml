@@ -1,93 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Katia Pet Photographer in Tahoe Truckee">
-    
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <script src="https://kit.fontawesome.com/f924bf4e1d.js" crossorigin="anonymous"></script>
-    <title>Katia Kim Pet Photographer in Truckee Tahoe</title>
-</head>
+   <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta name="description" content="Katia Pet Photographer in Tahoe Truckee">
+       
+       <link rel="stylesheet" href="css/style.css">
+       <link rel="stylesheet" href="css/normalize.css">
+       <script src="https://kit.fontawesome.com/f924bf4e1d.js" crossorigin="anonymous"></script>
+       <title>Katia Kim Pet Photographer in Truckee Tahoe</title>
+   </head>
+   
    <body>
       <div class="header">
          <header>
+            <!--ACCESSIBILITE-->
+            <div class="accessibility">
+               <div class="toggleContainer containerVis">
+                  <div class="toggleVis">
+                     <button class="toggleButtonVis" onclick="toggleAnimationVis()" onfocus="visFocus()"></button>
+                  </div>
+                  <div class="toggleTextVis"> OFF</div>
+               </div>
+               <div class="toggleContainer containerDys">
+                  <div class="toggleDys">
+                     <button class="toggleButtonDys" onclick="toggleAnimationDys()" onfocus="dysFocus()"></button>
+                  </div>
+                  <div class="toggleTextDys">OFF</div>
+               </div>
+            </div>
+   
             <div class="title">
                <h1>Katia Kim</h1>
                <h2>Pet Photographer</h2>
             </div>
-
+   
             <nav>   
                <div id="navBar" class="nav">
                   <div class="dropdown">
-                        <a href ="?page=home"><button class="tabButton">Home</button></a>
-                        <!--<div class="linkDiv">
-                           <a href="#">SousOnglet1-1</a>
-                           <a href="#">SousOnglet1-2</a>
-                           <a href="#">SousOnglet1-3</a>
-                        </div>-->
+                     <a href ="?page=home" title="home katia kim pet photographer"><div class="tabButton">Home</div></a>
                   </div>
                   <div class="dropdown">
-                     <button class="tabButton">Galleries</button>
+                     <a class="tabButton">Galleries</a>
                      <div class="linkDiv">
-                        <a href="?page=gallery-black-and-white">Black & White</a>
-                        <a href="?page=gallery-pets-and-family">Pets and Family</a>
-                        <a href="?page=gallery-events">Events</a>
+                        <a href="?page=gallery-black-and-white" title="gallery black and white katia kim pet photographer">Black & White</a>
+                        <a href="?page=gallery-pets-and-family" title="gallery pets and family katia kim pet photographer">Pets and Family</a>
+                        <a href="?page=gallery-events" title="gallery events katia kim pet photographer">Events</a>
                      </div>
                   </div>
                   <div class="dropdown">
-                     <a href="?page=investment"><button class="tabButton">Investment</button></a>
-                     <!--<div class="linkDiv">
-                        <a href="#">SousOnglet3-1</a>
-                        <a href="#">SousOnglet3-2</a>
-                        <a href="#">SousOnglet3-3</a>
-                     </div>-->
+                     <a href="?page=investment" title="investment katia kim pet photographer"><div class="tabButton">Investment</div></a>
                   </div>
-
+   
                   <div class="dropdown">
-                     <a href="?page=contact"><button class="tabButton">Contact</button></a>
-                     <!--<div class="linkDiv">
-                        <a href="#">SousOnglet4-1</a>
-                        <a href="#">SousOnglet4-2</a>
-                        <a href="#">SousOnglet4-3</a>
-                     </div>-->
+                     <a href="?page=contact" title="contact katia kim pet photographer"><div class="tabButton">Contact</div></a>
                   </div>
-                  <a href="#" class='iconBurger'>&#9776</a>
+                  <!--ICONS OPEN CLOSE-->
+                  <div class='iconBurger'>&#9776</div>
+                  <div class='iconClose invisible'>&#10006</div>
                </div>
             </nav>
          </header>
       </div>
-      <!--<section class="caroussel">SECTION CAROUSSEL-->
+      
       <main>
          <?php require 'router.php' ?>
       </main>
-
+      
+      <footer>
+         <div class="footer">
+            <div class="social">
+               <div class="logos">
+                  <a href="https://www.instagram.com" target="_blank" title="instagram katia kim pet photographer"><i class="fa fa-instagram"></i></a>
+                  <a href="https://twitter.com/?lang=fr" target="_blank" title="twitter katia kim pet photographer"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="https://fr-fr.facebook.com" target="_blank" title="facebook katia kim pet photographer"><i class="fa-brands fa-facebook"></i></a>
+                  <a href="https://www.linkedin.com" target="_blank" title="linkedin katia kim pet photographer"><i class="fa-brands fa-linkedin"></i></a>
+               </div>
+            </div>
+            <div class="contact">
+               <a href="?page=contact" title="contact katia kim pet photographer">Contact me</a>
+               <div class="adressAndPhone">
+                  <p>+650 328 456</p>
+                  <p>728 Oak St </p>
+                  <p> Truckee CA 96161</p>
+               </div>
+               <a href="mailto:katia-kim-photos@gmail.com" target="_blank" title="mail katia kim pet photographer"> katia-kim-photos@gmail.com </a>
+            </div>
+         </div>
+      </footer>
    </body>
 
-   <footer>
-      <div class="footer">
-         <div class="social">
-            <div class="logos">
-               <a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
-               <a href="https://twitter.com/?lang=fr" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-               <a href="https://fr-fr.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-               <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            </div>
-         </div>
-         <div class="contact">
-            <a href="?page=contact">Contact me</a>
-            <div class="adressAndPhone">
-               <p>+650 328 456</p>
-               <p>728 Oak St </p>
-               <p> Truckee CA 96161</p>
-            </div>
-            <a href="mailto:katia-kim-photos@gmail.com" target="_blank"> katia-kim-photos@gmail.com </a>
-         </div>
-      </div>
-   </footer>
-   
-<script src="layout.js"></script>
+   <script src="layout.js"></script>
 
 </html>

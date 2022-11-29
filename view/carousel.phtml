@@ -1,25 +1,41 @@
-<div class="diapo">
+
+
+<?php if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) { ?>
+         <a href="?page=admin-login" class= "adminLogOut">LogOut</a>
+<?php } ?>
+
+<section class="diapo">
    <div class="mainDivCarousel">
       <div class="picturesCarousel">
-         <img src="admin\files\0EF814C5-EB2B-4FC9-87F7-6B88E7FE7334(1).jpg" alt="">
+         <img src="admin/files/KAT_2916-Edit.jpg" alt="carousel picture">
       </div>
       <div class="picturesCarousel">
-         <img src="admin\files\KAT_2916-Edit.jpg" alt="">
+         <img src="admin/files/blackNWhiteCats.jpg" alt="carousel picture">
       </div>
       <div class="picturesCarousel">
-         <img src="admin\files\6E2B0454-F479-495B-95B2-94F76493F6CC(1).jpg" alt="">
+         <img src="admin/files/_DSC5093.jpg" alt="carousel picture">
       </div>
       <div class="picturesCarousel">
-         <img src="admin\files\48E5D114-B419-4FC0-953B-38DFA41DB860(1).jpg" alt="">
+         <img src="admin/files/_DSC8092.jpg" alt="carousel picture">
       </div>
       <div class="picturesCarousel">
-         <img src="admin\files\DSC_1055.jpg" alt="">
+         <img src="admin/files/_DSC8190.jpg" alt="carousel picture">
+      </div> 
+      <div class="picturesCarousel">
+         <img src="admin/files/_DSC9766-2.png" alt="carousel picture">
+      </div> 
+      <div class="picturesCarousel">
+         <img src="admin/files/DSC_0869-Edit.jpg" alt="carousel picture">
       </div>
       <div class="picturesCarousel">
-         <img src="admin\files\2021092917425536--3761371796285526011-n2wwTSD-0!sizeoriginal(1).jpg" alt="">
+         <img src="admin/files/_DSC6593-Edit-2.jpg" alt="carousel picture">
       </div>
+      <div class="picturesCarousel">
+         <img src="admin/files/DSC_0190.jpg" alt="carousel picture">
+      </div>
+      
    </div>
    <i id="leftButton" class="fas fa-chevron-left"></i>
    <i id="rightButton" class="fas fa-chevron-right"></i>
-</div> 
-<script src="../js/carousel.js"></script>
+</section> 
+<script src="js/carousel.js"></script>

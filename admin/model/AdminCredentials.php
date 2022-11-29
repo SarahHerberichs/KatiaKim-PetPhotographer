@@ -1,5 +1,7 @@
 <?php
-/* Les donnees de la table admin transitent ici pour set et get */
+/*-------------------------------------------------------------------------------------------*/
+/*--------------------------------IDENTIFIANTS REELS DE LA BDD------------------------------ */
+/*-------------------------------------------------------------------------------------------*/
 class AdminCredentials {
     private string $_id;
     private string $_login;
