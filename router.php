@@ -30,7 +30,7 @@ if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) {
         case 'admin-home':
             require 'admin/controler/admin-home_ctrl.php';
             break;
-        case 'admin-articles';
+        case 'admin-articles':
             require 'admin/controler/admin-articles_ctrl.php';
             break;
         default:
