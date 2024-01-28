@@ -423,8 +423,7 @@ header .title {
 }
 /*class heightProgress a dropdown au click sur 1 dropdown*/
 /* style des blocks de sousOnglets*/
-
-.heightProgress .linkDiv {
+/ .heightProgress .linkDiv {
   width: 100%;
   /*occupe toute hauteur dispo en fonction de son parent (dropDown a auto) */
   height: 100%;
