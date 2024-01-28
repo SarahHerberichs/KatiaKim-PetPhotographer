@@ -269,9 +269,14 @@ footer {
 /*-----------------------------------------------ACCESSIBILITE------------------------------------------------------*/
 /*------------------------------------------------------------------------------------------------------------------*/
 
+/*------------------------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------ACCESSIBILITE------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------*/
+
 .accessibility {
   width: 25%;
   height: 2em;
+  margin-left: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -312,27 +317,32 @@ footer {
   font-size: 1.1em;
   line-height: 3em;
 }
-
+.toggleContainer.containerVis {
+  margin-right: 1em;
+  text-align: left;
+}
+.toggleContainer.containerDys {
+  text-align: left;
+}
 .toggleVis,
 .toggleDys {
-  width: 2em;
-  height: 1em;
-  border: 0.02em solid white;
+  width: 50px;
+  height: 25px;
   color: var(--main-white-color);
-  border-radius: 1em;
+  border-radius: 25px;
   transform: 0.3;
   position: relative;
 }
 
 .toggleButtonVis,
 .toggleButtonDys {
-  width: 50%;
-  height: 100%;
-  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  border: 0.1px solid blue;
+  border-radius: 50px;
   background: var(--main-white-color);
   cursor: pointer;
   transform: 0.3;
-  border: 3px solid blue;
   position: absolute;
   left: 0;
 }
@@ -346,20 +356,23 @@ footer {
 
 .toggleVis.active .toggleButtonVis,
 .toggleDys.active .toggleButtonDys {
-  margin-left: 1em;
+  margin-left: 50%;
 }
 .toggleContainer.containerVis::before {
   content: "V";
+  margin-left: 15%;
   color: white;
   left: 15px;
   top: 1px;
 }
 .toggleContainer.containerDys::before {
   content: "D";
+  margin-left: 15%;
   color: white;
   left: 15px;
   top: 1px;
 }
+
 /*-------------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------NAVBAR------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------------------------*/
@@ -428,6 +441,7 @@ header .title {
 .linkDiv a {
   padding: 2em;
   color: var(--main-black-color);
+  font-size: 1.5em;
 }
 .iconBurger span {
   color: white;
@@ -569,7 +583,7 @@ article {
 }
 .picturesCarousel > img {
   width: 80%;
-  height: 15em;
+  height: auto;
   /*object-fit: cover;
   object-position: center;*/
 }
@@ -982,7 +996,7 @@ table th {
 /*-------------------------------------------------------------------------------------------------------------------*/
 @media (min-width: 768px) {
   .picturesCarousel > img {
-    height: 20em;
+    height: auto;
     width: 60%;
   }
 }

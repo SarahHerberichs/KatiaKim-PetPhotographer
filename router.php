@@ -42,6 +42,8 @@ if (isset($_SESSION['isAdmin']) && ($_SESSION ['isAdmin']===true)) {
         $page = isset($_GET['page']) ? $_GET['page'] : 'home'; 
 
         switch($page){
+            case 'adminvideo' :
+                require 'controler/adminvideo_ctrl.php';
             case 'home':
                 require 'controler/home_ctrl.php';
                 break;
